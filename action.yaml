@@ -31,4 +31,4 @@ action: submit
 gpus: 0
 test: false
 milestone: method_runs
-notes: "Validate statistical algorithms with 1000-trial Monte Carlo, fix rejection direction, update evaluate.sh, write final scores.json"
+notes: "Retry: validate algorithms with 1000-trial Monte Carlo, write scores.json"
