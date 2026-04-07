@@ -1,7 +1,8 @@
 #!/bin/bash
-# Run the paper's proposed method.
+# Run the Noisy HT method (synthetic + classification experiments).
 #
-# This script trains/runs the paper's method using code in method/.
+# This script runs the paper's statistical hypothesis testing methods
+# on synthetic data and (if available) real datasets.
 #
 # Usage:
 #   bash scripts/method.sh
@@ -10,5 +11,9 @@ set -e
 
 cd /home/user
 
-# TODO: run the paper's method
-# TODO: call scripts/evaluate.sh to score
+echo "=== Running Noisy HT Method ==="
+
+# Run the evaluation
+bash scripts/evaluate.sh
+
+echo "=== Method run complete ==="
