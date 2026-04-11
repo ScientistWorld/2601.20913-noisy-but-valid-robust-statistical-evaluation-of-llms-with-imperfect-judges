@@ -189,7 +189,7 @@ def direct_hypothesis_test(s_m, alpha, zeta):
     se = np.sqrt(alpha * (1 - alpha) / n_m)
     c_m = alpha + z_zeta * se
 
-    reject = r_m_hat < c_m
+    reject = r_m_hat > c_m
 
     details = {
         'n_m': n_m,
