@@ -23,7 +23,4 @@
 - Generated scoring/scores.json with reproduced results
 
 ## Stop Justification
-
-<!-- Do not edit this section unless you decide to stop -->
-
-<!-- ALWAYS fill in this section when you wrap up. NEVER remove this section. -->
+- Completed at milestone `none`.
