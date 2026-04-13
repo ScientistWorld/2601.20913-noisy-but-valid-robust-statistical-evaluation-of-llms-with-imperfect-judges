@@ -1,5 +1,0 @@
-action: submit
-gpus: 0
-test: false
-milestone: core_claim
-notes: "Run full synthetic experiments and generate scores.json"

@@ -172,12 +172,3 @@ All experiments use significance level ζ=0.05.
 
 </details>
 
-
----
-
-# Reproduction Milestones
-
-**Current: core_claim**
-
-## Stop Justification
-- Completed at milestone `none`.
