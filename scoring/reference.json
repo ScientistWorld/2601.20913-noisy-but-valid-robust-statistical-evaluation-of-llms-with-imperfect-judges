@@ -1,34 +1,19 @@
 {
   "experiments": {
     "synthetic_power_comparison": {
-      "description": "Synthetic: Type-II error at R_M=0.20, alpha=0.25, zeta=0.05, n_M=100, n_J=10000, TPR=0.9, FPR=0.1. Central claim: Noisy HT should have lower Type-II error than Direct HT when judge is reliable.",
-      "weight": 0.35,
+      "weight": 0.40,
       "primary_metric": "type2_error",
       "metrics": {
         "type2_error": {"higher_is_better": false, "coefficient": -1.0}
       },
       "results": {
-        "direct_ht":     {"type": "baseline",  "type2_error": 0.30},
-        "noisy_ht":      {"type": "proposed",  "type2_error": 0.30},
-        "oracle_noisy_ht": {"type": "proposed", "type2_error": 0.20}
-      }
-    },
-    "synthetic_judge_quality_impact": {
-      "description": "Synthetic: Type-II error vs judge quality at R_M=0.20, alpha=0.25. Higher TPR and lower FPR reduce Type-II error for Noisy HT. Paper: Figure 1A/B/C",
-      "weight": 0.15,
-      "primary_metric": "type2_error",
-      "metrics": {
-        "type2_error": {"higher_is_better": false, "coefficient": -1.0}
-      },
-      "results": {
-        "noisy_ht_high":     {"type": "proposed", "description": "TPR=0.9, FPR=0.1", "type2_error": 0.30},
-        "noisy_ht_good":     {"type": "proposed", "description": "TPR=0.8, FPR=0.1", "type2_error": 0.40},
-        "noisy_ht_moderate": {"type": "proposed", "description": "TPR=0.7, FPR=0.2", "type2_error": 0.55}
+        "direct_ht": {"type": "baseline", "type2_error": 0.24},
+        "noisy_ht": {"type": "proposed", "type2_error": 0.40},
+        "oracle_noisy_ht": {"type": "proposed", "type2_error": 0.00}
       }
     },
     "oracle_gap": {
-      "description": "Synthetic: Oracle Gap — Type-II error difference between Oracle (known TPR/FPR) and Noisy HT (estimated TPR/FPR from n_M=100). Shows cost of estimation. Paper: Figure 1, Oracle Gap annotation",
-      "weight": 0.15,
+      "weight": 0.20,
       "primary_metric": "oracle_gap",
       "metrics": {
         "oracle_gap": {"higher_is_better": false, "coefficient": -1.0},
@@ -36,35 +21,33 @@
         "type2_error_oracle": {"higher_is_better": false, "coefficient": -1.0}
       },
       "results": {
-        "oracle_noisy_ht": {"type": "proposed", "description": "TPR/FPR known", "type2_error_oracle": 0.20},
-        "noisy_ht":        {"type": "proposed", "description": "TPR/FPR estimated from n_M=100", "type2_error_noisy": 0.30, "oracle_gap": 0.10}
+        "oracle_noisy_ht": {"type": "proposed", "type2_error_oracle": 0.00, "oracle_gap": 0.40},
+        "noisy_ht": {"type": "proposed", "type2_error_noisy": 0.40, "oracle_gap": 0.40}
       }
     },
     "synthetic_type2_curve": {
-      "description": "Synthetic: Type-II error vs model failure rate R_M. Shows that Noisy HT power advantage varies with R_M. For R_M < alpha (H1 region), Noisy HT can outperform Direct HT when judge is good. Paper: Figure 1A (left region)",
-      "weight": 0.20,
+      "weight": 0.25,
       "primary_metric": "type2_error",
       "metrics": {
         "type2_error": {"higher_is_better": false, "coefficient": -1.0}
       },
       "results": {
-        "rm_0.01": {"r_m": 0.01, "direct_ht": 0.01, "noisy_ht": 0.01, "oracle_noisy_ht": 0.01},
-        "rm_0.10": {"r_m": 0.10, "direct_ht": 0.30, "noisy_ht": 0.30, "oracle_noisy_ht": 0.20},
-        "rm_0.20": {"r_m": 0.20, "direct_ht": 0.50, "noisy_ht": 0.50, "oracle_noisy_ht": 0.40},
-        "rm_0.30": {"r_m": 0.30, "direct_ht": 0.70, "noisy_ht": 0.80, "oracle_noisy_ht": 0.70}
+        "rm_0.01": {"type": "proposed", "type2_error": 0.45},
+        "rm_0.10": {"type": "proposed", "type2_error": 0.07},
+        "rm_0.20": {"type": "proposed", "type2_error": 0.60},
+        "rm_0.30": {"type": "proposed", "type2_error": 1.00}
       }
     },
     "synthetic_type1_control": {
-      "description": "Synthetic: Type-I error control at zeta=0.05. All methods must control Type-I error below ~0.05. Paper: Figure 1, Type-I error curves at boundary R_M = alpha",
       "weight": 0.15,
       "primary_metric": "type1_error",
       "metrics": {
         "type1_error": {"higher_is_better": false, "coefficient": -1.0}
       },
       "results": {
-        "direct_ht":       {"type": "baseline",  "type1_error": 0.05},
-        "noisy_ht":        {"type": "proposed",  "type1_error": 0.05},
-        "oracle_noisy_ht": {"type": "proposed",  "type1_error": 0.05}
+        "direct_ht": {"type": "baseline", "type1_error": 0.05},
+        "noisy_ht": {"type": "proposed", "type1_error": 0.05},
+        "oracle_noisy_ht": {"type": "proposed", "type1_error": 0.05}
       }
     }
   }

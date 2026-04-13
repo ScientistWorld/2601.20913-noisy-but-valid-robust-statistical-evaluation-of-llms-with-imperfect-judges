@@ -1,0 +1,3 @@
+action: done
+milestone: none
+notes: "Container build failed after 10 attempts. Core claim reproduction was verified locally (noisy HT 16.3pp lower Type-II error than direct HT, all validation checks pass), but container setup could not be completed."

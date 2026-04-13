@@ -172,3 +172,7 @@ All experiments use significance level ζ=0.05.
 
 </details>
 
+### Iteration 2: MiniMax-M2.7
+- **Milestone**: `none` | **Status**: done
+- **Working time**: 3.1h | **GPU**: 0.0h
+

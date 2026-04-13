@@ -88,16 +88,17 @@ def estimate_error_rates_mc(n_m, n_j, r_m, tpr, fpr, alpha, zeta,
     r_m_type1 = true_r_m_for_type1 if true_r_m_for_type1 is not None else alpha
 
     for trial in range(n_trials):
-        trial_seed = None if seed is None else (seed + trial * 17 + 31)
+        trial_seed_t1 = None if seed is None else (seed + trial * 17 + 31)
+        trial_seed_t2 = None if seed is None else (seed + (trial + n_trials) * 17 + 31)
 
         # Generate Type-I data (at boundary)
         D_M_sm_t1, D_M_sj_t1, D_J_sm_t1, D_J_sj_t1 = generate_synthetic_data(
-            n_m, n_j, r_m_type1, tpr, fpr, seed=trial_seed
+            n_m, n_j, r_m_type1, tpr, fpr, seed=trial_seed_t1
         )
 
         # Generate Type-II data (at given r_m < alpha)
         D_M_sm_t2, D_M_sj_t2, D_J_sm_t2, D_J_sj_t2 = generate_synthetic_data(
-            n_m, n_j, r_m, tpr, fpr, seed=trial_seed
+            n_m, n_j, r_m, tpr, fpr, seed=trial_seed_t2
         )
 
         trial_results_t1 = run_single_trial(

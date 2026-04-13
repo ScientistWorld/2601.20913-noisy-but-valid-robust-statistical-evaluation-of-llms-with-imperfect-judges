@@ -81,11 +81,11 @@ def noisy_hypothesis_test(s_m, s_j, alpha, zeta):
     alpha_prime_hat = fpr_hat + (tpr_hat - fpr_hat) * alpha
 
     # Compute variance-corrected critical threshold
-    # Using lower-tail: z_zeta = Phi^{-1}(zeta) is negative for zeta < 0.5
-    # c_J' = alpha_hat' + z_zeta * SE = alpha_hat' - |z_zeta| * SE (lower bound)
-    # Reject H0 if R_J > c_J' (observed rate exceeds lower confidence bound)
+    # Lower-tail test: z_zeta = Phi^{-1}(zeta) is negative for zeta < 0.5
+    # c_J' = alpha_prime_hat + z_zeta * SE (lower confidence bound)
+    # Reject H0 if R_J < c_J' (observed rate below lower confidence bound)
     # At boundary R_M = alpha: P(reject) = P(Z < z_zeta) = zeta (Type-I error controlled)
-    z_zeta = norm.ppf(zeta)  # negative for zeta < 0.5
+    z_zeta = norm.ppf(zeta)
 
     var_rj = alpha_prime_hat * (1 - alpha_prime_hat) / n_j
     var_tpr = (alpha ** 2) * tpr_hat * (1 - tpr_hat) / n_m1 if n_m1 > 0 else 0
@@ -94,7 +94,7 @@ def noisy_hypothesis_test(s_m, s_j, alpha, zeta):
     se = np.sqrt(var_rj + var_tpr + var_fpr)
     c_j_prime = alpha_prime_hat + z_zeta * se
 
-    reject = r_j_hat > c_j_prime
+    reject = r_j_hat < c_j_prime
 
     details = {
         'n_m': n_m,
@@ -136,7 +136,7 @@ def noisy_hypothesis_test_dual(D_M_sm, D_M_sj, D_J_sj, alpha, zeta):
     r_j_hat = np.mean(D_J_sj)
     alpha_prime_hat = fpr_hat + (tpr_hat - fpr_hat) * alpha
 
-    z_zeta = norm.ppf(1 - zeta)
+    z_zeta = norm.ppf(zeta)
 
     var_rj = alpha_prime_hat * (1 - alpha_prime_hat) / n_j
     var_tpr = (alpha ** 2) * tpr_hat * (1 - tpr_hat) / n_m1 if n_m1 > 0 else 0
@@ -145,7 +145,7 @@ def noisy_hypothesis_test_dual(D_M_sm, D_M_sj, D_J_sj, alpha, zeta):
     se = np.sqrt(var_rj + var_tpr + var_fpr)
     c_j_prime = alpha_prime_hat + z_zeta * se
 
-    reject = r_j_hat > c_j_prime
+    reject = r_j_hat < c_j_prime
 
     details = {
         'n_m': n_m,
@@ -189,7 +189,7 @@ def direct_hypothesis_test(s_m, alpha, zeta):
     se = np.sqrt(alpha * (1 - alpha) / n_m)
     c_m = alpha + z_zeta * se
 
-    reject = r_m_hat > c_m
+    reject = r_m_hat < c_m
 
     details = {
         'n_m': n_m,
@@ -223,14 +223,12 @@ def oracle_noisy_hypothesis_test(s_j, tpr, fpr, alpha, zeta):
     r_j_hat = np.mean(s_j)
 
     alpha_prime = fpr + (tpr - fpr) * alpha
-    # Lower-tail test: z_zeta is negative for zeta < 0.5
-    # Reject H0 if R_J > c_J (observed rate exceeds lower confidence bound)
     z_zeta = norm.ppf(zeta)
 
     se = np.sqrt(alpha_prime * (1 - alpha_prime) / n_j)
     c_j = alpha_prime + z_zeta * se
 
-    reject = r_j_hat > c_j
+    reject = r_j_hat < c_j
 
     details = {
         'n_j': n_j,
@@ -305,11 +303,11 @@ def ppi_family_wald_test(D_M_sm, D_M_sj, D_J_sj, tpr, fpr, alpha, zeta,
     nse = np.sqrt(var_term)
 
     # Lower-tail test: z_zeta is negative for zeta < 0.5
-    # Reject H0 if R_hat > c_zeta
+    # Reject H0 if R_hat < c_zeta
     z_zeta = norm.ppf(zeta)
     c_zeta = alpha + z_zeta * nse
 
-    reject = r_hat > c_zeta
+    reject = r_hat < c_zeta
 
     details = {
         'n_m': n_m,
