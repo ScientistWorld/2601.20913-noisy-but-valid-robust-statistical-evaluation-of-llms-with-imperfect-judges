@@ -176,3 +176,7 @@ All experiments use significance level ζ=0.05.
 - **Milestone**: `none` | **Status**: done
 - **Working time**: 3.1h | **GPU**: 0.0h
 
+### Iteration 2: glm-5.1
+- **Milestone**: `none` | **Status**: done
+- **Working time**: 9m | **GPU**: 0.0h
+

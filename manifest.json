@@ -21,8 +21,8 @@
     "status": "done",
     "error": null,
     "scaffold": "claude-code",
-    "model": "MiniMax-M2.7",
-    "profile": "minimax-medium",
+    "model": "glm-5.1",
+    "profile": "glm-5-medium",
     "effort": "medium",
     "gpu_hours_used": 0.0,
     "current_iteration_gpu_budget": 15,
@@ -31,7 +31,7 @@
     "current_iteration_cpu_hours_used": 0.0,
     "total_cpu_hours_used": 0,
     "gpu_budget": 15,
-    "duration_sec": 8147.9,
+    "duration_sec": 8723.7,
     "cost_usd": 43.514,
     "input_tokens": 20021471,
     "output_tokens": 86263,
@@ -39,17 +39,15 @@
     "cache_creation_tokens": 98596,
     "reasoning_tokens": null,
     "total_input_tokens": 28740406,
-    "num_turns": 100,
+    "num_turns": 101,
     "duration_api_ms": 3894941,
-    "num_runs": 3,
+    "num_runs": 4,
     "iteration_count": 0,
     "workflow": "standard",
     "workflow_step": 1,
     "total_gpu_jobs": 0,
     "time_breakdown": {
-      "working": 11067.400855779648,
-      "error": 67.06782078742981,
-      "installing": 279.82954502105713
+      "working": 561.38103723526
     }
   },
   "agents": [
@@ -182,6 +180,42 @@
         "Write": 23,
         "Glob": 2
       },
+      "gpu_jobs": []
+    },
+    {
+      "scaffold": "claude-code",
+      "model": "glm-5.1",
+      "profile": "glm-5-medium",
+      "effort": "medium",
+      "role": "reproducer",
+      "is_iteration": false,
+      "iteration": 2,
+      "workflow": "standard",
+      "workflow_step": 1,
+      "started_at": 1776138374.9678192,
+      "finished_at": 1776139058.3485954,
+      "duration_sec": 575.8,
+      "blocked_sec": 107.6,
+      "status": "done",
+      "error": null,
+      "milestone": "none",
+      "gpu_budget": 15,
+      "gpu_hours_used": 0.0,
+      "total_gpu_hours_used": 0.0,
+      "cpu_hours_used": 0.0,
+      "time_breakdown": {
+        "working": 561.38103723526
+      },
+      "cost_usd": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cached_input_tokens": 0,
+      "cache_creation_tokens": 0,
+      "reasoning_tokens": null,
+      "total_input_tokens": 0,
+      "num_turns": 1,
+      "duration_api_ms": 0,
+      "tool_uses": {},
       "gpu_jobs": []
     }
   ],
