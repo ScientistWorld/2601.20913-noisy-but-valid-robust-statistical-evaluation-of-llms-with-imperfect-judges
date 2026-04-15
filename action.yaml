@@ -1,5 +1,5 @@
 action: submit
 gpus: 0
-test: true
-milestone: none
-notes: "Test container build with minimal ubuntu:22.04 + numpy/scipy only. CPU-only job running MC experiments to verify pipeline works end-to-end."
+test: false
+milestone: core_claim
+notes: "Full CPU job: run 2000-trial MC experiments for more stable estimates. Core claim already verified on test job (1000 trials)."
