@@ -10,8 +10,9 @@
   - Oracle Noisy HT (upper bound)
   - PPI Family Wald Test
 - Synthetic data generation in `method/synthetic_data.py`
-- Monte Carlo evaluation pipeline in `scripts/run.sh` and `scripts/evaluate.sh`
+- Monte Carlo evaluation pipeline in `scripts/run.sh`, `scripts/evaluate.sh`, and `scripts/generate_scores.py`
 - Container builds with minimal ubuntu:22.04 base (no GPU needed)
+- Scoring documentation now defines the optimization target, validity constraint, oracle-gap diagnostic, and scientist constraints for future benchmark users.
 
 ## Results Achieved
 
@@ -46,13 +47,15 @@ All methods maintain Type-I error near the target zeta=0.05.
 
 ## Deviations from Paper
 - Reference values in reference.json may not exactly match paper's reported values
-  (paper may use different MC parameters or report at different R_M values)
+  because most paper results are plotted in figures rather than tabulated.
 - Our implementation reproduces the correct qualitative behavior and relative ordering
+- Current scored reproduction focuses on the synthetic setting. The paper also evaluates Jigsaw, Hate Speech Offensive, and SafeRLHF with LLM classifiers/judges; those real-data experiments are not implemented in this workspace because they require running multiple local LLMs and downloading larger public datasets/models.
 
 ## What Remains
 - Could increase MC trials (2000-5000) for more stable estimates
 - Could add experiments with additional judge quality settings (TPR=0.8, TPR=0.7)
 - Could implement classification experiments on real datasets (if data available)
+- Next submitted job is CPU-only and intended to rerun the packaged scoring pipeline after documentation cleanup.
 
 ## Issues Encountered
 - Previous agent had 10 container build failures due to heavy nvidia/cuda base image

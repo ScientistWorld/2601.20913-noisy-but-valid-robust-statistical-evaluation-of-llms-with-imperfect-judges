@@ -13,8 +13,13 @@
 # Usage:
 #   bash scripts/baseline.sh <name>
 
-set -e
+set -euo pipefail
 
 cd /home/user
 
-# TODO: run baseline
+TRIALS="${1:-1000}"
+SEED="${2:-42}"
+
+echo "Running Direct HT baseline through the shared evaluation pipeline."
+echo "The resulting scoring/scores.json includes the direct_ht baseline rows."
+bash scripts/evaluate.sh "$TRIALS" "$SEED"
