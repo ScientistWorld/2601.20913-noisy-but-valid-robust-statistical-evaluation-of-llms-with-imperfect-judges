@@ -1,6 +1,8 @@
 # IMPORTANT: Once you set action to 'submit' or 'done', STOP immediately.
 # Do NOT sleep, poll, or wait for jobs. The system reads this file
 # only after your turn ends. Sleeping blocks the entire pipeline.
-action: done
+action: submit
+gpus: 0
+test: true
 milestone: core_claim_plus
-notes: "Final verification complete: gym boundaries, scoring files, and packaging are ready for the synthetic core_claim_plus reproduction."
+notes: "CPU verification job: refresh scores after Direct HT equality alignment, generate unscored PPI/high-FPR diagnostics, run train/test slices, and validate packaging."
