@@ -24,3 +24,8 @@
 - Revalidated the core claim: Noisy HT Type-II error was `0.627`, below Direct HT `0.721`, while Noisy HT Type-I error was `0.028` at target `zeta=0.05`.
 - Also reproduced additional synthetic diagnostics: the R_M Type-II curve and the oracle-gap comparison.
 - `validate.py --compare` passed inside the compute container, including import-separation checks.
+
+### [2026-04-15 21:21] - core_claim_plus
+- CPU test job `ebfc56ce-83e` completed successfully with independent train/test evaluators.
+- Held-out test slice preserved the core qualitative claim: Noisy HT Type-II error `0.628` was below Direct HT `0.732`, while Noisy HT Type-I error `0.039` stayed below `zeta=0.05`.
+- Validation passed inside the compute container for scoring files, evaluator/method separation, train/test independence, and shared-path checks.

@@ -57,6 +57,10 @@ All methods maintain Type-I error near the target zeta=0.05.
 - Could add experiments with additional judge quality settings (TPR=0.8, TPR=0.7)
 - Could implement classification experiments on real datasets (if data available)
 - CPU test job `8696ad73-c65` reran the packaged standalone scoring pipeline successfully and restored the reproduction to `core_claim_plus`.
+- CPU test job `ebfc56ce-83e` reran independent train/test slices successfully:
+  - Train: Direct Type-II `0.721`, Noisy Type-II `0.627`, Oracle Type-II `0.000`; Direct/Noisy/Oracle Type-I `0.037`/`0.028`/`0.038`.
+  - Held-out test: Direct Type-II `0.732`, Noisy Type-II `0.628`, Oracle Type-II `0.000`; Direct/Noisy/Oracle Type-I `0.042`/`0.039`/`0.049`.
+  - `validate.py` passed inside the compute container with scoring, import-separation, train/test independence, and shared-path checks.
 
 ## Issues Encountered
 - Previous agent had 10 container build failures due to heavy nvidia/cuda base image

@@ -1,6 +1,8 @@
 # IMPORTANT: Once you set action to 'submit' or 'done', STOP immediately.
 # Do NOT sleep, poll, or wait for jobs. The system reads this file
 # only after your turn ends. Sleeping blocks the entire pipeline.
-action: done
+action: submit
 gpus: 0
-notes: "Independent-seed train/test split; 12 metrics per slice; Noisy HT type-II train/test 0.627/0.628 and Type-I 0.028/0.039."
+test: true
+milestone: core_claim_plus
+notes: "CPU verification job: run canonical synthetic Noisy HT evaluator, independent train/test slices, and final validate.py --compare."
