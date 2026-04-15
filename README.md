@@ -214,4 +214,7 @@ All experiments use significance level ζ=0.05.
 
 # Reproduction Milestones
 
-**Current: core_claim**
+**Current: method_runs**
+
+## Stop Justification
+- Completed at milestone `method_runs`.

@@ -1,3 +1,8 @@
-action: done
-milestone: core_claim
-notes: "Core claim reproduced and verified across two successful jobs. Noisy HT reduces Type-II error by 9.4pp vs Direct HT (0.627 vs 0.721) with valid Type-I error control (~0.035). Container builds cleanly with ubuntu:22.04 + numpy/scipy. All validation passes. Environment is reusable for future improvements."
+# IMPORTANT: Once you set action to 'submit' or 'done', STOP immediately.
+# Do NOT sleep, poll, or wait for jobs. The system reads this file
+# only after your turn ends. Sleeping blocks the entire pipeline.
+action: pending
+gpus: 1
+test: false
+milestone: method_runs
+notes: ""
