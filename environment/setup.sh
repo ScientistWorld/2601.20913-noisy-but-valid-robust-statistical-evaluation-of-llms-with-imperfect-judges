@@ -1,16 +1,6 @@
 #!/bin/bash
 # Install Python packages into the container overlay.
-#
-# This script runs inside the container with internet access.
-# Use uv pip install --system for speed.
-
+# This paper only needs numpy and scipy for statistical computations.
 set -e
 
-# Core scientific computing packages
-uv pip install --system \
-    numpy \
-    scipy \
-    scikit-learn \
-    pandas \
-    matplotlib \
-    seaborn
+uv pip install --system numpy scipy
