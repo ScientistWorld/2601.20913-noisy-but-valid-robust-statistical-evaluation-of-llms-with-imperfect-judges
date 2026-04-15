@@ -1,3 +1,5 @@
-action: done
+action: submit
+gpus: 0
+test: true
 milestone: none
-notes: "Container build failed after 10 attempts. Core claim reproduction was verified locally (noisy HT 16.3pp lower Type-II error than direct HT, all validation checks pass), but container setup could not be completed."
+notes: "Test container build with minimal ubuntu:22.04 + numpy/scipy only. CPU-only job running MC experiments to verify pipeline works end-to-end."
