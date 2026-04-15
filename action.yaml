@@ -1,6 +1,7 @@
 # IMPORTANT: Once you set action to 'submit' or 'done', STOP immediately.
 # Do NOT sleep, poll, or wait for jobs. The system reads this file
 # only after your turn ends. Sleeping blocks the entire pipeline.
-action: done
-milestone: core_claim_plus
-notes: "Packaging audit passed: synthetic-only reproduction needs no external downloads, paths and shared-reference checks are clean."
+action: submit
+gpus: 0
+test: false
+notes: "Run CPU train/test Monte Carlo evaluators at 1000 trials; write scoring/scores_train.json and scoring/scores_test.json."
