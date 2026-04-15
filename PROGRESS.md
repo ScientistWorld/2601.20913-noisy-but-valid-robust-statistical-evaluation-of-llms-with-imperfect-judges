@@ -32,17 +32,17 @@ Oracle gap = 0.627 (performance loss from estimating TPR/FPR vs knowing them)
 ### Experiment 3: synthetic_type2_curve
 | R_M | Noisy HT Type-II |
 |-----|-----------------|
-| 0.01 | 0.421 |
+| 0.01 | 0.423 |
 | 0.10 | 0.075 |
-| 0.20 | 0.630 |
+| 0.20 | 0.623 |
 | 0.30 | 0.999 |
 
 ### Experiment 4: synthetic_type1_control
 | Method | Type-I Error |
 |--------|------------|
 | Direct HT | 0.037 |
-| Noisy HT | 0.035 |
-| Oracle HT | 0.044 |
+| Noisy HT | 0.028 |
+| Oracle HT | 0.038 |
 
 All methods maintain Type-I error near the target zeta=0.05.
 
@@ -56,8 +56,7 @@ All methods maintain Type-I error near the target zeta=0.05.
 - Could increase MC trials (2000-5000) for more stable estimates
 - Could add experiments with additional judge quality settings (TPR=0.8, TPR=0.7)
 - Could implement classification experiments on real datasets (if data available)
-- Next submitted job is CPU-only and intended to rerun the packaged scoring pipeline after documentation cleanup.
-- Current turn fixed the evaluator/method separation issue and submits a CPU smoke job to restore `core_claim` with the corrected scoring path.
+- CPU test job `8696ad73-c65` reran the packaged standalone scoring pipeline successfully and restored the reproduction to `core_claim_plus`.
 
 ## Issues Encountered
 - Previous agent had 10 container build failures due to heavy nvidia/cuda base image
@@ -65,3 +64,4 @@ All methods maintain Type-I error near the target zeta=0.05.
 - Previous agent had lower-tail test direction bugs (fixed in prior session)
 - Previous agent had seed independence bug in evaluate.py (fixed in prior session)
 - Continuation audit found that `scripts/evaluate.sh` and `scripts/run.sh` imported directly from `method/`, violating the gym separation rule. Fixed by moving the standalone scoring procedure into `eval/evaluate.py` and making scripts call that entry point.
+- The fixed evaluator was validated inside the compute container; `validate.py --compare` passed, including import-separation checks.

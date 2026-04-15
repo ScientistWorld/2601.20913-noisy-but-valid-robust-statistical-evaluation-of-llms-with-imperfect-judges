@@ -1,6 +1,6 @@
 # Reproduction Milestones
 
-**Current: method_runs**
+**Current: core_claim_plus**
 
 ## Progress Log
 
@@ -18,3 +18,9 @@
 - Confirmed the method implementation is the paper's actual statistical testing algorithm, not a surrogate.
 - Found and fixed an evaluation-separation issue: the reusable evaluator no longer imports from `method/`.
 - Submitted a CPU smoke job to rerun the packaged evaluator before restoring `core_claim`.
+
+### [2026-04-15 20:45] - core_claim_plus
+- CPU test job `8696ad73-c65` completed successfully with the corrected standalone evaluator.
+- Revalidated the core claim: Noisy HT Type-II error was `0.627`, below Direct HT `0.721`, while Noisy HT Type-I error was `0.028` at target `zeta=0.05`.
+- Also reproduced additional synthetic diagnostics: the R_M Type-II curve and the oracle-gap comparison.
+- `validate.py --compare` passed inside the compute container, including import-separation checks.
