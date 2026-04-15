@@ -1,67 +1,11 @@
-"""
-Synthetic data generation for reproducing the paper's experimental results.
+"""Synthetic experiment helpers for reproducing the paper's method.
 
-The paper generates synthetic ground-truth and judge labels by:
-1. Drawing S_M ~ Bernoulli(R_M) — binary ground-truth failure labels
-2. Drawing S_J from S_M with flip probabilities: P(S_J != S_M) depends on TPR/FPR
-   - If S_M = 1: P(S_J = 1 | S_M = 1) = TPR, P(S_J = 0 | S_M = 1) = 1 - TPR
-   - If S_M = 0: P(S_J = 1 | S_M = 0) = FPR, P(S_J = 0 | S_M = 0) = 1 - FPR
-
-This produces the joint distribution:
-   R_J = E[S_J] = R_M * TPR + (1 - R_M) * FPR
+The reusable benchmark generator lives in :mod:`data.synthetic` so evaluation
+and future methods can share the same data distribution without importing from
+``method/``.
 """
 
-import numpy as np
-
-
-def generate_synthetic_data(n_m, n_j, r_m, tpr, fpr, seed=None):
-    """
-    Generate synthetic calibration and evaluation datasets.
-
-    Args:
-        n_m: size of calibration set D_M
-        n_j: size of evaluation set D_J
-        r_m: true model failure rate (ground truth)
-        tpr: judge True Positive Rate
-        fpr: judge False Positive Rate
-        seed: random seed
-
-    Returns:
-        D_M_sm: ground-truth labels for calibration set
-        D_M_sj: judge labels for calibration set (augmented)
-        D_J_sm: ground-truth labels for evaluation set (for oracle comparison)
-        D_J_sj: judge labels for evaluation set
-    """
-    if seed is not None:
-        rng = np.random.default_rng(seed)
-    else:
-        rng = np.random.default_rng()
-
-    # Generate ground-truth labels for calibration set
-    D_M_sm = rng.binomial(1, r_m, size=n_m)
-
-    # Generate judge labels for calibration set
-    D_M_sj = np.zeros(n_m, dtype=int)
-    for i in range(n_m):
-        if D_M_sm[i] == 1:
-            # Ground truth says incorrect → judge flags with probability TPR
-            D_M_sj[i] = rng.binomial(1, tpr)
-        else:
-            # Ground truth says correct → judge incorrectly flags with probability FPR
-            D_M_sj[i] = rng.binomial(1, fpr)
-
-    # Generate ground-truth labels for evaluation set
-    D_J_sm = rng.binomial(1, r_m, size=n_j)
-
-    # Generate judge labels for evaluation set
-    D_J_sj = np.zeros(n_j, dtype=int)
-    for i in range(n_j):
-        if D_J_sm[i] == 1:
-            D_J_sj[i] = rng.binomial(1, tpr)
-        else:
-            D_J_sj[i] = rng.binomial(1, fpr)
-
-    return D_M_sm, D_M_sj, D_J_sm, D_J_sj
+from data.synthetic import generate_synthetic_data
 
 
 def generate_synthetic_data_batch(n_m, n_j, r_m, tpr, fpr, n_trials=1000, seed=None):
@@ -80,11 +24,6 @@ def generate_synthetic_data_batch(n_m, n_j, r_m, tpr, fpr, n_trials=1000, seed=N
     Yields:
         tuples of (D_M_sm, D_M_sj, D_J_sm, D_J_sj) for each trial
     """
-    if seed is not None:
-        rng = np.random.default_rng(seed)
-    else:
-        rng = np.random.default_rng()
-
     for trial in range(n_trials):
         # Different seed for each trial
         trial_seed = None if seed is None else (seed + trial)

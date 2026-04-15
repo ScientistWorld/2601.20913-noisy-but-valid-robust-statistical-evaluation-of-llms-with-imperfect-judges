@@ -29,3 +29,8 @@
 - CPU test job `ebfc56ce-83e` completed successfully with independent train/test evaluators.
 - Held-out test slice preserved the core qualitative claim: Noisy HT Type-II error `0.628` was below Direct HT `0.732`, while Noisy HT Type-I error `0.039` stayed below `zeta=0.05`.
 - Validation passed inside the compute container for scoring files, evaluator/method separation, train/test independence, and shared-path checks.
+
+### [2026-04-15 21:42] - core_claim_plus
+- Final verification preserved the claimed milestone.
+- Tightened method-agnostic evaluation documentation and moved the shared synthetic data generator into `data/`.
+- Confirmed the gym remains focused on the synthetic certification subset with independent train/test scoring artifacts.

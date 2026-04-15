@@ -12,18 +12,16 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+import sys
 
 import numpy as np
 from scipy.stats import norm
 
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
-def generate_synthetic_data(n_m: int, n_j: int, r_m: float, tpr: float, fpr: float, seed: int):
-    rng = np.random.default_rng(seed)
-    d_m_sm = rng.binomial(1, r_m, size=n_m)
-    d_m_sj = np.where(d_m_sm == 1, rng.binomial(1, tpr, size=n_m), rng.binomial(1, fpr, size=n_m))
-    d_j_sm = rng.binomial(1, r_m, size=n_j)
-    d_j_sj = np.where(d_j_sm == 1, rng.binomial(1, tpr, size=n_j), rng.binomial(1, fpr, size=n_j))
-    return d_m_sm, d_m_sj, d_j_sm, d_j_sj
+from data.synthetic import generate_synthetic_data
 
 
 def estimate_tpr_fpr(s_m: np.ndarray, s_j: np.ndarray):

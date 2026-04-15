@@ -17,5 +17,5 @@ LLM deployment in safety-critical settings requires statistically rigorous guara
 A successful solution must:
 1. **Control Type-I error**: Guarantee that the probability of incorrectly certifying an unsafe model stays below a specified significance level ζ (e.g., 5%)
 2. **Maximize statistical power**: Minimize Type-II error — the probability of incorrectly rejecting a safe model
-3. **Outperform direct testing**: When the judge is reliable (high TPR, low FPR), leveraging the large judge-labeled dataset should yield lower Type-II error than using only the small human-labeled dataset
-4. **Provide interpretability**: The method should make explicit how judge quality affects certification outcomes
+3. **Use the available supervision effectively**: When the auxiliary judge is informative, the large judge-labeled dataset should improve certification power without weakening Type-I error control
+4. **Expose reliability tradeoffs**: The evaluation should make clear how certification outcomes change as auxiliary-judge quality, model failure rate, and sample sizes change

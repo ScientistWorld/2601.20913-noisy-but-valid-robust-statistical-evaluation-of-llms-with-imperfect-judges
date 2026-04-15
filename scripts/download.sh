@@ -2,7 +2,7 @@
 # Download all data and models needed for this environment.
 #
 # This paper uses synthetic data only — no external downloads required.
-# All data is generated procedurally by method/synthetic_data.py.
+# All data is generated procedurally by data/synthetic.py.
 #
 # Estimated total download size: 0 GB
 # Estimated disk usage: < 1 MB (generated data)

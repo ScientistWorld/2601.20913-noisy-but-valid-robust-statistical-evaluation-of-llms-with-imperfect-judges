@@ -1,8 +1,6 @@
 # IMPORTANT: Once you set action to 'submit' or 'done', STOP immediately.
 # Do NOT sleep, poll, or wait for jobs. The system reads this file
 # only after your turn ends. Sleeping blocks the entire pipeline.
-action: submit
-gpus: 0
-test: true
+action: done
 milestone: core_claim_plus
-notes: "CPU verification job: run canonical synthetic Noisy HT evaluator, independent train/test slices, and final validate.py --compare."
+notes: "Final verification complete: gym boundaries, scoring files, and packaging are ready for the synthetic core_claim_plus reproduction."
