@@ -37,8 +37,8 @@ LLM deployment in safety-critical settings requires statistically rigorous guara
 A successful solution must:
 1. **Control Type-I error**: Guarantee that the probability of incorrectly certifying an unsafe model stays below a specified significance level ζ (e.g., 5%)
 2. **Maximize statistical power**: Minimize Type-II error — the probability of incorrectly rejecting a safe model
-3. **Outperform direct testing**: When the judge is reliable (high TPR, low FPR), leveraging the large judge-labeled dataset should yield lower Type-II error than using only the small human-labeled dataset
-4. **Provide interpretability**: The method should make explicit how judge quality affects certification outcomes
+3. **Use the available supervision effectively**: When the auxiliary judge is informative, the large judge-labeled dataset should improve certification power without weakening Type-I error control
+4. **Expose reliability tradeoffs**: The evaluation should make clear how certification outcomes change as auxiliary-judge quality, model failure rate, and sample sizes change
 
 ---
 
@@ -96,29 +96,27 @@ Two primary metrics are used:
 
 For a certification framework, Type-I error control is mandatory (validity). Type-II error minimization is desirable (power).
 
-## Baselines and Targets
+## Evaluation Axes
 
-Three hypothesis testing procedures are compared:
+The benchmark compares certification procedures under the same data budget:
+a small set with ground-truth labels, a much larger set with auxiliary-judge
+labels, a target failure threshold, and a required significance level.
+Methods are scored by the rejection decisions they produce across repeated
+trials. Comparison rows may include a small-label-only baseline and an
+idealized reference that receives extra information about the judge; those rows
+are included to calibrate difficulty, not to constrain future methods.
 
-- **Direct HT**: Uses only the small human-labeled dataset D_M. Statistically valid but limited power due to small sample size. This is the baseline to beat.
-
-- **Noisy HT (proposed)**: Uses both D_M (to estimate judge TPR/FPR) and D_J (large judge-labeled set) with variance-corrected threshold. Should outperform Direct HT when judge is reliable.
-
-- **Oracle Noisy HT**: Theoretical upper bound — uses true (not estimated) judge TPR/FPR. Establishes the gap due to estimation uncertainty.
-
-- **PPI variants** (Prediction-Powered Inference): Alternative approaches combining clean and noisy labels for variance reduction.
-
-The paper reports Type-I and Type-II error rates across varying:
+Reported error rates vary across:
 - Target thresholds α ∈ [0.01, 0.99]
 - Judge qualities (TPR, FPR pairs)
 - Model failure rates R_M
 - Calibration set sizes n_M (e.g., 100)
 - Judge-labeled set sizes n_J (e.g., 10,000)
 
-Expected behaviors (from theory):
-- Type-I error should be controlled below ζ=0.05 for all procedures
-- Noisy HT should outperform Direct HT when (TPR - FPR)² > threshold (derived in paper)
-- Oracle Noisy HT should always outperform Noisy HT (the "Oracle Gap")
+Expected behavior:
+- Type-I error should be controlled below ζ=0.05 for valid procedures
+- Type-II error should fall when the auxiliary judge is informative and many auxiliary labels are available
+- The gap between feasible methods and the idealized reference estimates the cost of not knowing judge reliability exactly
 
 ## Evaluation Protocol
 
@@ -299,6 +297,47 @@ All experiments use significance level ζ=0.05.
 - Revalidated the core claim: Noisy HT Type-II error was `0.627`, below Direct HT `0.721`, while Noisy HT Type-I error was `0.028` at target `zeta=0.05`.
 - Also reproduced additional synthetic diagnostics: the R_M Type-II curve and the oracle-gap comparison.
 - `validate.py --compare` passed inside the compute container, including import-separation checks.
+
+</details>
+
+### Iteration 6: gpt-5.4 (verifier)
+- **Milestone**: `core_claim_plus` | **Status**: done
+- **Working time**: 9m | **GPU**: 0.0h
+- **Jobs**: 4 total (4 completed, 0 failed)
+
+<details>
+<summary>Progress Log</summary>
+
+### [2026-04-15 16:10] - method_runs
+- Implemented the paper's Direct HT, Noisy HT, Oracle Noisy HT, and PPI-family hypothesis-test procedures.
+- Verified the end-to-end synthetic Monte Carlo pipeline in a CPU test job.
+
+### [2026-04-15 16:10] - core_claim
+- Ran the main synthetic setting with `alpha=0.25`, `zeta=0.05`, `n_M=100`, `n_J=10000`, `R_M=0.20`, `TPR=0.9`, and `FPR=0.1`.
+- Reproduced the central qualitative claim: Noisy HT had lower Type-II error than Direct HT while Type-I error stayed near the configured significance level.
+- Confirmed the oracle bound behavior: Oracle Noisy HT outperformed practical Noisy HT.
+
+### [2026-04-15 20:41] - method_runs
+- Audited the continuation workspace after milestone reset from the prior claimed `core_claim`.
+- Confirmed the method implementation is the paper's actual statistical testing algorithm, not a surrogate.
+- Found and fixed an evaluation-separation issue: the reusable evaluator no longer imports from `method/`.
+- Submitted a CPU smoke job to rerun the packaged evaluator before restoring `core_claim`.
+
+### [2026-04-15 20:45] - core_claim_plus
+- CPU test job `8696ad73-c65` completed successfully with the corrected standalone evaluator.
+- Revalidated the core claim: Noisy HT Type-II error was `0.627`, below Direct HT `0.721`, while Noisy HT Type-I error was `0.028` at target `zeta=0.05`.
+- Also reproduced additional synthetic diagnostics: the R_M Type-II curve and the oracle-gap comparison.
+- `validate.py --compare` passed inside the compute container, including import-separation checks.
+
+### [2026-04-15 21:21] - core_claim_plus
+- CPU test job `ebfc56ce-83e` completed successfully with independent train/test evaluators.
+- Held-out test slice preserved the core qualitative claim: Noisy HT Type-II error `0.628` was below Direct HT `0.732`, while Noisy HT Type-I error `0.039` stayed below `zeta=0.05`.
+- Validation passed inside the compute container for scoring files, evaluator/method separation, train/test independence, and shared-path checks.
+
+### [2026-04-15 21:42] - core_claim_plus
+- Final verification preserved the claimed milestone.
+- Tightened method-agnostic evaluation documentation and moved the shared synthetic data generator into `data/`.
+- Confirmed the gym remains focused on the synthetic certification subset with independent train/test scoring artifacts.
 
 </details>
 
