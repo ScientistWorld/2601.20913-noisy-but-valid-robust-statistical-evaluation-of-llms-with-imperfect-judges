@@ -10,7 +10,8 @@
   - Oracle Noisy HT (upper bound)
   - PPI Family Wald Test
 - Synthetic data generation in `method/synthetic_data.py`
-- Monte Carlo evaluation pipeline in `scripts/run.sh`, `scripts/evaluate.sh`, and `scripts/generate_scores.py`
+- Monte Carlo evaluation pipeline in `eval/evaluate.py`, `scripts/run.sh`, `scripts/evaluate.sh`, and `scripts/generate_scores.py`
+- The reusable evaluator is now independent from `method/`; scoring duplicates the benchmark procedure in `eval/` so future methods can be evaluated without importing this reproduction's implementation.
 - Container builds with minimal ubuntu:22.04 base (no GPU needed)
 - Scoring documentation now defines the optimization target, validity constraint, oracle-gap diagnostic, and scientist constraints for future benchmark users.
 
@@ -56,9 +57,11 @@ All methods maintain Type-I error near the target zeta=0.05.
 - Could add experiments with additional judge quality settings (TPR=0.8, TPR=0.7)
 - Could implement classification experiments on real datasets (if data available)
 - Next submitted job is CPU-only and intended to rerun the packaged scoring pipeline after documentation cleanup.
+- Current turn fixed the evaluator/method separation issue and submits a CPU smoke job to restore `core_claim` with the corrected scoring path.
 
 ## Issues Encountered
 - Previous agent had 10 container build failures due to heavy nvidia/cuda base image
 - Fixed by switching to minimal ubuntu:22.04 base with only numpy/scipy
 - Previous agent had lower-tail test direction bugs (fixed in prior session)
 - Previous agent had seed independence bug in evaluate.py (fixed in prior session)
+- Continuation audit found that `scripts/evaluate.sh` and `scripts/run.sh` imported directly from `method/`, violating the gym separation rule. Fixed by moving the standalone scoring procedure into `eval/evaluate.py` and making scripts call that entry point.

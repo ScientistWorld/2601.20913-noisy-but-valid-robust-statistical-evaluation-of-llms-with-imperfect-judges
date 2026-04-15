@@ -4,5 +4,5 @@
 action: submit
 gpus: 0
 test: true
-milestone: core_claim
-notes: "CPU smoke job after documentation cleanup; reruns the packaged synthetic Noisy HT evaluation and validation."
+milestone: method_runs
+notes: "CPU smoke job to rerun the corrected standalone eval/ scorer and validate scores before restoring core_claim."
