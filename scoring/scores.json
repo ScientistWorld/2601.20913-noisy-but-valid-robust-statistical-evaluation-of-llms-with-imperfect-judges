@@ -22,13 +22,13 @@
   },
   "synthetic_type2_curve": {
     "rm_0.01": {
-      "type2_error": 0.421
+      "type2_error": 0.423
     },
     "rm_0.10": {
-      "type2_error": 0.075
+      "type2_error": 0.074
     },
     "rm_0.20": {
-      "type2_error": 0.63
+      "type2_error": 0.623
     },
     "rm_0.30": {
       "type2_error": 0.999
@@ -39,10 +39,10 @@
       "type1_error": 0.037
     },
     "noisy_ht": {
-      "type1_error": 0.035
+      "type1_error": 0.028
     },
     "oracle_noisy_ht": {
-      "type1_error": 0.044
+      "type1_error": 0.038
     }
   }
 }
