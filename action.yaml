@@ -3,4 +3,4 @@
 # only after your turn ends. Sleeping blocks the entire pipeline.
 action: done
 milestone: core_claim_plus
-notes: "Corrected standalone evaluator passed in CPU container. Core claim and additional synthetic diagnostics are reproduced and packaged."
+notes: "Packaging audit passed: synthetic-only reproduction needs no external downloads, paths and shared-reference checks are clean."
