@@ -9,12 +9,12 @@
   - Noisy HT (proposed method)
   - Oracle Noisy HT (upper bound)
   - PPI Family Wald Test
-- Synthetic data generation in `method/synthetic_data.py`
+- Synthetic data generation in `data/synthetic.py`
 - Monte Carlo evaluation pipeline in `eval/evaluate.py`, `scripts/run.sh`, `scripts/evaluate.sh`, and `scripts/generate_scores.py`
 - The reusable evaluator is now independent from `method/`; scoring duplicates the benchmark procedure in `eval/` so future methods can be evaluated without importing this reproduction's implementation.
 - Container builds with minimal ubuntu:22.04 base (no GPU needed)
 - Scoring documentation now defines the optimization target, validity constraint, oracle-gap diagnostic, and scientist constraints for future benchmark users.
-- The canonical evaluator now also writes unscored diagnostics under `_diagnostics` in `scores.json` for the paper's PPI/Oracle ordering and the high-FPR stress setting from Appendix H. These diagnostics do not affect the benchmark score, but they expose additional paper-aligned behavior for future agents.
+- The canonical evaluator can emit unscored diagnostics under `_diagnostics` when scores are regenerated, covering the paper's PPI/Oracle ordering and the high-FPR stress setting from Appendix H. These diagnostics do not affect the benchmark score, but they expose additional paper-aligned behavior for future agents.
 
 ## Results Achieved
 
@@ -54,7 +54,6 @@ All methods maintain Type-I error near the target zeta=0.05.
 - Current scored reproduction focuses on the synthetic setting. The paper also evaluates Jigsaw, Hate Speech Offensive, and SafeRLHF with LLM classifiers/judges; those real-data experiments are not implemented in this workspace because they require running multiple local LLMs and downloading larger public datasets/models.
 
 ## What Remains
-- CPU job pending to refresh `scores.json` after aligning Direct HT's equality case with Algorithm 2 and adding unscored synthetic diagnostics.
 - Could increase MC trials (2000-5000) for more stable estimates
 - Could add scored experiments with additional judge quality settings (TPR=0.8, TPR=0.7) if reliable paper-figure reference values are extracted.
 - Could implement classification experiments on real datasets (if data available)

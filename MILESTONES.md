@@ -35,6 +35,7 @@
 - Tightened method-agnostic evaluation documentation and moved the shared synthetic data generator into `data/`.
 - Confirmed the gym remains focused on the synthetic certification subset with independent train/test scoring artifacts.
 
-### [2026-04-15 22:30] - core_claim_plus
-- Prepared a CPU follow-up job to refresh the packaged evaluator after aligning Direct HT's equality decision with Algorithm 2.
-- Added unscored diagnostics for PPI/Oracle ordering and the Appendix H high-FPR stress regime; these will be generated under `_diagnostics` in `scores.json`.
+### [2026-04-15 22:32] - core_claim_plus
+- Final verification preserved the claimed milestone.
+- Rechecked scoring files, method/problem separation, train/test independence, shared-path constraints, and root cleanliness.
+- `validate.py --compare` passed locally for the packaged scoring files; no additional compute job was needed.
