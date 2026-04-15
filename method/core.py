@@ -4,8 +4,8 @@ Core statistical hypothesis testing procedures for the Noisy HT framework.
 Implements:
 - Algorithm 1: Noisy Hypothesis Testing
 - Algorithm 2: Direct Hypothesis Testing (baseline)
-- Algorithm 3: Oracle Noisy Hypothesis Testing
-- Algorithm 4: Unified PPI Family Wald Test
+- Algorithm 3: Unified PPI Family Wald Test
+- Algorithm 4: Oracle Noisy Hypothesis Testing
 
 All procedures test H0: R_M >= alpha (model is unreliable) against
 H1: R_M < alpha (model is reliable/certifiable).
@@ -189,7 +189,7 @@ def direct_hypothesis_test(s_m, alpha, zeta):
     se = np.sqrt(alpha * (1 - alpha) / n_m)
     c_m = alpha + z_zeta * se
 
-    reject = r_m_hat < c_m
+    reject = r_m_hat <= c_m
 
     details = {
         'n_m': n_m,

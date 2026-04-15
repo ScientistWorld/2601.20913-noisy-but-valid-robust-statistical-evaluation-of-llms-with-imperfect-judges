@@ -34,7 +34,7 @@ def estimate_tpr_fpr(s_m: np.ndarray, s_j: np.ndarray):
 
 def direct_hypothesis_test(s_m: np.ndarray, alpha: float, zeta: float) -> bool:
     c_m = alpha + norm.ppf(zeta) * np.sqrt(alpha * (1.0 - alpha) / len(s_m))
-    return bool(np.mean(s_m) < c_m)
+    return bool(np.mean(s_m) <= c_m)
 
 
 def noisy_hypothesis_test(d_m_sm: np.ndarray, d_m_sj: np.ndarray, d_j_sj: np.ndarray, alpha: float, zeta: float) -> bool:

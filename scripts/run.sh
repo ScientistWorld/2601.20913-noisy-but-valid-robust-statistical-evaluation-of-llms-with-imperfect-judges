@@ -1,7 +1,8 @@
 #!/bin/bash
 # CPU job for the Noisy HT synthetic reproduction.
-# Runs the canonical evaluator plus independent train/test slices, then
-# validates all score files and separation constraints.
+# Runs the canonical evaluator, including unscored PPI/Oracle and high-FPR
+# diagnostics, plus independent train/test slices. Then it validates all score
+# files and separation constraints.
 
 set -e
 
