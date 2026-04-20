@@ -14,8 +14,8 @@ From: ubuntu:22.04
     pip install --break-system-packages uv 2>/dev/null || pip install uv 2>/dev/null || true
     export UV_SYSTEM_PYTHON=1 UV_BREAK_SYSTEM_PACKAGES=1
     uv pip install --system \
-        'numpy' \  # setup
-        'scipy'  # setup
+        'numpy' \
+        'scipy'
 
 %environment
     export HOME=/home/user
