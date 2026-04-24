@@ -1,6 +1,7 @@
 # IMPORTANT: Once you set action to 'submit' or 'done', STOP immediately.
 # Do NOT sleep, poll, or wait for jobs. The system reads this file
 # only after your turn ends. Sleeping blocks the entire pipeline.
-action: done
-milestone: core_claim_plus
-notes: "Final verification passed; workspace is ready as a core_claim_plus synthetic-certification gym."
+action: submit
+gpus: 0
+test: false
+notes: "Run evaluate_train.sh and evaluate_test.sh in-container after schema fix; populate scoring/scores_train.json and scoring/scores_test.json from a real CPU evaluation."

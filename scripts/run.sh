@@ -1,17 +1,12 @@
 #!/bin/bash
-# CPU job for the Noisy HT synthetic reproduction.
-# Runs the canonical evaluator, including unscored PPI/Oracle and high-FPR
-# diagnostics, plus independent train/test slices. Then it validates all score
-# files and separation constraints.
+# CPU job for the train/test evaluation split.
+# This iteration's deliverable is the visible and held-out score baselines, so
+# run only the split scorers and validate their outputs.
 
 set -e
 
 cd /home/user
 
-echo "=== Running canonical evaluation ==="
-bash /home/user/scripts/evaluate.sh 1000 42
-
-echo ""
 echo "=== Running train slice ==="
 bash /home/user/scripts/evaluate_train.sh 1000 42
 

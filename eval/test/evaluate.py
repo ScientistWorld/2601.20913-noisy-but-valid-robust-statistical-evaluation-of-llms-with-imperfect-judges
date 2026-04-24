@@ -125,7 +125,6 @@ def build_scores(n_trials: int, seed: int):
         },
         "oracle_gap": {
             "oracle_noisy_ht": {
-                "type2_error_oracle": round(main["type2_oracle"], 4),
                 "oracle_gap": round(gap, 4),
             },
             "noisy_ht": {
