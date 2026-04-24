@@ -39,3 +39,9 @@
 - Final verification preserved the claimed milestone.
 - Rechecked scoring files, method/problem separation, train/test independence, shared-path constraints, and root cleanliness.
 - `validate.py --compare` passed locally for the packaged scoring files; no additional compute job was needed.
+
+### [2026-04-24 05:00] - core_claim_plus
+- CPU job `8f4134be-d14` reran the finalized train/test evaluation harness after the environment cleanup.
+- Reconfirmed the central claim on the visible slice: Noisy HT Type-II `0.627` remained below Direct HT `0.721` while Noisy HT Type-I stayed at `0.028`.
+- Reconfirmed the same qualitative claim on the held-out slice: Noisy HT Type-II `0.628` remained below Direct HT `0.732` while Noisy HT Type-I stayed at `0.039`.
+- Validation passed for scores coverage, train/test key matching, train/test value differentiation, evaluator separation, and shared-path constraints.

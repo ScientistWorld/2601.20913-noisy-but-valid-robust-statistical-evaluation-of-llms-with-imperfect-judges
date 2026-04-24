@@ -66,7 +66,14 @@ All methods maintain Type-I error near the target zeta=0.05.
 ## Issues Encountered
 - Previous agent had 10 container build failures due to heavy nvidia/cuda base image
 - Fixed by switching to minimal ubuntu:22.04 base with only numpy/scipy
+- Final environment cleanup moved `numpy` and `scipy` to Ubuntu `apt` packages and made `environment/setup.sh` a no-op, which restored reliable job submission.
 - Previous agent had lower-tail test direction bugs (fixed in prior session)
 - Previous agent had seed independence bug in evaluate.py (fixed in prior session)
 - Continuation audit found that `scripts/evaluate.sh` and `scripts/run.sh` imported directly from `method/`, violating the gym separation rule. Fixed by moving the standalone scoring procedure into `eval/evaluate.py` and making scripts call that entry point.
 - The fixed evaluator was validated inside the compute container; `validate.py --compare` passed, including import-separation checks.
+
+## April 24 Final Baseline Refresh
+- CPU job `8f4134be-d14` reran the split evaluation after the environment cleanup and produced valid `scoring/scores_train.json` and `scoring/scores_test.json`.
+- Train slice preserved the core claim: Direct/Noisy/Oracle Type-II `0.721`/`0.627`/`0.000`; Direct/Noisy/Oracle Type-I `0.037`/`0.028`/`0.038`.
+- Held-out test slice preserved the core claim: Direct/Noisy/Oracle Type-II `0.732`/`0.628`/`0.000`; Direct/Noisy/Oracle Type-I `0.042`/`0.039`/`0.049`.
+- The split is usable as a gym baseline because the train/test outputs are complete, method keys match exactly, and the slices are not byte-identical.

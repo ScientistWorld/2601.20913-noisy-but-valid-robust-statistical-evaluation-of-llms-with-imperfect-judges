@@ -2,5 +2,6 @@
 # Do NOT sleep, poll, or wait for jobs. The system reads this file
 # only after your turn ends. Sleeping blocks the entire pipeline.
 action: done
+milestone: core_claim_plus
 gpus: 0
 notes: "seed-offset split; 8 train metrics and 8 test metrics produced; primary gaps are small but nonzero (noisy Type-II 0.627 train vs 0.628 test, noisy Type-I 0.028 vs 0.039); all validations passed."
