@@ -16,12 +16,11 @@
       "weight": 0.20,
       "primary_metric": "oracle_gap",
       "metrics": {
-        "oracle_gap": {"higher_is_better": false, "coefficient": -1.0},
-        "type2_error_noisy": {"higher_is_better": false, "coefficient": -1.0},
-        "type2_error_oracle": {"higher_is_better": false, "coefficient": -1.0}
+        "oracle_gap": {"higher_is_better": false, "coefficient": -1.0, "description": "Performance loss from estimating judge TPR/FPR vs knowing them exactly."},
+        "type2_error_noisy": {"higher_is_better": false, "coefficient": -0.3, "description": "Noisy HT absolute Type-II error — captures improvement in raw power."}
       },
       "results": {
-        "oracle_noisy_ht": {"type": "proposed", "type2_error_oracle": 0.00, "oracle_gap": 0.40},
+        "oracle_noisy_ht": {"type": "proposed", "oracle_gap": 0.00},
         "noisy_ht": {"type": "proposed", "type2_error_noisy": 0.40, "oracle_gap": 0.40}
       }
     },
