@@ -4,4 +4,4 @@
 action: submit
 gpus: 0
 test: false
-notes: "Retry CPU evaluation after fixing host path mismatch for environment/setup.sh; run evaluate_train.sh and evaluate_test.sh to populate scoring/scores_train.json and scoring/scores_test.json."
+notes: "Retry CPU evaluation with numpy/scipy installed via apt in container.def and a no-op environment/setup.sh; run evaluate_train.sh and evaluate_test.sh to populate scoring/scores_train.json and scoring/scores_test.json."
