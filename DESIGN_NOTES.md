@@ -38,7 +38,7 @@ Both metrics had equal negative coefficients, meaning a single change in noisy_h
 
 ## Runtime Concerns for Next Iteration
 
-1. **Container rebuild**: Switched to ubuntu:22.04 base with numpy/scipy only. If the next iteration needs additional dependencies (scipy.stats.norm, etc.), ensure they're added to setup.sh and container.def.
+1. **Container rebuild**: The stable environment path was `ubuntu:22.04` with `python3`, `python3-pip`, `python3-dev`, `python3-numpy`, and `python3-scipy` installed via `apt` in `container.def`. `environment/setup.sh` is intentionally a no-op to avoid scheduler ambiguity around `uv` setup.
 
 2. **Seed stability**: The 1_000_003 offset is hardcoded in eval/test/evaluate.py. Changing it will break score comparability with this and prior iterations. Document if a reset is needed.
 
@@ -50,3 +50,13 @@ Both metrics had equal negative coefficients, meaning a single change in noisy_h
 - Monte Carlo trial count (1000 default)
 - Benchmark settings (alpha=0.25, zeta=0.05, n_M=100, n_J=10000)
 - Train/test anti-gaming split via seed offset
+
+## Iteration 9 Runtime Outcome
+
+- Job `8f4134be-d14` completed successfully on April 24, 2026 and produced fresh `scoring/scores_train.json` and `scoring/scores_test.json`.
+- Train slice primary results: noisy Type-II `0.627`, direct Type-II `0.721`, noisy Type-I `0.028`, oracle gap `0.627`.
+- Test slice primary results: noisy Type-II `0.628`, direct Type-II `0.732`, noisy Type-I `0.039`, oracle gap `0.628`.
+- Held-out differentiation is real but calibrated: the main power metric differs by `0.001`, while the curve and Type-I metrics move modestly across slices (`rm_0.01`: `0.423` vs `0.461`; noisy Type-I: `0.028` vs `0.039`).
+- Validation passed for schema coverage, train/test key matching, import separation, and non-identical train/test values.
+
+**Verdict**: The split is intact and suitable as the ResearchGym baseline. The existing reproduction scores similarly on train and test, with enough slice variation to detect a copy/paste or leakage bug without introducing a large calibration mismatch.
