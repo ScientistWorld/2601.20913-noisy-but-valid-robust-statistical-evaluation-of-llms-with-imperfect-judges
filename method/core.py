@@ -52,7 +52,7 @@ def estimate_tpr_fpr(s_m, s_j):
     return tpr_hat, fpr_hat, n_m1, n_m0
 
 
-def noisy_hypothesis_test(s_m, s_j, alpha, zeta):
+def noisy_hypothesis_test(D_M_sm, D_M_sj, D_J_sj, alpha, zeta):
     """
     Algorithm 1: Noisy Hypothesis Testing Procedure.
 
@@ -60,8 +60,9 @@ def noisy_hypothesis_test(s_m, s_j, alpha, zeta):
     then tests on a large judge-labeled dataset D_J.
 
     Args:
-        s_m: array of ground-truth labels from D_M
-        s_j: array of judge labels for D_M samples
+        D_M_sm: array of ground-truth labels from D_M
+        D_M_sj: array of judge labels for D_M samples
+        D_J_sj: array of judge labels from D_J
         alpha: target reliability threshold (certify if failure rate < alpha)
         zeta: significance level for Type-I error control
 
@@ -69,48 +70,7 @@ def noisy_hypothesis_test(s_m, s_j, alpha, zeta):
         reject: True if H0 is rejected (model is certified as reliable)
         details: dict with intermediate values
     """
-    n_m = len(s_m)
-    tpr_hat, fpr_hat, n_m1, n_m0 = estimate_tpr_fpr(s_m, s_j)
-
-    # Compute noisy failure rate from D_J (if s_j_judge provided separately)
-    # In this version, s_j is the judge labels for D_J (large dataset)
-    n_j = len(s_j)
-    r_j_hat = np.mean(s_j)
-
-    # Compute transformed threshold
-    alpha_prime_hat = fpr_hat + (tpr_hat - fpr_hat) * alpha
-
-    # Compute variance-corrected critical threshold
-    # Lower-tail test: z_zeta = Phi^{-1}(zeta) is negative for zeta < 0.5
-    # c_J' = alpha_prime_hat + z_zeta * SE (lower confidence bound)
-    # Reject H0 if R_J < c_J' (observed rate below lower confidence bound)
-    # At boundary R_M = alpha: P(reject) = P(Z < z_zeta) = zeta (Type-I error controlled)
-    z_zeta = norm.ppf(zeta)
-
-    var_rj = alpha_prime_hat * (1 - alpha_prime_hat) / n_j
-    var_tpr = (alpha ** 2) * tpr_hat * (1 - tpr_hat) / n_m1 if n_m1 > 0 else 0
-    var_fpr = ((1 - alpha) ** 2) * fpr_hat * (1 - fpr_hat) / n_m0 if n_m0 > 0 else 0
-
-    se = np.sqrt(var_rj + var_tpr + var_fpr)
-    c_j_prime = alpha_prime_hat + z_zeta * se
-
-    reject = r_j_hat < c_j_prime
-
-    details = {
-        'n_m': n_m,
-        'n_j': n_j,
-        'tpr_hat': tpr_hat,
-        'fpr_hat': fpr_hat,
-        'n_m1': n_m1,
-        'n_m0': n_m0,
-        'r_j_hat': r_j_hat,
-        'alpha_prime_hat': alpha_prime_hat,
-        'se': se,
-        'c_j_prime': c_j_prime,
-        'z_zeta': z_zeta,
-    }
-
-    return reject, details
+    return noisy_hypothesis_test_dual(D_M_sm, D_M_sj, D_J_sj, alpha, zeta)
 
 
 def noisy_hypothesis_test_dual(D_M_sm, D_M_sj, D_J_sj, alpha, zeta):

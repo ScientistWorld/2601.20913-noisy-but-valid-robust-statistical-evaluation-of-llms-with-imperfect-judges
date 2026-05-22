@@ -1,8 +1,8 @@
 # IMPORTANT: Once you set action to 'submit' or 'done', STOP immediately.
 # Do NOT sleep, poll, or wait for jobs. The system reads this file
 # only after your turn ends. Sleeping blocks the entire pipeline.
-action: done
+action: submit
 gpus: 0
-test: false
-milestone: core_claim_plus
-notes: "Validated packaged Noisy HT reproduction. Core claim is reproduced on canonical and held-out synthetic settings; evaluator is artifact-based and passes validate.py --compare."
+test: true
+milestone: core_claim
+notes: "CPU test job to verify the audited Noisy HT wrapper cleanup, regenerate artifacts/scores, and run validate.py --compare in the packaged runtime. If it passes, restore core_claim_plus."
