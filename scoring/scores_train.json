@@ -9,7 +9,7 @@
       "type2_error": 0.721
     },
     "noisy_ht": {
-      "type2_error": 0.627
+      "type2_error": 0.313
     },
     "oracle_noisy_ht": {
       "type2_error": 0.0
@@ -21,22 +21,22 @@
       "oracle_gap": 0.0
     },
     "noisy_ht": {
-      "type2_error_noisy": 0.627,
-      "oracle_gap": 0.627
+      "type2_error_noisy": 0.313,
+      "oracle_gap": 0.313
     }
   },
   "synthetic_type2_curve": {
     "rm_0.01": {
-      "type2_error": 0.423,
-      "decision_error": 0.423
+      "type2_error": 0.38,
+      "decision_error": 0.38
     },
     "rm_0.10": {
-      "type2_error": 0.074,
-      "decision_error": 0.074
+      "type2_error": 0.012,
+      "decision_error": 0.012
     },
     "rm_0.20": {
-      "type2_error": 0.623,
-      "decision_error": 0.623
+      "type2_error": 0.316,
+      "decision_error": 0.316
     },
     "rm_0.30": {
       "type2_error": 0.999,
@@ -48,19 +48,19 @@
       "type1_error": 0.037
     },
     "noisy_ht": {
-      "type1_error": 0.028
+      "type1_error": 0.022
     },
     "oracle_noisy_ht": {
-      "type1_error": 0.038
+      "type1_error": 0.049
     }
   },
   "_diagnostics": {
     "ppi_oracle_ordering_type2": {
-      "noisy_ht": 0.592,
+      "noisy_ht": 0.311,
       "oracle_noisy_ht": 0.0,
-      "ppi": 0.498,
-      "ppi_pp": 0.399,
-      "ridge_ppi": 0.406
+      "ppi": 0.227,
+      "ppi_pp": 0.184,
+      "ridge_ppi": 0.188
     }
   }
 }
