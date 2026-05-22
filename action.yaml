@@ -1,8 +1,8 @@
 # IMPORTANT: Once you set action to 'submit' or 'done', STOP immediately.
 # Do NOT sleep, poll, or wait for jobs. The system reads this file
 # only after your turn ends. Sleeping blocks the entire pipeline.
-action: done
-gpus: 0
+action: pending
+gpus: 1
 test: false
-milestone: core_claim_plus
-notes: "CPU test job 137b2a6c-ca0 passed in the packaged runtime: wrapper smoke test, canonical/train/test artifact regeneration, scoring, and validate.py --compare all succeeded."
+milestone: core_claim
+notes: ""
