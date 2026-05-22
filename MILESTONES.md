@@ -4,6 +4,13 @@
 
 ## Progress Log
 
+### [2026-05-22 07:12] - core_claim_plus
+- Re-audited the workspace with two read-only subagents focused on paper-method fidelity and implementation readiness.
+- Confirmed the implementation is the paper's actual Noisy HT algorithm: calibration-set TPR/FPR estimation, transformed noisy threshold, and variance-corrected critical threshold applied to separate judge-labeled evaluation data.
+- Ran `python3 validate.py --compare` locally; all scoring, evaluator/method separation, artifact-reading, train/test independence, and shared-path checks passed.
+- Verified current artifact scores: Direct/Noisy/Oracle Type-II `0.721`/`0.313`/`0.000`; Type-I `0.037`/`0.022`/`0.049`.
+- Found unrelated infrastructure corruption in tracked root metadata (`README.md`, `manifest.json`) and missing tracked trajectory logs; attempted restore was blocked by device/read-only filesystem errors, so no reproduction files were changed for that issue.
+
 ### [2026-05-22 07:09] - core_claim_plus
 - Reviewed CPU job `5505211f-c67`: it regenerated canonical, train, and held-out artifacts successfully, then failed only because `reference.json` treated the Type-I significance target as an exact reproduced value.
 - Updated the Type-I reference values to fixed-setting figure/Monte Carlo approximations and documented that the scored validity target is conservative Type-I control under `zeta=0.05`.

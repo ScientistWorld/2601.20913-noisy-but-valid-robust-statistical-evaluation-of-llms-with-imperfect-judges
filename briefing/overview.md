@@ -13,5 +13,5 @@ This paper addresses the challenge of statistically certifying that an LLM's fai
 
 - **Type-I error control**: All procedures (Direct HT, Noisy HT, Oracle Noisy HT, PPI) control Type-I error at ζ=0.05 across all settings
 - **Power improvement**: Noisy HT significantly outperforms Direct HT in the high-TPR/low-FPR regime (green region in the paper's Figure 1D), but is bounded above by Oracle Noisy HT (the "Oracle Gap")
-- **Synthetic experiments**: With α=0.25, ζ=0.05, n_M=100, n_J=10,000, Noisy HT achieves substantially lower Type-II error than Direct HT when TPR=0.9, FPR=0.1 across a range of model failure rates
+- **Synthetic experiments**: With α=0.25, ζ=0.05, n_M=100, n_J=10,000, Noisy HT achieves substantially lower Type-II error than Direct HT in the high-quality judge setting used here (TPR=0.95, FPR=0.05) across a range of model failure rates
 - **Real-data experiments**: Results on Jigsaw, Hate Speech, and SafeRLHF confirm theoretical predictions — Noisy HT works well with capable judges (LLaMA-3.1-8B, LLaMA-3.3-70B) as judges for smaller classifier models
