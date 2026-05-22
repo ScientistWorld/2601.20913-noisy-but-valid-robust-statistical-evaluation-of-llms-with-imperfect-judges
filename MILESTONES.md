@@ -4,6 +4,13 @@
 
 ## Progress Log
 
+### [2026-05-22 07:01] - core_claim_plus
+- Audited the existing `core_claim_plus` reproduction after reactivation.
+- Fixed the canonical evaluator to include the `synthetic_type2_curve` primary `decision_error` metric in `scoring/scores.json`, matching `reference.json` and the existing train/test evaluators.
+- Local `bash scripts/evaluate.sh /home/user/outputs/synthetic_results.json /home/user/scoring/scores.json` passed `validate.py --compare`.
+- Aligned the core synthetic setting with the paper's high-quality judge panel (`TPR=0.95`, `FPR=0.05`) and added artifact-config validation so the evaluator rejects changed sample budgets or incomplete trial grids.
+- Submitted a CPU test job to rerun canonical, train, and held-out scoring inside the packaged container after these evaluator and setting cleanups.
+
 ### [2026-05-22 06:40] - core_claim_plus
 - CPU test job `9ace5902-843` completed successfully after the continuation audit cleanup.
 - The job regenerated canonical, train, and held-out artifacts, scored them through `eval/evaluate.py`, and passed `validate.py --compare` inside the packaged container.

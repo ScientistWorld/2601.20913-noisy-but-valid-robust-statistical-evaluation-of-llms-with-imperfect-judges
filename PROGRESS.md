@@ -100,6 +100,11 @@ All methods maintain Type-I error near the target zeta=0.05.
   - Canonical Direct/Noisy/Oracle Type-II `0.721`/`0.627`/`0.000`; Type-I `0.037`/`0.028`/`0.038`.
   - Held-out test Direct/Noisy/Oracle Type-II `0.732`/`0.628`/`0.000`; Type-I `0.042`/`0.039`/`0.049`.
   - Final `validate.py --compare` passed all scoring and structure checks.
+- Continuation audit at 07:01 found that canonical `eval/evaluate.py` reported only raw `type2_error` for `synthetic_type2_curve`, while `reference.json` declares `decision_error` as the primary metric. Fixed the canonical evaluator to compute the same threshold-aware `decision_error` metric as the train/test evaluators, regenerated `scoring/scores.json`, and verified `python validate.py --compare` locally.
+- Updated `scripts/run.sh` so the next CPU test job regenerates the canonical artifact and scores before the train/test split artifacts, ensuring the packaged runtime validates the corrected canonical scorer.
+- Follow-up audit found the benchmark was using a convenient off-figure judge setting (`TPR=0.90`, `FPR=0.10`). Updated `method/run_synthetic.py` and `scoring/reference.json` to use the paper's high-quality synthetic panel setting (`TPR=0.95`, `FPR=0.05`) for the core power, oracle-gap, curve, and Type-I experiments.
+- Hardened the artifact scorers so `eval/` now rejects artifacts with the wrong fixed benchmark config, missing trial IDs, duplicated trials, missing curve settings, or unexpected experiment names. This keeps future methods from improving scores simply by changing sample budgets or omitting hard cases.
+- PPI rows remain unscored diagnostics; the core milestone is based on Direct HT, Noisy HT, Oracle Noisy HT, Type-I control, and the synthetic curve. Ridge PPI currently uses a fixed diagnostic ridge value rather than the paper's full 2-fold CV procedure.
 
 ## April 24 Final Baseline Refresh
 - CPU job `8f4134be-d14` reran the split evaluation after the environment cleanup and produced valid `scoring/scores_train.json` and `scoring/scores_test.json`.

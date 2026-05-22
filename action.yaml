@@ -1,6 +1,6 @@
-# Split evaluation is complete.
-action: done
+# CPU test job for canonical scorer cleanup.
+action: submit
 gpus: 0
-test: false
+test: true
 milestone: core_claim_plus
-notes: "Packaging audit complete: synthetic-data repo needs no external fetches; download.sh is self-contained and validate.py passes."
+notes: "Rerun canonical/train/test synthetic artifacts after aligning the judge setting to TPR=0.95/FPR=0.05 and hardening artifact validation."

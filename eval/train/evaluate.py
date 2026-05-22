@@ -10,7 +10,14 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+import sys
 from typing import Any
+
+EVAL_ROOT = Path(__file__).resolve().parents[1]
+if str(EVAL_ROOT) not in sys.path:
+    sys.path.insert(0, str(EVAL_ROOT))
+
+from artifact_validation import validate_synthetic_artifact
 
 SLICE = "train"
 
@@ -27,8 +34,7 @@ def rounded(value: float) -> float:
 
 def load_artifact(path: Path) -> dict[str, Any]:
     artifact = json.loads(path.read_text())
-    if artifact.get("schema") != "noisy_ht_synthetic_artifact_v1":
-        raise ValueError(f"{path} is not a Noisy HT synthetic artifact")
+    validate_synthetic_artifact(artifact)
     return artifact
 
 

@@ -1,10 +1,20 @@
 #!/bin/bash
-# CPU job to regenerate train/test artifacts, aggregate split scores, and validate.
+# CPU job to regenerate canonical/train/test artifacts, aggregate scores, and validate.
 
 set -e
 
 cd /home/user
 
+echo "=== Running canonical artifact ==="
+/usr/bin/python3 /home/user/method/run_synthetic.py \
+  --n-trials 1000 \
+  --seed 42 \
+  --output /home/user/outputs/synthetic_results.json
+bash /home/user/scripts/evaluate.sh \
+  /home/user/outputs/synthetic_results.json \
+  /home/user/scoring/scores.json
+
+echo ""
 echo "=== Running train slice ==="
 /usr/bin/python3 /home/user/method/run_synthetic.py \
   --n-trials 1000 \

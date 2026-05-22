@@ -12,6 +12,8 @@ import argparse
 import json
 from pathlib import Path
 
+from artifact_validation import validate_synthetic_artifact
+
 
 def mean(values: list[int | float]) -> float:
     if not values:
@@ -21,9 +23,33 @@ def mean(values: list[int | float]) -> float:
 
 def load_artifact(path: Path) -> dict:
     artifact = json.loads(path.read_text())
-    if artifact.get("schema") != "noisy_ht_synthetic_artifact_v1":
-        raise ValueError(f"{path} is not a Noisy HT synthetic artifact")
+    validate_synthetic_artifact(artifact)
     return artifact
+
+
+def parse_rm(setting: str) -> float:
+    if not setting.startswith("rm_"):
+        raise ValueError(f"unexpected curve setting: {setting}")
+    return float(setting.removeprefix("rm_"))
+
+
+def build_curve_scores(rows: list[dict], alpha: float) -> dict:
+    curve: dict[str, dict[str, list[int | float]]] = {}
+    for row in rows:
+        setting = row["setting"]
+        rm = parse_rm(setting)
+        raw_type2_failure = row["noisy_ht_type2_failure"]
+        decision_error = raw_type2_failure if rm < alpha else 1 - raw_type2_failure
+        metrics = curve.setdefault(setting, {"type2_error": [], "decision_error": []})
+        metrics["type2_error"].append(raw_type2_failure)
+        metrics["decision_error"].append(decision_error)
+    return {
+        setting: {
+            "type2_error": round(mean(metrics["type2_error"]), 4),
+            "decision_error": round(mean(metrics["decision_error"]), 4),
+        }
+        for setting, metrics in sorted(curve.items())
+    }
 
 
 def build_scores(artifact: dict) -> dict:
@@ -38,14 +64,9 @@ def build_scores(artifact: dict) -> dict:
     type1_noisy = mean([row["noisy_ht_type1_error"] for row in type1_rows])
     type1_oracle = mean([row["oracle_noisy_ht_type1_error"] for row in type1_rows])
 
-    curve = {}
-    for row in artifact["curve"]["rows"]:
-        setting = row["setting"]
-        curve.setdefault(setting, []).append(row["noisy_ht_type2_failure"])
-    curve_scores = {
-        setting: {"type2_error": round(mean(values), 4)}
-        for setting, values in sorted(curve.items())
-    }
+    curve_scores = build_curve_scores(
+        artifact["curve"]["rows"], artifact["curve"]["config"]["alpha"]
+    )
 
     diagnostics = {}
     if "_diagnostics" in artifact:

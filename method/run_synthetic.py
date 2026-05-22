@@ -30,8 +30,8 @@ def run_main_trials(n_trials: int, seed: int) -> dict:
     n_j = 10000
     alpha = 0.25
     zeta = 0.05
-    tpr = 0.9
-    fpr = 0.1
+    tpr = 0.95
+    fpr = 0.05
     r_m_test = 0.20
 
     rows = []
@@ -91,8 +91,8 @@ def run_curve_trials(n_trials: int, seed: int) -> dict:
     n_j = 10000
     alpha = 0.25
     zeta = 0.05
-    tpr = 0.9
-    fpr = 0.1
+    tpr = 0.95
+    fpr = 0.05
     rows = []
 
     for r_m in [0.01, 0.10, 0.20, 0.30]:
@@ -131,8 +131,8 @@ def run_diagnostics(n_trials: int, seed: int) -> dict:
     alpha = 0.25
     zeta = 0.05
     r_m_test = 0.20
-    tpr = 0.9
-    fpr = 0.1
+    tpr = 0.95
+    fpr = 0.05
     ppi_rows = []
 
     for trial in range(n_trials):
