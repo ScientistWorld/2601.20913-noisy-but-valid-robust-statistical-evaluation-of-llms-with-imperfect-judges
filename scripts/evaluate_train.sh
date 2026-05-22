@@ -1,30 +1,22 @@
 #!/bin/bash
-# Train-slice evaluation entry point.
+# Visible train-slice evaluation entry point.
 #
 # Mirrors scripts/evaluate.sh:
-#   ./scripts/evaluate_train.sh          # run default experiments (1000 trials)
-#   ./scripts/evaluate_train.sh 500 42   # custom: n_trials=500, seed=42
+#   ./scripts/evaluate_train.sh
+#   ./scripts/evaluate_train.sh outputs/synthetic_train_results.json scoring/scores_train.json
 
 set -e
 
 cd /home/user
 
-N_TRIALS="${1:-1000}"
-SEED="${2:-42}"
+ARTIFACT="${1:-/home/user/outputs/synthetic_train_results.json}"
+OUTPUT="${2:-/home/user/scoring/scores_train.json}"
 
-ARTIFACT="/home/user/outputs/synthetic_train_results.json"
-
-echo "Running train method artifact: n_trials=${N_TRIALS}, seed=${SEED}"
-/usr/bin/python3 /home/user/method/run_synthetic.py \
-  --n-trials "${N_TRIALS}" \
-  --seed "${SEED}" \
-  --output "${ARTIFACT}"
-
-echo "Aggregating train scores"
-/usr/bin/python3 /home/user/eval/evaluate.py \
+echo "Running train-slice evaluation for artifact: ${ARTIFACT}"
+/usr/bin/python3 /home/user/eval/train/evaluate.py \
   --artifact "${ARTIFACT}" \
-  --output /home/user/scoring/scores_train.json
+  --output "${OUTPUT}"
 
 echo ""
-echo "=== Validation ==="
-/usr/bin/python3 /home/user/validate.py
+echo "=== Reference schema validation ==="
+/usr/bin/python3 /home/user/validate.py --reference-only
