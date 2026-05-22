@@ -88,7 +88,12 @@ All methods maintain Type-I error near the target zeta=0.05.
 - Confirmed `eval/` is independent from `method/` and aggregates method-produced artifacts rather than regenerating trials itself.
 - `bash scripts/evaluate.sh /home/user/outputs/synthetic_results.json /home/user/tmp/audit_scores.json` worked standalone and `python validate.py --compare` passed.
 - Fixed a legacy public helper in `method/core.py` so `noisy_hypothesis_test` now requires separate calibration and evaluation judge labels and delegates to the verified dual-dataset implementation.
-- Submitted a CPU test job to run the cleanup through the packaged runtime, regenerate canonical/train/test scores, and validate the full environment.
+- CPU test job `137b2a6c-ca0` ran the cleanup through the packaged runtime, regenerated canonical/train/test scores, and validated the full environment.
+- Job `137b2a6c-ca0` results:
+  - Wrapper smoke test passed.
+  - Canonical Direct/Noisy/Oracle Type-II `0.721`/`0.627`/`0.000`; Type-I `0.037`/`0.028`/`0.038`.
+  - Held-out test Direct/Noisy/Oracle Type-II `0.732`/`0.628`/`0.000`; Type-I `0.042`/`0.039`/`0.049`.
+  - Final `validate.py --compare` passed all scoring and structure checks.
 
 ## April 24 Final Baseline Refresh
 - CPU job `8f4134be-d14` reran the split evaluation after the environment cleanup and produced valid `scoring/scores_train.json` and `scoring/scores_test.json`.

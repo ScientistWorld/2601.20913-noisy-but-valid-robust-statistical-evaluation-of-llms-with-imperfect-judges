@@ -1,6 +1,6 @@
 # Reproduction Milestones
 
-**Current: core_claim**
+**Current: core_claim_plus**
 
 ## Progress Log
 
@@ -17,5 +17,11 @@
 - Fixed an unused legacy `noisy_hypothesis_test` helper so its public signature now requires separate calibration and evaluation judge labels, matching Algorithm 1.
 - Submitted a CPU test job to verify the cleanup inside the packaged runtime before restoring `core_claim_plus`.
 
+### [2026-05-22 06:34] - core_claim_plus
+- CPU test job `137b2a6c-ca0` completed successfully in the packaged Apptainer runtime.
+- The job regenerated canonical, train, and held-out test artifacts and scores.
+- The public `noisy_hypothesis_test` wrapper smoke test passed.
+- Final validation passed, including scoring, artifact-reading evaluator checks, import separation, train/test independence, and shared-path checks.
+
 ## Stop Justification
-- Pending CPU test verification after audit cleanup.
+- Completed at milestone `core_claim_plus`.
