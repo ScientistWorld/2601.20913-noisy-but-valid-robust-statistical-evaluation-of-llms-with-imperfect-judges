@@ -2,8 +2,8 @@
 # Once you set action to 'done', STOP immediately.
 # Do NOT sleep, poll, or wait. The system reads this file
 # only after your turn ends.
-action: done
+action: pending
 gpus: 0
 test: false
 milestone: core_claim_plus
-notes: "Artifact-level held-out seed-slice split; 4 train experiments and 4 matched test experiments using existing Type-I/Type-II/oracle-gap metrics; scripts written, scores produced later."
+notes: ""
