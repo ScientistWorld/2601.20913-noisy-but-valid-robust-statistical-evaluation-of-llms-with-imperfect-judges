@@ -94,6 +94,12 @@ All methods maintain Type-I error near the target zeta=0.05.
   - Canonical Direct/Noisy/Oracle Type-II `0.721`/`0.627`/`0.000`; Type-I `0.037`/`0.028`/`0.038`.
   - Held-out test Direct/Noisy/Oracle Type-II `0.732`/`0.628`/`0.000`; Type-I `0.042`/`0.039`/`0.049`.
   - Final `validate.py --compare` passed all scoring and structure checks.
+- Continuation audit on 2026-05-22 found only a misleading Direct HT comment. Fixed the comment and removed an unused local variable in `method/core.py`; no algorithmic behavior changed.
+- CPU test job `9ace5902-843` reran the audited workspace inside the packaged container and passed:
+  - Wrapper smoke test passed.
+  - Canonical Direct/Noisy/Oracle Type-II `0.721`/`0.627`/`0.000`; Type-I `0.037`/`0.028`/`0.038`.
+  - Held-out test Direct/Noisy/Oracle Type-II `0.732`/`0.628`/`0.000`; Type-I `0.042`/`0.039`/`0.049`.
+  - Final `validate.py --compare` passed all scoring and structure checks.
 
 ## April 24 Final Baseline Refresh
 - CPU job `8f4134be-d14` reran the split evaluation after the environment cleanup and produced valid `scoring/scores_train.json` and `scoring/scores_test.json`.
