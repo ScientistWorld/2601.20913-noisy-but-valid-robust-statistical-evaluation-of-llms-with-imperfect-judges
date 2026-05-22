@@ -12,7 +12,8 @@
   },
   "oracle_gap": {
     "oracle_noisy_ht": {
-      "oracle_gap": 0.628
+      "type2_error_noisy": 0.0,
+      "oracle_gap": 0.0
     },
     "noisy_ht": {
       "type2_error_noisy": 0.628,

@@ -3,7 +3,7 @@
 # Runs inside the container to reproduce the paper's results from scratch.
 #
 # This paper uses synthetic data only, so no download step is needed.
-# The script runs the evaluation pipeline and writes scoring/scores.json.
+# The script runs the method and then evaluates its artifact.
 
 set -e
 
@@ -13,8 +13,8 @@ echo "=== Noisy HT Paper Reproduction ==="
 echo "Paper: Noisy but Valid: Robust Statistical Evaluation of LLMs with Imperfect Judges"
 echo ""
 
-# Run evaluation (which generates scores.json)
-bash scripts/evaluate.sh 1000 42
+bash scripts/method.sh 1000 42 /home/user/outputs/synthetic_results.json
+bash scripts/evaluate.sh /home/user/outputs/synthetic_results.json /home/user/scoring/scores.json
 
 echo ""
 echo "=== Reproduction Complete ==="

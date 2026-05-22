@@ -11,9 +11,16 @@ set -e
 
 cd /home/user
 
-echo "=== Running Noisy HT Method ==="
+N_TRIALS="${1:-1000}"
+SEED="${2:-42}"
+OUTPUT="${3:-/home/user/outputs/synthetic_results.json}"
 
-# Run the evaluation
-bash scripts/evaluate.sh
+echo "=== Running Noisy HT Method ==="
+echo "Writing method artifact to ${OUTPUT}"
+
+/usr/bin/python3 /home/user/method/run_synthetic.py \
+  --n-trials "${N_TRIALS}" \
+  --seed "${SEED}" \
+  --output "${OUTPUT}"
 
 echo "=== Method run complete ==="

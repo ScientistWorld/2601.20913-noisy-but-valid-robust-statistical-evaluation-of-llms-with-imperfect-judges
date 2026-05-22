@@ -12,10 +12,18 @@ cd /home/user
 N_TRIALS="${1:-1000}"
 SEED="${2:-42}"
 
-echo "Running held-out test evaluation: n_trials=${N_TRIALS}, seed=${SEED}"
-/usr/bin/python3 /home/user/eval/test/evaluate.py \
+ARTIFACT="/home/user/outputs/synthetic_test_results.json"
+
+echo "Running held-out test method artifact: n_trials=${N_TRIALS}, seed=${SEED}"
+/usr/bin/python3 /home/user/method/run_synthetic.py \
   --n-trials "${N_TRIALS}" \
   --seed "${SEED}" \
+  --seed-offset 1000003 \
+  --output "${ARTIFACT}"
+
+echo "Aggregating held-out test scores"
+/usr/bin/python3 /home/user/eval/evaluate.py \
+  --artifact "${ARTIFACT}" \
   --output /home/user/scoring/scores_test.json
 
 echo ""

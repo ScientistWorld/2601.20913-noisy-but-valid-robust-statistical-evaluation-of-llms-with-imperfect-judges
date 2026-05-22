@@ -1,6 +1,6 @@
 # Reproduction Milestones
 
-**Current: core_claim_plus**
+**Current: core_claim**
 
 ## Progress Log
 
@@ -45,3 +45,9 @@
 - Reconfirmed the central claim on the visible slice: Noisy HT Type-II `0.627` remained below Direct HT `0.721` while Noisy HT Type-I stayed at `0.028`.
 - Reconfirmed the same qualitative claim on the held-out slice: Noisy HT Type-II `0.628` remained below Direct HT `0.732` while Noisy HT Type-I stayed at `0.039`.
 - Validation passed for scores coverage, train/test key matching, train/test value differentiation, evaluator separation, and shared-path constraints.
+
+### [2026-05-22 06:23] - core_claim
+- Audited the continuation workspace and found the method implementation still matches the paper's actual Noisy HT algorithm.
+- Tightened the gym contract so `method/` writes trial-level artifacts under `outputs/` and `eval/` only aggregates those artifacts into scores.
+- Corrected the oracle-gap metric so the oracle row has zero gap and Noisy HT carries the practical gap.
+- Demoted the current milestone from `core_claim_plus` to `core_claim` pending a fresh CPU job for the revised artifact-based pipeline.

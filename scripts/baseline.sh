@@ -20,6 +20,7 @@ cd /home/user
 TRIALS="${1:-1000}"
 SEED="${2:-42}"
 
-echo "Running Direct HT baseline through the shared evaluation pipeline."
+echo "Running Direct HT baseline as part of the shared method artifact."
 echo "The resulting scoring/scores.json includes the direct_ht baseline rows."
-bash scripts/evaluate.sh "$TRIALS" "$SEED"
+bash scripts/method.sh "$TRIALS" "$SEED" /home/user/outputs/synthetic_results.json
+bash scripts/evaluate.sh /home/user/outputs/synthetic_results.json /home/user/scoring/scores.json

@@ -10,8 +10,8 @@
   - Oracle Noisy HT (upper bound)
   - PPI Family Wald Test
 - Synthetic data generation in `data/synthetic.py`
-- Monte Carlo evaluation pipeline in `eval/evaluate.py`, `scripts/run.sh`, `scripts/evaluate.sh`, and `scripts/generate_scores.py`
-- The reusable evaluator is now independent from `method/`; scoring duplicates the benchmark procedure in `eval/` so future methods can be evaluated without importing this reproduction's implementation.
+- Monte Carlo method-artifact pipeline in `method/run_synthetic.py`, `scripts/run.sh`, `scripts/method.sh`, and `scripts/evaluate.sh`
+- The reusable evaluator is independent from `method/`; it now reads method-produced artifacts instead of regenerating the experiment internally.
 - Container builds with minimal ubuntu:22.04 base (no GPU needed)
 - Scoring documentation now defines the optimization target, validity constraint, oracle-gap diagnostic, and scientist constraints for future benchmark users.
 - The canonical evaluator can emit unscored diagnostics under `_diagnostics` when scores are regenerated, covering the paper's PPI/Oracle ordering and the high-FPR stress setting from Appendix H. These diagnostics do not affect the benchmark score, but they expose additional paper-aligned behavior for future agents.
@@ -71,6 +71,8 @@ All methods maintain Type-I error near the target zeta=0.05.
 - Previous agent had seed independence bug in evaluate.py (fixed in prior session)
 - Continuation audit found that `scripts/evaluate.sh` and `scripts/run.sh` imported directly from `method/`, violating the gym separation rule. Fixed by moving the standalone scoring procedure into `eval/evaluate.py` and making scripts call that entry point.
 - The fixed evaluator was validated inside the compute container; `validate.py --compare` passed, including import-separation checks.
+- Continuation audit on 2026-05-22 found the evaluator still regenerated synthetic trials internally, so future `method/` edits would not necessarily affect scores. Fixed by making `method/run_synthetic.py` produce trial artifacts and making `eval/evaluate.py` aggregate those artifacts only.
+- The prior oracle-gap score incorrectly assigned the practical gap to the oracle row. Fixed the metric so Oracle Noisy HT has `oracle_gap=0.0` and Noisy HT reports its Type-II gap to oracle.
 
 ## April 24 Final Baseline Refresh
 - CPU job `8f4134be-d14` reran the split evaluation after the environment cleanup and produced valid `scoring/scores_train.json` and `scoring/scores_test.json`.

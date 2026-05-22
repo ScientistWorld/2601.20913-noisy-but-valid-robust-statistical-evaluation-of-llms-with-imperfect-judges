@@ -1,26 +1,25 @@
 #!/bin/bash
 # Evaluation script — the standard way to evaluate work in this environment.
 #
-# Runs the paper's synthetic Monte Carlo benchmark and writes
-# scoring/scores.json.  This script intentionally calls only eval/ code so the
-# scorer is independent of any implementation in method/.
+# Aggregates a method artifact and writes scoring/scores.json.  This script
+# intentionally calls only eval/ code so the scorer is independent of any
+# implementation in method/.
 #
 # Usage:
-#   ./scripts/evaluate.sh          # run default experiments (1000 trials)
-#   ./scripts/evaluate.sh 500 42   # custom: n_trials=500, seed=42
+#   ./scripts/evaluate.sh
+#   ./scripts/evaluate.sh outputs/synthetic_results.json scoring/scores.json
 
 set -e
 
 cd /home/user
 
-N_TRIALS="${1:-1000}"
-SEED="${2:-42}"
+ARTIFACT="${1:-/home/user/outputs/synthetic_results.json}"
+OUTPUT="${2:-/home/user/scoring/scores.json}"
 
-echo "Running evaluation: n_trials=${N_TRIALS}, seed=${SEED}"
+echo "Running evaluation for artifact: ${ARTIFACT}"
 /usr/bin/python3 /home/user/eval/evaluate.py \
-  --n-trials "${N_TRIALS}" \
-  --seed "${SEED}" \
-  --output /home/user/scoring/scores.json
+  --artifact "${ARTIFACT}" \
+  --output "${OUTPUT}"
 
 echo ""
 echo "=== Validation ==="

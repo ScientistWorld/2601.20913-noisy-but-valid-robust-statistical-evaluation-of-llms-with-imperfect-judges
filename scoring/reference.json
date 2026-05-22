@@ -7,8 +7,8 @@
         "type2_error": {"higher_is_better": false, "coefficient": -1.0}
       },
       "results": {
-        "direct_ht": {"type": "baseline", "type2_error": 0.24},
-        "noisy_ht": {"type": "proposed", "type2_error": 0.40},
+        "direct_ht": {"type": "baseline", "type2_error": 0.72},
+        "noisy_ht": {"type": "proposed", "type2_error": 0.63},
         "oracle_noisy_ht": {"type": "proposed", "type2_error": 0.00}
       }
     },
@@ -20,8 +20,8 @@
         "type2_error_noisy": {"higher_is_better": false, "coefficient": -0.3, "description": "Noisy HT absolute Type-II error — captures improvement in raw power."}
       },
       "results": {
-        "oracle_noisy_ht": {"type": "proposed", "oracle_gap": 0.00},
-        "noisy_ht": {"type": "proposed", "type2_error_noisy": 0.40, "oracle_gap": 0.40}
+        "oracle_noisy_ht": {"type": "proposed", "type2_error_noisy": 0.00, "oracle_gap": 0.00},
+        "noisy_ht": {"type": "proposed", "type2_error_noisy": 0.63, "oracle_gap": 0.63}
       }
     },
     "synthetic_type2_curve": {
@@ -31,9 +31,9 @@
         "type2_error": {"higher_is_better": false, "coefficient": -1.0}
       },
       "results": {
-        "rm_0.01": {"type": "proposed", "type2_error": 0.45},
+        "rm_0.01": {"type": "proposed", "type2_error": 0.42},
         "rm_0.10": {"type": "proposed", "type2_error": 0.07},
-        "rm_0.20": {"type": "proposed", "type2_error": 0.60},
+        "rm_0.20": {"type": "proposed", "type2_error": 0.62},
         "rm_0.30": {"type": "proposed", "type2_error": 1.00}
       }
     },
