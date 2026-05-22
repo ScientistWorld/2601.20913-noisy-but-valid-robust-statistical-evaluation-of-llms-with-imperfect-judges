@@ -1,8 +1,8 @@
 # IMPORTANT: Once you set action to 'submit' or 'done', STOP immediately.
 # Do NOT sleep, poll, or wait for jobs. The system reads this file
 # only after your turn ends. Sleeping blocks the entire pipeline.
-action: submit
+action: done
 gpus: 0
-test: true
+test: false
 milestone: core_claim_plus
-notes: "Audit found only a misleading Direct HT comment; fixed it and submitted the existing CPU container test to regenerate artifacts, evaluate, and validate the restored core_claim_plus reproduction."
+notes: "CPU test job 9ace5902-843 passed in-container validation after audit cleanup. Reproduction is restored to core_claim_plus with canonical and held-out synthetic results documented."

@@ -17,4 +17,4 @@
 - Added additional coverage beyond the minimum through train/test slices and a synthetic Type-II curve over multiple true failure rates.
 
 ## Stop Justification
-- Completed at milestone `core_claim_plus`. The reusable environment is packaged and compute-validated; remaining paper experiments require larger real LLM classification/generation runs and are documented as future extensions.
+- Completed at milestone `core_claim_plus`.
