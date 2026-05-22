@@ -1,8 +1,8 @@
 # IMPORTANT: Once you set action to 'submit' or 'done', STOP immediately.
 # Do NOT sleep, poll, or wait for jobs. The system reads this file
 # only after your turn ends. Sleeping blocks the entire pipeline.
-action: pending
-gpus: 1
-test: false
-milestone: core_claim
-notes: ""
+action: submit
+gpus: 0
+test: true
+milestone: core_claim_plus
+notes: "Audit found only a misleading Direct HT comment; fixed it and submitted the existing CPU container test to regenerate artifacts, evaluate, and validate the restored core_claim_plus reproduction."
