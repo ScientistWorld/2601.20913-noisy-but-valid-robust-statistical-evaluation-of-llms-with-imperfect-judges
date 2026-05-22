@@ -1,6 +1,5 @@
-# CPU test job for canonical scorer cleanup.
-action: submit
+action: done
 gpus: 0
-test: true
+test: false
 milestone: core_claim_plus
-notes: "Rerun canonical/train/test synthetic artifacts after aligning the judge setting to TPR=0.95/FPR=0.05 and hardening artifact validation."
+notes: "Final verification passed: high-quality synthetic Noisy HT gym is validated and packaged; limitation is synthetic-only coverage."

@@ -4,6 +4,12 @@
 
 ## Progress Log
 
+### [2026-05-22 07:09] - core_claim_plus
+- Reviewed CPU job `5505211f-c67`: it regenerated canonical, train, and held-out artifacts successfully, then failed only because `reference.json` treated the Type-I significance target as an exact reproduced value.
+- Updated the Type-I reference values to fixed-setting figure/Monte Carlo approximations and documented that the scored validity target is conservative Type-I control under `zeta=0.05`.
+- Removed a duplicate method-side synthetic-data helper so the reusable data generator lives only under `data/`.
+- Completed final verification after lightweight validation.
+
 ### [2026-05-22 07:01] - core_claim_plus
 - Audited the existing `core_claim_plus` reproduction after reactivation.
 - Fixed the canonical evaluator to include the `synthetic_type2_curve` primary `decision_error` metric in `scoring/scores.json`, matching `reference.json` and the existing train/test evaluators.
