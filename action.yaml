@@ -2,4 +2,4 @@ action: done
 gpus: 0
 test: false
 milestone: core_claim_plus
-notes: "Final audit passed: paper-faithful synthetic Noisy HT gym validates locally at core_claim_plus. No further job submitted because current artifacts and validation already pass; unrelated root metadata device/read-only corruption blocks clean git status but not reproduction execution."
+notes: "Final verification passed: synthetic Noisy HT gym is ready at core_claim_plus; remaining dirty root metadata is unrelated mounted filesystem state."

@@ -4,6 +4,12 @@
 
 ## Progress Log
 
+### [2026-05-22 07:15] - core_claim_plus
+- Completed final verification of the `core_claim_plus` workspace.
+- Confirmed `python3 validate.py --compare` passes and that scoring uses artifact outputs rather than regenerating the method.
+- Reviewed scoring weights, coefficients, train/test evaluators, method-agnostic documentation, and download portability.
+- Recorded the remaining unrelated root metadata/read-only filesystem issue in `VERIFICATION.md`; it does not affect the gym artifacts or execution path.
+
 ### [2026-05-22 07:12] - core_claim_plus
 - Re-audited the workspace with two read-only subagents focused on paper-method fidelity and implementation readiness.
 - Confirmed the implementation is the paper's actual Noisy HT algorithm: calibration-set TPR/FPR estimation, transformed noisy threshold, and variance-corrected critical threshold applied to separate judge-labeled evaluation data.
