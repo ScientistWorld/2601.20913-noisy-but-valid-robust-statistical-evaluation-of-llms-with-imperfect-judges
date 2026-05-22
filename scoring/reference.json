@@ -4,7 +4,7 @@
       "weight": 0.40,
       "primary_metric": "type2_error",
       "metrics": {
-        "type2_error": {"higher_is_better": false, "coefficient": -1.0}
+        "type2_error": {"higher_is_better": false, "coefficient": -1.0, "description": "Failure to certify a genuinely reliable model under the main high-quality-judge setting."}
       },
       "results": {
         "direct_ht": {"type": "baseline", "type2_error": 0.72},
@@ -28,7 +28,7 @@
       "weight": 0.25,
       "primary_metric": "type2_error",
       "metrics": {
-        "type2_error": {"higher_is_better": false, "coefficient": -1.0}
+        "type2_error": {"higher_is_better": false, "coefficient": -1.0, "description": "Failure to certify across reliability levels around the target threshold."}
       },
       "results": {
         "rm_0.01": {"type": "proposed", "type2_error": 0.42},
@@ -41,7 +41,7 @@
       "weight": 0.15,
       "primary_metric": "type1_error",
       "metrics": {
-        "type1_error": {"higher_is_better": false, "coefficient": -1.0}
+        "type1_error": {"higher_is_better": false, "coefficient": -1.0, "description": "False certification rate at the null boundary, measuring finite-sample validity."}
       },
       "results": {
         "direct_ht": {"type": "baseline", "type1_error": 0.05},

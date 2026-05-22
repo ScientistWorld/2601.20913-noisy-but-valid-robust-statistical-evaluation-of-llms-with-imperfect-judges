@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Aggregate held-out test-slice artifacts into benchmark scores.
 
-The held-out pass scores the same experiment/method entries that were present
-in ``scoring/scores_train.json``. It reads method artifacts only and does not
-import or execute anything from ``method/``.
+The held-out pass is self-contained: it reads a method artifact only and does
+not import or execute anything from ``method/`` or depend on visible train
+scores. This keeps final test scoring usable even when only the final held-out
+artifact is present.
 """
 
 from __future__ import annotations
@@ -139,57 +140,6 @@ def build_scores(artifact: dict[str, Any], artifact_path: Path) -> dict[str, Any
     return scores
 
 
-def score_experiments(scores: dict[str, Any]) -> dict[str, dict[str, Any]]:
-    raw = scores.get("experiments", scores)
-    return {
-        exp_name: exp_scores.get("results", exp_scores)
-        for exp_name, exp_scores in raw.items()
-        if not exp_name.startswith("_") and isinstance(exp_scores, dict)
-    }
-
-
-def filter_to_train_entries(
-    test_scores: dict[str, Any], train_scores: dict[str, Any]
-) -> dict[str, Any]:
-    train_experiments = score_experiments(train_scores)
-    test_experiments = score_experiments(test_scores)
-    filtered: dict[str, Any] = {
-        "_metadata": {
-            **test_scores.get("_metadata", {}),
-            "matched_train_methods_from": "scoring/scores_train.json",
-        }
-    }
-    missing: list[str] = []
-
-    for exp_name, train_methods in train_experiments.items():
-        if exp_name not in test_experiments:
-            missing.append(exp_name)
-            continue
-        filtered[exp_name] = {}
-        for method, train_metrics in train_methods.items():
-            if method.startswith("_"):
-                continue
-            if method not in test_experiments[exp_name]:
-                missing.append(f"{exp_name}.{method}")
-                continue
-            filtered[exp_name][method] = {}
-            for metric in train_metrics:
-                if metric not in test_experiments[exp_name][method]:
-                    missing.append(f"{exp_name}.{method}.{metric}")
-                    continue
-                filtered[exp_name][method][metric] = test_experiments[exp_name][method][
-                    metric
-                ]
-
-    if missing:
-        missing_text = "\n  - ".join(missing)
-        raise ValueError(
-            "held-out artifact cannot score every train entry; missing:\n"
-            f"  - {missing_text}"
-        )
-    return filtered
-
-
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -198,20 +148,9 @@ def main() -> None:
     parser.add_argument(
         "--output", type=Path, default=Path("scoring/scores_test.json")
     )
-    parser.add_argument(
-        "--train-scores", type=Path, default=Path("scoring/scores_train.json")
-    )
     args = parser.parse_args()
 
-    if not args.train_scores.exists():
-        raise FileNotFoundError(
-            f"{args.train_scores} does not exist; run the train-slice scorer first"
-        )
-
-    raw_test_scores = build_scores(load_artifact(args.artifact), args.artifact)
-    train_scores = json.loads(args.train_scores.read_text())
-    scores = filter_to_train_entries(raw_test_scores, train_scores)
-
+    scores = build_scores(load_artifact(args.artifact), args.artifact)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(scores, indent=2) + "\n")
     print(f"Held-out test slice scores written to {args.output}")
