@@ -51,3 +51,8 @@
 - Tightened the gym contract so `method/` writes trial-level artifacts under `outputs/` and `eval/` only aggregates those artifacts into scores.
 - Corrected the oracle-gap metric so the oracle row has zero gap and Noisy HT carries the practical gap.
 - Demoted the current milestone from `core_claim_plus` to `core_claim` pending a fresh CPU job for the revised artifact-based pipeline.
+
+### [2026-05-22 06:26] - core_claim
+- Rechecked the continuation state and confirmed only unrelated workspace/system files remain dirty.
+- Kept the current milestone at `core_claim` while submitting a fresh CPU test job for the artifact-producing method pipeline.
+- The submitted job regenerates canonical, train, and held-out artifacts, aggregates scores from those artifacts, and runs `validate.py --compare`.

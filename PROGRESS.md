@@ -73,6 +73,7 @@ All methods maintain Type-I error near the target zeta=0.05.
 - The fixed evaluator was validated inside the compute container; `validate.py --compare` passed, including import-separation checks.
 - Continuation audit on 2026-05-22 found the evaluator still regenerated synthetic trials internally, so future `method/` edits would not necessarily affect scores. Fixed by making `method/run_synthetic.py` produce trial artifacts and making `eval/evaluate.py` aggregate those artifacts only.
 - The prior oracle-gap score incorrectly assigned the practical gap to the oracle row. Fixed the metric so Oracle Noisy HT has `oracle_gap=0.0` and Noisy HT reports its Type-II gap to oracle.
+- Continuation handoff on 2026-05-22 06:26 confirmed the corrected artifact-based pipeline needs a fresh compute-container run. Submitted a CPU test job to regenerate canonical/train/test artifacts and validate the evaluator contract.
 
 ## April 24 Final Baseline Refresh
 - CPU job `8f4134be-d14` reran the split evaluation after the environment cleanup and produced valid `scoring/scores_train.json` and `scoring/scores_test.json`.

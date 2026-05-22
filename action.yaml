@@ -5,4 +5,4 @@ action: submit
 milestone: core_claim
 gpus: 0
 test: true
-notes: "CPU job to regenerate Noisy HT method artifacts, aggregate canonical/train/test scores from those artifacts, and validate the corrected evaluator contract."
+notes: "Fresh CPU test for the current artifact-based Noisy HT pipeline: regenerate canonical/train/test artifacts, aggregate scores from artifacts, and run validate.py --compare."
