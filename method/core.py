@@ -35,7 +35,6 @@ def estimate_tpr_fpr(s_m, s_j):
         n_m1: count of ground-truth failures (S_M = 1)
         n_m0: count of ground-truth successes (S_M = 0)
     """
-    n = len(s_m)
     n_m1 = np.sum(s_m == 1)
     n_m0 = np.sum(s_m == 0)
 
@@ -142,9 +141,8 @@ def direct_hypothesis_test(s_m, alpha, zeta):
     n_m = len(s_m)
     r_m_hat = np.mean(s_m)
 
-    # Lower-tail test: z_zeta is negative for zeta < 0.5
-    # c_M = alpha + z_zeta * SE = alpha - |z_zeta| * SE
-    # Reject H0 if R_M > c_M (observed rate exceeds lower confidence bound)
+    # Lower-tail test: z_zeta is negative for zeta < 0.5.
+    # Reject H0 when the observed failure rate is sufficiently below alpha.
     z_zeta = norm.ppf(zeta)
     se = np.sqrt(alpha * (1 - alpha) / n_m)
     c_m = alpha + z_zeta * se
