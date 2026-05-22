@@ -27,16 +27,20 @@
   },
   "synthetic_type2_curve": {
     "rm_0.01": {
-      "type2_error": 0.461
+      "type2_error": 0.461,
+      "decision_error": 0.461
     },
     "rm_0.10": {
-      "type2_error": 0.073
+      "type2_error": 0.073,
+      "decision_error": 0.073
     },
     "rm_0.20": {
-      "type2_error": 0.606
+      "type2_error": 0.606,
+      "decision_error": 0.606
     },
     "rm_0.30": {
-      "type2_error": 0.999
+      "type2_error": 0.999,
+      "decision_error": 0.001
     }
   },
   "synthetic_type1_control": {

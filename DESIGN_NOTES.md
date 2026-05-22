@@ -23,6 +23,7 @@
 
 ## Runtime Concerns for Next Iteration
 
-- `scripts/run.sh` still invokes the older shared `eval/evaluate.py` for train/test artifacts rather than the split-specific `eval/train/evaluate.py` and `eval/test/evaluate.py`. I did not edit it because this pass was limited to the split folders and `scripts/evaluate_{train,test}.sh`. The runner should confirm whether orchestration uses the split scripts or update run orchestration in a later allowed pass.
+- 2026-05-22 runner update: `scripts/run.sh` now regenerates train/test artifacts and invokes the split-specific `scripts/evaluate_train.sh` and `scripts/evaluate_test.sh`; the completed CPU job passed post-design validation.
+- 2026-05-22 runtime metric fix: the original curve score treated the unsafe `rm_0.30` setting as if non-certification were bad. The split evaluators now report a threshold-aware `decision_error` primary metric for `synthetic_type2_curve`, while retaining the raw non-certification rate as zero-weight diagnostic `type2_error`.
 - The split currently differs mainly by random seed while keeping the same synthetic regime (`tpr=0.9`, `fpr=0.1`, `alpha=0.25`, `n_m=100`, `n_j=10000`). That is calibrated for reproducibility but only moderately resistant to a method tuned to this single judge-quality regime. A stronger future design would add held-out judge-quality or calibration-size regimes if method artifact generation is allowed to change.
 - The evaluator remains artifact-only, which is good for method independence, but it trusts the artifact fields. A future runner should ensure the method-generation step, not the evaluator, is responsible for producing honest held-out artifacts.

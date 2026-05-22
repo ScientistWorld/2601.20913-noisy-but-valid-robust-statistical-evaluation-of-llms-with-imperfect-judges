@@ -55,18 +55,38 @@ def summarize_rows(
     return scores
 
 
-def build_curve_scores(rows: list[dict[str, Any]]) -> dict[str, dict[str, float]]:
+def parse_rm(setting: str) -> float:
+    if not setting.startswith("rm_"):
+        raise ValueError(f"unexpected curve setting: {setting}")
+    return float(setting.removeprefix("rm_"))
+
+
+def build_curve_scores(
+    rows: list[dict[str, Any]], alpha: float
+) -> dict[str, dict[str, float]]:
     suffix = "_type2_failure"
-    grouped: dict[str, list[int | float]] = {}
+    grouped: dict[str, dict[str, list[int | float]]] = {}
     for row in rows:
         setting = row["setting"]
+        rm = parse_rm(setting)
         for field in (key for key in row if key.endswith(suffix)):
             method = method_name(field, suffix)
             entry = setting if method == "noisy_ht" else f"{method}__{setting}"
-            grouped.setdefault(entry, []).append(row[field])
+            raw_type2_failure = row[field]
+            decision_error = (
+                raw_type2_failure if rm < alpha else 1 - raw_type2_failure
+            )
+            metrics = grouped.setdefault(
+                entry, {"type2_error": [], "decision_error": []}
+            )
+            metrics["type2_error"].append(raw_type2_failure)
+            metrics["decision_error"].append(decision_error)
     return {
-        entry: {"type2_error": rounded(mean(values))}
-        for entry, values in sorted(grouped.items())
+        entry: {
+            "type2_error": rounded(mean(metrics["type2_error"])),
+            "decision_error": rounded(mean(metrics["decision_error"])),
+        }
+        for entry, metrics in sorted(grouped.items())
     }
 
 
@@ -128,7 +148,9 @@ def build_scores(artifact: dict[str, Any], artifact_path: Path) -> dict[str, Any
         },
         "synthetic_power_comparison": power_scores,
         "oracle_gap": build_oracle_gap_scores(power_scores),
-        "synthetic_type2_curve": build_curve_scores(artifact["curve"]["rows"]),
+        "synthetic_type2_curve": build_curve_scores(
+            artifact["curve"]["rows"], artifact["curve"]["config"]["alpha"]
+        ),
         "synthetic_type1_control": summarize_rows(
             type1_rows, "_type1_error", "type1_error"
         ),

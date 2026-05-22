@@ -3,4 +3,4 @@ action: submit
 gpus: 0
 test: false
 milestone: core_claim_plus
-notes: "Run split train/test evaluation on the frozen Noisy HT method; regenerate outputs/synthetic_{train,test}_results.json and scoring/scores_{train,test}.json, then validate post-design."
+notes: "Rerun split train/test evaluation after replacing the curve primary metric with threshold-aware decision_error; regenerate scores_{train,test}.json and validate post-design."

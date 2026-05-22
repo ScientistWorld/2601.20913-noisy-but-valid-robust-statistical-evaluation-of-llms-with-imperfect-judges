@@ -26,15 +26,16 @@
     },
     "synthetic_type2_curve": {
       "weight": 0.25,
-      "primary_metric": "type2_error",
+      "primary_metric": "decision_error",
       "metrics": {
-        "type2_error": {"higher_is_better": false, "coefficient": -1.0, "description": "Failure to certify across reliability levels around the target threshold."}
+        "decision_error": {"higher_is_better": false, "coefficient": -1.0, "description": "Threshold-aware decision error: non-certification below the target risk or false certification at/above it."},
+        "type2_error": {"higher_is_better": false, "coefficient": 0.0, "description": "Raw non-certification rate retained as a diagnostic; below-threshold settings are Type-II failures, above-threshold settings are correct non-certifications."}
       },
       "results": {
-        "rm_0.01": {"type": "proposed", "type2_error": 0.42},
-        "rm_0.10": {"type": "proposed", "type2_error": 0.07},
-        "rm_0.20": {"type": "proposed", "type2_error": 0.62},
-        "rm_0.30": {"type": "proposed", "type2_error": 1.00}
+        "rm_0.01": {"type": "proposed", "decision_error": 0.42, "type2_error": 0.42},
+        "rm_0.10": {"type": "proposed", "decision_error": 0.07, "type2_error": 0.07},
+        "rm_0.20": {"type": "proposed", "decision_error": 0.62, "type2_error": 0.62},
+        "rm_0.30": {"type": "proposed", "decision_error": 0.00, "type2_error": 1.00}
       }
     },
     "synthetic_type1_control": {
