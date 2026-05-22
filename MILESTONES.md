@@ -1,6 +1,6 @@
 # Reproduction Milestones
 
-**Current: core_claim**
+**Current: core_claim_plus**
 
 ## Progress Log
 
@@ -56,3 +56,9 @@
 - Rechecked the continuation state and confirmed only unrelated workspace/system files remain dirty.
 - Kept the current milestone at `core_claim` while submitting a fresh CPU test job for the artifact-producing method pipeline.
 - The submitted job regenerates canonical, train, and held-out artifacts, aggregates scores from those artifacts, and runs `validate.py --compare`.
+
+### [2026-05-22 06:28] - core_claim_plus
+- CPU test job `abaa881d-a9e` completed successfully with the corrected artifact-based pipeline.
+- Revalidated the core claim from method artifacts: Noisy HT Type-II `0.627` remained below Direct HT `0.721`, while Noisy HT Type-I `0.028` stayed below the target `zeta=0.05`.
+- Revalidated additional settings: the held-out slice preserved the same qualitative claim with Noisy HT Type-II `0.628` below Direct HT `0.732`, and the R_M Type-II curve matched the packaged reference values.
+- `validate.py --compare` passed inside the compute container, including evaluator/method separation, method-output reading, train/test independence, and shared-path checks.

@@ -74,6 +74,13 @@ All methods maintain Type-I error near the target zeta=0.05.
 - Continuation audit on 2026-05-22 found the evaluator still regenerated synthetic trials internally, so future `method/` edits would not necessarily affect scores. Fixed by making `method/run_synthetic.py` produce trial artifacts and making `eval/evaluate.py` aggregate those artifacts only.
 - The prior oracle-gap score incorrectly assigned the practical gap to the oracle row. Fixed the metric so Oracle Noisy HT has `oracle_gap=0.0` and Noisy HT reports its Type-II gap to oracle.
 - Continuation handoff on 2026-05-22 06:26 confirmed the corrected artifact-based pipeline needs a fresh compute-container run. Submitted a CPU test job to regenerate canonical/train/test artifacts and validate the evaluator contract.
+- CPU test job `abaa881d-a9e` completed successfully after the artifact-pipeline correction. It regenerated canonical, train, and held-out method artifacts, scored them through `eval/`, and passed `validate.py --compare` inside the container.
+
+## May 22 Artifact Pipeline Refresh
+- CPU job `abaa881d-a9e` verified the corrected gym contract: `method/run_synthetic.py` writes artifacts under `outputs/`, and `eval/evaluate.py` only aggregates those artifacts into scoring files.
+- Canonical results preserved the central claim: Direct/Noisy/Oracle Type-II `0.721`/`0.627`/`0.000`; Direct/Noisy/Oracle Type-I `0.037`/`0.028`/`0.038`.
+- Held-out test results preserved the central claim: Direct/Noisy/Oracle Type-II `0.732`/`0.628`/`0.000`; Direct/Noisy/Oracle Type-I `0.042`/`0.039`/`0.049`.
+- Validation passed for reference/scores structure, evaluator independence from `method/`, artifact-reading behavior, train/test differentiation, and shared-path constraints.
 
 ## April 24 Final Baseline Refresh
 - CPU job `8f4134be-d14` reran the split evaluation after the environment cleanup and produced valid `scoring/scores_train.json` and `scoring/scores_test.json`.

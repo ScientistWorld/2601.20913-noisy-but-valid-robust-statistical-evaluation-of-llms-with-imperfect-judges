@@ -1,8 +1,6 @@
 # IMPORTANT: Once you set action to 'submit' or 'done', STOP immediately.
 # Do NOT sleep, poll, or wait for jobs. The system reads this file
 # only after your turn ends. Sleeping blocks the entire pipeline.
-action: submit
-milestone: core_claim
-gpus: 0
-test: true
-notes: "Fresh CPU test for the current artifact-based Noisy HT pipeline: regenerate canonical/train/test artifacts, aggregate scores from artifacts, and run validate.py --compare."
+action: done
+milestone: core_claim_plus
+notes: "Artifact-based Noisy HT reproduction validated in CPU job abaa881d-a9e. Core claim and additional train/test and R_M-curve settings are reproduced; environment is packaged and reusable."
