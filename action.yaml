@@ -1,9 +1,6 @@
-# This iteration writes files only — do NOT submit compute jobs.
-# Once you set action to 'done', STOP immediately.
-# Do NOT sleep, poll, or wait. The system reads this file
-# only after your turn ends.
-action: done
+# Run the split evaluation job. Do NOT sleep, poll, or wait.
+action: submit
 gpus: 0
 test: false
 milestone: core_claim_plus
-notes: "Improvements: removed held-out scorer dependency on visible train scores; made evaluate_test self-contained; added missing metric descriptions; wrote handoff notes. Static checks: bash -n passed for train/test scripts; no scores_train/test stubs found."
+notes: "Run split train/test evaluation on the frozen Noisy HT method; regenerate outputs/synthetic_{train,test}_results.json and scoring/scores_{train,test}.json, then validate post-design."
