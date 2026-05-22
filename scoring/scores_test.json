@@ -44,5 +44,14 @@
     "oracle_noisy_ht": {
       "type1_error": 0.049
     }
+  },
+  "_diagnostics": {
+    "ppi_oracle_ordering_type2": {
+      "noisy_ht": 0.641,
+      "ppi": 0.528,
+      "ppi_pp": 0.425,
+      "ridge_ppi": 0.425,
+      "oracle_noisy_ht": 0.0
+    }
   }
 }
