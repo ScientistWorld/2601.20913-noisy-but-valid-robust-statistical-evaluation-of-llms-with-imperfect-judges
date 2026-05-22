@@ -1,6 +1,6 @@
-# Run the split evaluation job. Do NOT sleep, poll, or wait.
-action: submit
+# Split evaluation is complete.
+action: done
 gpus: 0
 test: false
 milestone: core_claim_plus
-notes: "Rerun split train/test evaluation after replacing the curve primary metric with threshold-aware decision_error; regenerate scores_{train,test}.json and validate post-design."
+notes: "Seed-heldout synthetic split; 18 reference-scored train values and 18 test values plus diagnostics; train/test close but distinct (Noisy HT Type-II 0.627 vs 0.628, Type-I 0.028 vs 0.039, max curve decision_error gap 0.038); no remaining caveats beyond single-regime seed split."
