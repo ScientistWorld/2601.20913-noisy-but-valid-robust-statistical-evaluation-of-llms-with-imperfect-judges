@@ -5,4 +5,4 @@ action: submit
 gpus: 0
 test: false
 milestone: core_claim_plus
-notes: "CPU: reproduce reference (canonical/train/hidden test) from final code, run hardening audit (variants + shortcuts through hidden test, 2 audit seeds, train transfer, no-arg evaluate_test.sh shortcut runs), byte-reproducibility check, validate --post-design"
+notes: "CPU rerun after fixing batch workdir (container /tmp too small): reproduce reference (canonical/train/hidden test), hardening audit (variants + shortcuts, 2 audit seeds, train transfer, no-arg shortcut runs), byte-reproducibility, validate"
