@@ -24,5 +24,9 @@
     "trajectory entries absent at start"
   ],
   "required_protocol_exception": "action.yaml will be set to done after the audit commit",
-  "generated_job_records_restored_to_start": true
+  "generated_job_records_restored_to_start": true,
+  "indexed_non_audit_changes": [
+    "action.yaml"
+  ],
+  "preexisting_read_only_session_metadata_restored_in_git": true
 }
