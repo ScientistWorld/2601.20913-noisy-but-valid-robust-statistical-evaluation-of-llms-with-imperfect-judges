@@ -1,8 +1,8 @@
 # Once you set action to 'submit' or 'done', STOP immediately.
 # Do NOT sleep, poll, or wait for jobs. The system reads this file
 # only after your turn ends.
-action: pending
+action: submit
 gpus: 0
 test: false
 milestone: core_claim_plus
-notes: ""
+notes: "CPU: reproduce reference (canonical/train/hidden test) from final code, run hardening audit (variants + shortcuts through hidden test, 2 audit seeds, train transfer, no-arg evaluate_test.sh shortcut runs), byte-reproducibility check, validate --post-design"
