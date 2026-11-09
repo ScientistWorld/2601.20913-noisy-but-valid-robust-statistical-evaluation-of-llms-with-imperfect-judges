@@ -1,0 +1,27 @@
+{
+  "evaluator_exit_codes": {
+    "test_hidden": 1,
+    "test_seed101": 1,
+    "test_seed202": 1,
+    "train": 1
+  },
+  "noarg_evaluate_test": {
+    "sc_point_estimate": {
+      "exit_code": 1,
+      "scores_file_forged_after_run": false
+    },
+    "sc_score_forgery": {
+      "exit_code": 1,
+      "scores_file_forged_after_run": false
+    },
+    "sc_constant_never": {
+      "exit_code": 1,
+      "scores_file_forged_after_run": false
+    },
+    "sc_hardcoded_judge": {
+      "exit_code": 1,
+      "scores_file_forged_after_run": false
+    },
+    "_restored_reference_scores_identical": true
+  }
+}
