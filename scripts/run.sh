@@ -25,7 +25,7 @@ run "hardening audit (variants and shortcuts through the hidden test)" \
 run "audit summary" \
   python3 redteam/hardening/summarize.py
 run "hidden test re-run reproduces the saved reference scores byte for byte" \
-  bash -c 'cp scoring/scores_test.json /tmp/scores_test.saved.json && bash scripts/evaluate_test.sh > /tmp/rerun.log 2>&1 && cmp scoring/scores_test.json /tmp/scores_test.saved.json && echo identical'
+  bash -c 'mkdir -p tmp && cp scoring/scores_test.json tmp/scores_test.saved.json && bash scripts/evaluate_test.sh > tmp/rerun.log 2>&1 && cmp scoring/scores_test.json tmp/scores_test.saved.json && echo identical'
 run "validate" \
   python3 validate.py --post-design
 

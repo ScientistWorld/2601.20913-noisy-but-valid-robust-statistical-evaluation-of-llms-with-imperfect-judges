@@ -39,6 +39,9 @@ SLICE = "train"
 WORKSPACE = Path(__file__).resolve().parents[2]
 DEFAULT_CERTIFIER_DIR = WORKSPACE / "method" / "certifiers"
 DEFAULT_OUTPUT = WORKSPACE / "scoring" / "scores_train.json"
+# Instance batches (~300 MB) are written under the workspace: container /tmp
+# is a small tmpfs. The directory is removed after scoring.
+DEFAULT_WORKDIR = WORKSPACE / "tmp"
 
 # ── Fixed benchmark contract (same on train and test) ────────────────────────
 N_M = 100          # human-labelled calibration items per instance
@@ -323,7 +326,9 @@ def main() -> None:
     diag_rates = {m: cell_rates(d, inst) for m, d in diagnostics.items()}
 
     certifiers = discover(args.certifier_dir)
-    work = Path(tempfile.mkdtemp(prefix="cert_eval_", dir=args.workdir))
+    workdir = args.workdir if args.workdir is not None else DEFAULT_WORKDIR
+    workdir.mkdir(parents=True, exist_ok=True)
+    work = Path(tempfile.mkdtemp(prefix=f"cert_eval_{SLICE}_", dir=str(workdir)))
     validity: dict[str, Any] = {}
     failed: list[str] = []
     try:
