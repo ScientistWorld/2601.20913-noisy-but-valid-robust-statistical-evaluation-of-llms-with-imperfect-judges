@@ -1,0 +1,12 @@
+{
+  "case": "oracle_comparator_shortcut",
+  "command": [
+    "bash",
+    "scripts/evaluate_test.sh"
+  ],
+  "no_arguments": true,
+  "method_entrypoint_replaced": true,
+  "artifact_sha256": "a8ca18a15c2af622ef9d2feeedd75bd7ff027b1037fd85030a6a20994e14fa2d",
+  "test_returncode": 1,
+  "test_error": ""
+}

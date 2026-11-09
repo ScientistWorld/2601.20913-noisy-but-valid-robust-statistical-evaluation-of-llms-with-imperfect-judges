@@ -1,4 +1,4 @@
 action: submit
 gpus: 0
 test: false
-notes: "Audit scoring: three matched reference/better/weaker seeds and 18 shortcut checks, with unmodified no-argument hidden-test invocations."
+notes: "Finish audit: public-seed-43 control and two comparison-row shortcuts; recompute ranks excluding rejected attempts."

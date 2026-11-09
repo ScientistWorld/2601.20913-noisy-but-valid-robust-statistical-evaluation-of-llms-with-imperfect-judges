@@ -6,7 +6,6 @@
   ],
   "no_arguments": true,
   "method_entrypoint_replaced": true,
-  "artifact_sha256": "b4f4042631a94efad99b43be40ebece1629908c774db8de6ef877cca8667e20a",
-  "test_returncode": 1,
-  "test_error": ""
+  "artifact_sha256": "9c2746b3c4bfe6c86915af07e9dba632a6290fa8d3cc8c13193ab886398a4c13",
+  "test_returncode": 0
 }

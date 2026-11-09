@@ -6,10 +6,10 @@
   },
   "synthetic_power_comparison": {
     "direct_ht": {
-      "type2_error": 0.721
+      "type2_error": 0.745
     },
     "noisy_ht": {
-      "type2_error": 0.313
+      "type2_error": 0.334
     },
     "oracle_noisy_ht": {
       "type2_error": 1.0
@@ -21,37 +21,37 @@
       "oracle_gap": 0.0
     },
     "noisy_ht": {
-      "type2_error_noisy": 0.313,
-      "oracle_gap": -0.687
+      "type2_error_noisy": 0.334,
+      "oracle_gap": -0.666
     }
   },
   "synthetic_type2_curve": {
     "rm_0.01": {
-      "type2_error": 0.38,
-      "decision_error": 0.38
+      "type2_error": 0.368,
+      "decision_error": 0.368
     },
     "rm_0.10": {
-      "type2_error": 0.012,
-      "decision_error": 0.012
+      "type2_error": 0.015,
+      "decision_error": 0.015
     },
     "rm_0.20": {
-      "type2_error": 0.316,
-      "decision_error": 0.316
+      "type2_error": 0.329,
+      "decision_error": 0.329
     },
     "rm_0.30": {
-      "type2_error": 0.999,
-      "decision_error": 0.001
+      "type2_error": 1.0,
+      "decision_error": 0.0
     }
   },
   "synthetic_type1_control": {
     "direct_ht": {
-      "type1_error": 0.037
+      "type1_error": 0.033
     },
     "noisy_ht": {
-      "type1_error": 0.022
+      "type1_error": 0.037
     },
     "oracle_noisy_ht": {
-      "type1_error": 0.049
+      "type1_error": 0.055
     }
   }
 }

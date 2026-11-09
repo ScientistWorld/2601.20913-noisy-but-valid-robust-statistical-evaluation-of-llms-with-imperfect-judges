@@ -1,0 +1,57 @@
+{
+  "_metadata": {
+    "schema": "noisy_ht_slice_scores_v1",
+    "slice": "test",
+    "artifact": "/home/user/outputs/synthetic_test_results.json"
+  },
+  "synthetic_power_comparison": {
+    "direct_ht": {
+      "type2_error": 0.721
+    },
+    "noisy_ht": {
+      "type2_error": 0.313
+    },
+    "oracle_noisy_ht": {
+      "type2_error": 1.0
+    }
+  },
+  "oracle_gap": {
+    "oracle_noisy_ht": {
+      "type2_error_noisy": 1.0,
+      "oracle_gap": 0.0
+    },
+    "noisy_ht": {
+      "type2_error_noisy": 0.313,
+      "oracle_gap": -0.687
+    }
+  },
+  "synthetic_type2_curve": {
+    "rm_0.01": {
+      "type2_error": 0.38,
+      "decision_error": 0.38
+    },
+    "rm_0.10": {
+      "type2_error": 0.012,
+      "decision_error": 0.012
+    },
+    "rm_0.20": {
+      "type2_error": 0.316,
+      "decision_error": 0.316
+    },
+    "rm_0.30": {
+      "type2_error": 0.999,
+      "decision_error": 0.001
+    }
+  },
+  "synthetic_type1_control": {
+    "direct_ht": {
+      "type1_error": 0.037
+    },
+    "noisy_ht": {
+      "type1_error": 0.022
+    },
+    "oracle_noisy_ht": {
+      "type1_error": 0.049
+    }
+  }
+}
