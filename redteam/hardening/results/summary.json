@@ -1,0 +1,336 @@
+{
+  "metrics": [
+    "synthetic_power_comparison/type2_error",
+    "synthetic_type2_curve/type2_error",
+    "judge_quality_sweep/type2_error",
+    "oracle_gap/oracle_gap"
+  ],
+  "reference_vector": [
+    0.3545,
+    0.337,
+    0.4217,
+    0.3847
+  ],
+  "cohort_size": 19,
+  "cohort_std": [
+    0.14142562623595725,
+    0.09199931470297577,
+    0.10103491785535722,
+    0.08685420234723223
+  ],
+  "audit_reference_matches_saved": true,
+  "runs": {
+    "hidden/alt_ppi_pp": {
+      "passed": false,
+      "rank": -5.5422011377050975,
+      "values": [
+        1.0,
+        1.0,
+        1.0,
+        0.9999
+      ],
+      "reasons": [
+        "Type-I error 0.0660 at the null boundary in regime 'weak_tpr' exceeds the limit 0.0650"
+      ]
+    },
+    "hidden/better_fallback": {
+      "passed": true,
+      "rank": 0.3011547449934302,
+      "values": [
+        0.3545,
+        0.2383,
+        0.4203,
+        0.348
+      ],
+      "reasons": []
+    },
+    "hidden/better_union": {
+      "passed": true,
+      "rank": 0.6176421245221595,
+      "values": [
+        0.364,
+        0.227,
+        0.3067,
+        0.2828
+      ],
+      "reasons": []
+    },
+    "hidden/noisy_ht": {
+      "passed": true,
+      "rank": 0.0,
+      "values": [
+        0.3545,
+        0.337,
+        0.4217,
+        0.3847
+      ],
+      "reasons": []
+    },
+    "hidden/sc_constant_always": {
+      "passed": false,
+      "rank": -5.5422011377050975,
+      "values": [
+        1.0,
+        1.0,
+        1.0,
+        0.9999
+      ],
+      "reasons": [
+        "Type-I error 1.0000 at the null boundary in regime 'hq' exceeds the limit 0.0650",
+        "false-certification rate 1.0000 inside the null in regime 'hq' exceeds the limit 0.0650",
+        "Type-I error 1.0000 at the null boundary in regime 'weak_tpr' exceeds the limit 0.0650",
+        "false-certification rate 1.0000 inside the null in regime 'weak_tpr' exceeds the limit 0.0650",
+        "Type-I error 1.0000 at the null boundary in regime 'high_fpr' exceeds the limit 0.0650",
+        "false-certification rate 1.0000 inside the null in regime 'high_fpr' exceeds the limit 0.0650"
+      ]
+    },
+    "hidden/sc_constant_never": {
+      "passed": true,
+      "rank": -5.5422011377050975,
+      "values": [
+        1.0,
+        1.0,
+        1.0,
+        0.9999
+      ],
+      "reasons": []
+    },
+    "hidden/sc_crash": {
+      "passed": false,
+      "rank": -5.5422011377050975,
+      "values": [
+        1.0,
+        1.0,
+        1.0,
+        0.9999
+      ],
+      "reasons": [
+        "main run: exit code 1: Traceback (most recent call last):\n  File \"/home/user/redteam/hardening/_runs/hidden_all/sc_crash.py\", line 2, in <module>\n    raise RuntimeError(\"deliberate crash\")\nRuntimeError: deliberate crash\n"
+      ]
+    },
+    "hidden/sc_empty_output": {
+      "passed": false,
+      "rank": -5.5422011377050975,
+      "values": [
+        1.0,
+        1.0,
+        1.0,
+        0.9999
+      ],
+      "reasons": [
+        "main run: expected a list of 24000 decisions, got 0"
+      ]
+    },
+    "hidden/sc_extra_fields": {
+      "passed": true,
+      "rank": 0.0,
+      "values": [
+        0.3545,
+        0.337,
+        0.4217,
+        0.3847
+      ],
+      "reasons": []
+    },
+    "hidden/sc_hardcoded_judge": {
+      "passed": false,
+      "rank": -5.5422011377050975,
+      "values": [
+        1.0,
+        1.0,
+        1.0,
+        0.9999
+      ],
+      "reasons": [
+        "Type-I error 0.9423 at the null boundary in regime 'weak_tpr' exceeds the limit 0.0650",
+        "false-certification rate 0.1760 inside the null in regime 'weak_tpr' exceeds the limit 0.0650"
+      ]
+    },
+    "hidden/sc_naive_judge": {
+      "passed": false,
+      "rank": -5.5422011377050975,
+      "values": [
+        1.0,
+        1.0,
+        1.0,
+        0.9999
+      ],
+      "reasons": [
+        "Type-I error 0.4553 at the null boundary in regime 'weak_tpr' exceeds the limit 0.0650"
+      ]
+    },
+    "hidden/sc_nan_output": {
+      "passed": false,
+      "rank": -5.5422011377050975,
+      "values": [
+        1.0,
+        1.0,
+        1.0,
+        0.9999
+      ],
+      "reasons": [
+        "main run: decision 0 is nan; every decision must be 0/1 or true/false"
+      ]
+    },
+    "hidden/sc_negative_output": {
+      "passed": false,
+      "rank": -5.5422011377050975,
+      "values": [
+        1.0,
+        1.0,
+        1.0,
+        0.9999
+      ],
+      "reasons": [
+        "main run: decision 0 is -1000; every decision must be 0/1 or true/false"
+      ]
+    },
+    "hidden/sc_null_output": {
+      "passed": false,
+      "rank": -5.5422011377050975,
+      "values": [
+        1.0,
+        1.0,
+        1.0,
+        0.9999
+      ],
+      "reasons": [
+        "main run: decision 0 is None; every decision must be 0/1 or true/false"
+      ]
+    },
+    "hidden/sc_point_estimate": {
+      "passed": false,
+      "rank": -5.5422011377050975,
+      "values": [
+        1.0,
+        1.0,
+        1.0,
+        0.9999
+      ],
+      "reasons": [
+        "Type-I error 0.4740 at the null boundary in regime 'hq' exceeds the limit 0.0650",
+        "Type-I error 0.5060 at the null boundary in regime 'weak_tpr' exceeds the limit 0.0650",
+        "false-certification rate 0.0990 inside the null in regime 'weak_tpr' exceeds the limit 0.0650",
+        "Type-I error 0.4857 at the null boundary in regime 'high_fpr' exceeds the limit 0.0650",
+        "false-certification rate 0.1470 inside the null in regime 'high_fpr' exceeds the limit 0.0650"
+      ]
+    },
+    "hidden/sc_pooled_calibration": {
+      "passed": false,
+      "rank": -5.5422011377050975,
+      "values": [
+        1.0,
+        1.0,
+        1.0,
+        0.9999
+      ],
+      "reasons": [
+        "26 of 6000 decisions changed when the same instances were re-submitted in a different batch; decisions must depend only on each instance's own data",
+        "Type-I error 0.2817 at the null boundary in regime 'hq' exceeds the limit 0.0650",
+        "Type-I error 0.3540 at the null boundary in regime 'weak_tpr' exceeds the limit 0.0650",
+        "false-certification rate 0.0730 inside the null in regime 'weak_tpr' exceeds the limit 0.0650",
+        "Type-I error 0.2490 at the null boundary in regime 'high_fpr' exceeds the limit 0.0650"
+      ]
+    },
+    "hidden/sc_train_box_prior": {
+      "passed": false,
+      "rank": -5.5422011377050975,
+      "values": [
+        1.0,
+        1.0,
+        1.0,
+        0.9999
+      ],
+      "reasons": [
+        "Type-I error 0.0817 at the null boundary in regime 'weak_tpr' exceeds the limit 0.0650"
+      ]
+    },
+    "hidden/weaker_conservative": {
+      "passed": true,
+      "rank": -0.7056991194052175,
+      "values": [
+        0.473,
+        0.3763,
+        0.5047,
+        0.455
+      ],
+      "reasons": []
+    },
+    "hidden/weaker_direct": {
+      "passed": true,
+      "rank": -1.08889666545127,
+      "values": [
+        0.733,
+        0.4075,
+        0.322,
+        0.3904
+      ],
+      "reasons": []
+    },
+    "hidden/weaker_half_calibration": {
+      "passed": true,
+      "rank": -1.2366659872713726,
+      "values": [
+        0.5075,
+        0.47,
+        0.5572,
+        0.5209
+      ],
+      "reasons": []
+    }
+  },
+  "seed_check": {
+    "better_fallback": {
+      "paired_gains": [
+        0.3011547449934302,
+        0.2847176958871018,
+        0.28683936592730874
+      ],
+      "min_abs_gain_over_ref_spread": 2.618566509799376
+    },
+    "better_union": {
+      "paired_gains": [
+        0.6176421245221595,
+        0.5768244499201183,
+        0.5378410843071041
+      ],
+      "min_abs_gain_over_ref_spread": 4.946558191870249
+    },
+    "weaker_direct": {
+      "paired_gains": [
+        -1.08889666545127,
+        -1.1146365623742045,
+        -1.145231578939299
+      ],
+      "min_abs_gain_over_ref_spread": 10.014650940114194
+    },
+    "weaker_conservative": {
+      "paired_gains": [
+        -0.7056991194052175,
+        -0.7868340023392242,
+        -0.7831791496177919
+      ],
+      "min_abs_gain_over_ref_spread": 6.490359070628907
+    },
+    "weaker_half_calibration": {
+      "paired_gains": [
+        -1.2366659872713726,
+        -1.3331725314916065,
+        -1.3299988073544113
+      ],
+      "min_abs_gain_over_ref_spread": 11.373694662662864
+    },
+    "alt_ppi_pp": {
+      "paired_gains": [
+        1.3987664903326962
+      ],
+      "min_abs_gain_over_ref_spread": 12.864543158101403
+    },
+    "reference_rank_by_seed": {
+      "hidden": 0.0,
+      "seed101": 0.07978760344169628,
+      "seed202": 0.10873036633654788
+    },
+    "reference_spread": 0.10873036633654788
+  }
+}

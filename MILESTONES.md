@@ -4,6 +4,12 @@
 
 ## Progress Log
 
+### [2026-11-09] - core_claim_plus (hardening)
+- Hidden test rebuilt: evaluator-generated instances with hidden judge regimes, certifier interface (`method/certifiers/`), evaluator-owned comparison rows, Type-I validity gate, batch-consistency check; failed runs score worst and exit non-zero.
+- Reference repaired (`method/core.py` had been dropped by the `core.*` ignore rule; restored as `method/hypothesis_tests.py`).
+- New scored experiment `judge_quality_sweep` (where the paper's method falls short) and a rare-failure curve cell.
+- Audit: better variants +0.29..+0.62 paired gain vs reference spread 0.11; weaker variants -0.7..-1.3; every shortcut fails or ranks at the bottom. See `HARDENING.md`.
+
 ### [2026-05-22 07:15] - core_claim_plus
 - Completed final verification of the `core_claim_plus` workspace.
 - Confirmed `python3 validate.py --compare` passes and that scoring uses artifact outputs rather than regenerating the method.

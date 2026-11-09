@@ -23,10 +23,10 @@ This paper addresses the challenge of statistically certifying that an LLM's fai
 ## Research Question
 
 How can we statistically certify that a Large Language Model's failure rate is below a specified safety threshold, when we have:
-1. A **small dataset** with ground-truth human labels (`D_M` of size `n_M`)
-2. A **large dataset** labeled by an imperfect LLM-as-a-Judge (`D_J` of size `n_J >> n_M`)
+1. A **small dataset** with ground-truth human labels (`D_M` of size `n_M`), on which the judge's labels are also available
+2. A **large dataset** labeled only by an imperfect LLM-as-a-Judge (`D_J` of size `n_J >> n_M`)
 
-The challenge is that LLM judges are noisy — they have unknown True Positive Rate (TPR) and False Positive Rate (FPR) relative to ground truth. Naively trusting judge labels gives unreliable conclusions. Using only the small human-labeled set lacks statistical power.
+The challenge is that LLM judges are noisy — they have unknown True Positive Rate (TPR) and False Positive Rate (FPR) relative to ground truth, and these differ from judge to judge and task to task. Naively trusting judge labels gives unreliable conclusions. Using only the small human-labeled set lacks statistical power.
 
 ## Why It Matters
 
@@ -35,12 +35,14 @@ LLM deployment in safety-critical settings requires statistically rigorous guara
 ## Success Criteria
 
 A successful solution must:
-1. **Control Type-I error**: Guarantee that the probability of incorrectly certifying an unsafe model stays below a specified significance level ζ (e.g., 5%)
-2. **Maximize statistical power**: Minimize Type-II error — the probability of incorrectly rejecting a safe model
-3. **Use the available supervision effectively**: When the auxiliary judge is informative, the large judge-labeled dataset should improve certification power without weakening Type-I error control
-4. **Expose reliability tradeoffs**: The evaluation should make clear how certification outcomes change as auxiliary-judge quality, model failure rate, and sample sizes change
+1. **Control Type-I error**: the probability of incorrectly certifying an unsafe model must stay at the specified significance level ζ (here 5%), whatever the (unknown) quality of the judge. This is a hard requirement, not a quantity to trade off.
+2. **Maximize statistical power**: minimize Type-II error — the probability of failing to certify a genuinely safe model — across model failure rates and judge qualities.
+3. **Use the available supervision effectively**: when the judge is informative, the large judge-labeled dataset should improve certification power; when it is not, the method should not do worse than it has to.
+4. **Respect the label budget**: each certification decision uses only its own `n_M` human labels and `n_J` judge labels; judge reliability must be learned from that data, not assumed.
 
----
+## Benchmark Setting
+
+The benchmark is synthetic: ground-truth labels are Bernoulli(R_M) and judge labels flip them with the judge's TPR/FPR. Each instance has `n_M = 100`, `n_J = 10,000`, `alpha = 0.25`, `zeta = 0.05`, and its own judge TPR/FPR drawn around one of three judge-quality regimes. See `briefing/evaluation.md` for the instance format, the certifier interface, and how scores are computed.
 
 # Paper's Method
 
@@ -84,49 +86,104 @@ The variance term includes contributions from both the large dataset (sampling v
 
 # Evaluation
 
-## Metrics
+## What is measured
 
-Evaluation is based on statistical hypothesis testing outcomes. The core question is: can we reject the null hypothesis that the LLM's true failure rate R_M ≥ α?
+Each **instance** is one certification problem: decide whether to certify that a
+model's true failure rate `R_M` is below the threshold `alpha`, i.e. reject
+`H0: R_M >= alpha` in favour of `H1: R_M < alpha`, at significance level `zeta`.
+For every instance the method sees only:
 
-Two primary metrics are used:
+- `n_M = 100` calibration items with the ground-truth failure label `S_M` and the
+  judge's label `S_J'` on the same items;
+- `n_J = 10,000` further items with the judge's label `S_J` only;
+- `alpha = 0.25` and `zeta = 0.05`.
 
-1. **Type-I Error Rate**: The probability of incorrectly rejecting the null hypothesis when it is true (i.e., certifying an unsafe model as safe). This must be controlled below the significance level ζ (typically 0.05). Lower is better.
+Labels are i.i.d.: `S_M ~ Bernoulli(R_M)`, and the judge flags a failure with
+probability TPR when `S_M = 1` and FPR when `S_M = 0`. **Every instance has its own
+judge TPR/FPR**, drawn around the centre of one of three judge-quality regimes
+(an informative judge, a judge that misses many failures, a judge with many false
+alarms). The method is never told `R_M`, TPR, FPR, the regime, or which instances
+are null cases.
 
-2. **Type-II Error Rate**: The probability of incorrectly failing to reject the null hypothesis when the alternative is true (i.e., rejecting a safe model). Lower is better.
+Error rates:
 
-For a certification framework, Type-I error control is mandatory (validity). Type-II error minimization is desirable (power).
+1. **Type-I error / false certification**: certifying when `R_M >= alpha`.
+   Measured at the null boundary `R_M = alpha` (3,000 instances per regime) and
+   for clearly unreliable models `R_M > alpha` (1,000 instances per regime).
+2. **Type-II error**: failing to certify when `R_M < alpha` (lower is better).
 
-## Evaluation Axes
+## Validity is a gate, not a score
 
-The benchmark compares certification procedures under the same data budget:
-a small set with ground-truth labels, a much larger set with auxiliary-judge
-labels, a target failure threshold, and a required significance level.
-Methods are scored by the rejection decisions they produce across repeated
-trials. Comparison rows may include a small-label-only baseline and an
-idealized reference that receives extra information about the judge; those rows
-are included to calibrate difficulty, not to constrain future methods.
+In every regime, both false-certification rates must stay at or below
+`zeta + 0.015 = 0.065` (the tolerance admits ordinary finite-sample slack of
+approximate tests). A certifier that exceeds the limit anywhere, crashes, times
+out (30 min per run), returns malformed output, or makes decisions that change
+when the same instances are re-submitted in a different batch is **failed**: all
+of its scored metrics are set to their worst value and the evaluation script
+exits non-zero. Among valid certifiers, a lower Type-I error earns nothing extra.
 
-Reported error rates vary across:
-- Target thresholds α ∈ [0.01, 0.99]
-- Judge qualities (TPR, FPR pairs)
-- Model failure rates R_M
-- Calibration set sizes n_M (e.g., 100)
-- Judge-labeled set sizes n_J (e.g., 10,000)
+## Scored experiments (lower is better for all)
 
-Expected behavior:
-- Type-I error should be controlled below ζ=0.05 for valid procedures
-- Type-II error should fall when the auxiliary judge is informative and many auxiliary labels are available
-- The gap between feasible methods and the idealized reference estimates the cost of not knowing judge reliability exactly
+| Experiment | Metric | Cells |
+|---|---|---|
+| `synthetic_power_comparison` | `type2_error` | informative judge, `R_M = 0.20` (2,000 instances) |
+| `synthetic_type2_curve` | `type2_error` (mean over cells) | informative judge, `R_M` in {0.01, 0.15, 0.175, 0.225} |
+| `judge_quality_sweep` | `type2_error` (mean over cells) | the two less reliable judges, `R_M` in {0.05, 0.15, 0.20} |
+| `oracle_gap` | `oracle_gap` | mean Type-II over all eleven cells above minus that of a reference test that knows each instance's true TPR/FPR |
+| `synthetic_type1_control` | `type1_error`, `type1_error_worst_regime`, `false_cert_interior` | reported for transparency (coefficient 0; enforced by the gate) |
 
-## Evaluation Protocol
+Alternative cells hold 1,000 instances unless stated. All instances of all cells
+are shuffled together into one batch.
 
-For the **synthetic setting**: Generate binary ground-truth labels from Bernoulli(R_M) and judge labels by flipping ground-truth with TPR/FPR probabilities. Run B=1000 independent trials, each time re-sampling datasets and re-running hypothesis tests. Estimate Type-I and Type-II error rates by counting rejections under null and alternative hypotheses respectively.
+## Comparison rows (computed by the evaluator, not by any method)
 
-For **classification settings** (Jigsaw, Hate Speech): Use pre-existing labeled datasets. Treat the LLM classifier as the "model under certification" and another LLM as the "judge." Compute ground-truth correctness S_M = 1{classifier_label ≠ ground_truth} and judge correctness S_J = 1{judge_label ≠ classifier_label}. Split data into D_M and D_J. Run B=1000 trials.
+- `direct_ht`: a one-sample normal-approximation test that uses only the 100
+  ground-truth labels.
+- `oracle_noisy_ht`: an idealized test that is given each instance's true judge
+  TPR/FPR and uses the judge-only items (not achievable in practice).
 
-For **generative settings** (SafeRLHF): Similar protocol but with safety classification of generated responses.
+Every certifier and both comparison rows are scored on exactly the same instances
+(paired comparison), and the instance seeds are fixed.
 
-All experiments use significance level ζ=0.05.
+## Certifier interface
+
+A method is a **certifier**: any file `method/certifiers/<name>.py` (names starting
+with `_` are helpers and are not run). The evaluators run each one as
+
+```
+python3 method/certifiers/<name>.py --input <dir> --output <decisions.json>
+```
+
+from the workspace root. `<dir>` contains one batch of `N` instances:
+
+| File | Content |
+|---|---|
+| `calib_human.npy` | uint8 `[N, 100]`, ground-truth labels `S_M` of the calibration items |
+| `calib_judge.npy` | uint8 `[N, 100]`, judge labels `S_J'` of the same items |
+| `eval_judge.npy` | uint8 `[N, 10000]`, judge labels `S_J` of the judge-only items |
+| `alpha.npy`, `zeta.npy` | float64 `[N]` |
+| `meta.json` | `n_instances`, `n_m`, `n_j` |
+
+The certifier writes `{"certify": [0 or 1, ...]}` with one entry per instance in
+input order (1 = certify, i.e. reject `H0`). Rules: each decision may use only
+that instance's own data (instances are independent certification problems; the
+evaluator re-runs a reshuffled subset in a separate batch and fails a certifier
+whose decisions change), and decisions must be deterministic. Each certifier is
+scored as its own row, named after its file.
+
+## How to run
+
+- `bash scripts/evaluate_train.sh` — public train-slice instances (judge regimes
+  centred on TPR/FPR 0.95/0.05, 0.75/0.05 and 0.95/0.25, per-instance spread
+  +/-0.03, unreliable-model cells at `R_M = 0.30`); writes `scoring/scores_train.json`.
+  An optional argument draws another public batch: `bash scripts/evaluate_train.sh 123`.
+- `bash scripts/evaluate.sh` — the same train-slice evaluation written to the
+  canonical `scoring/scores.json`.
+- `bash scripts/evaluate_test.sh` — the held-out test (no arguments). Its
+  instances are generated at test time from hidden settings: the three regimes
+  sit near, but not on, the train centres, and unreliable models have hidden
+  failure rates above `alpha`. A method that relies on the exact public judge
+  parameters or their ranges will not transfer.
 
 ---
 

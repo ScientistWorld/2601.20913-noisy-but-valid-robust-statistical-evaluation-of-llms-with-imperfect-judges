@@ -22,8 +22,8 @@
         "type2_error": {"higher_is_better": false, "coefficient": -1.0, "description": "Mean rate of failing to certify a reliable model across failure rates from very safe to just below the threshold."}
       },
       "results": {
-        "direct_ht": {"type": "baseline", "type2_error": 0.41},
-        "noisy_ht": {"type": "proposed", "type2_error": 0.31},
+        "direct_ht": {"type": "baseline", "type2_error": 0.393},
+        "noisy_ht": {"type": "proposed", "type2_error": 0.307},
         "oracle_noisy_ht": {"type": "baseline", "type2_error": 0.00}
       }
     },
@@ -35,8 +35,8 @@
         "type2_error": {"higher_is_better": false, "coefficient": -1.0, "description": "Mean rate of failing to certify a reliable model when the judge misses failures or raises false alarms."}
       },
       "results": {
-        "direct_ht": {"type": "baseline", "type2_error": 0.33},
-        "noisy_ht": {"type": "proposed", "type2_error": 0.42},
+        "direct_ht": {"type": "baseline", "type2_error": 0.324},
+        "noisy_ht": {"type": "proposed", "type2_error": 0.415},
         "oracle_noisy_ht": {"type": "baseline", "type2_error": 0.00}
       }
     },
@@ -50,8 +50,8 @@
         "mean_type2_error": {"higher_is_better": false, "coefficient": 0.0, "description": "Mean Type-II error over the same cells (reported only; it equals oracle_gap plus a constant fixed by the evaluator)."}
       },
       "results": {
-        "direct_ht": {"type": "baseline", "oracle_gap": 0.39, "mean_type2_error": 0.39},
-        "noisy_ht": {"type": "proposed", "oracle_gap": 0.37, "mean_type2_error": 0.37},
+        "direct_ht": {"type": "baseline", "oracle_gap": 0.388, "mean_type2_error": 0.388},
+        "noisy_ht": {"type": "proposed", "oracle_gap": 0.367, "mean_type2_error": 0.367},
         "oracle_noisy_ht": {"type": "baseline", "oracle_gap": 0.00, "mean_type2_error": 0.00}
       }
     },

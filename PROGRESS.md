@@ -114,3 +114,8 @@ All methods maintain Type-I error at or below the target `zeta=0.05`.
 - Train slice preserved the core claim: Direct/Noisy/Oracle Type-II `0.721`/`0.627`/`0.000`; Direct/Noisy/Oracle Type-I `0.037`/`0.028`/`0.038`.
 - Held-out test slice preserved the core claim: Direct/Noisy/Oracle Type-II `0.732`/`0.628`/`0.000`; Direct/Noisy/Oracle Type-I `0.042`/`0.039`/`0.049`.
 - The split is usable as a gym baseline because the train/test outputs are complete, method keys match exactly, and the slices are not byte-identical.
+
+## November 9 Hardening (Iteration 11)
+- The gym was rebuilt so the hidden test no longer trusts method-written artifacts; see `HARDENING.md` for the design, audit results and remaining caveats.
+- Reference (hidden test): Noisy HT Type-II main 0.354 (Direct HT 0.733, oracle 0.000), curve 0.337, judge-quality sweep 0.422 (Direct HT 0.322), oracle gap 0.385; Type-I hq 0.029, worst regime 0.047.
+- Train slice: 0.320 / 0.307 / 0.415 / 0.367; Type-I 0.028 / 0.060.
