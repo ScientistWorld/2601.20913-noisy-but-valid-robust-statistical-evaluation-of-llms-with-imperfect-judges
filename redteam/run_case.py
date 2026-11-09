@@ -96,15 +96,20 @@ def run_case(name):
             generate(seed)
             a = json.loads(path(kind if kind != 'weaker' else 'weaker', seed).read_text())
         else:
+            # Comparison-row shortcuts need an independent public seed so
+            # incidental equality with the saved train column cannot fail
+            # the gym's generic train/test-differentiation check.
+            visible_seed = 43 if name in ['visible_seed_43_reference',
+                'baseline_fields_shortcut', 'oracle_comparator_shortcut'] else 42
             source = 'perfect' if name == 'fixed_generator_shortcut' else 'budget' if name == 'budget_laundering_shortcut' else 'standard'
             if source == 'standard':
-                generate(42)
+                generate(visible_seed)
                 kind = name if name in ['oracle_labels_shortcut', 'point_estimate_shortcut', 'scenario_answers_shortcut'] else 'reference'
             else:
                 kind = name
-                generate(42, [kind], source)
-            a = json.loads(path(kind, 42).read_text())
-            if name not in ['visible_seed_reference', 'train_copy_shortcut']:
+                generate(visible_seed, [kind], source)
+            a = json.loads(path(kind, visible_seed).read_text())
+            if name not in ['visible_seed_reference', 'visible_seed_43_reference', 'train_copy_shortcut']:
                 a = mutate_shortcut(a, name)
 
         ARTIFACT.parent.mkdir(exist_ok=True)
