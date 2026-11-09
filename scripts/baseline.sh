@@ -1,26 +1,23 @@
 #!/bin/bash
-# Run a baseline method from the paper.
-#
-# Baselines are simple reference methods the paper compares against. 
-# Implement this only if applicable, i.e. the paper has baselines.
-# You do not need to implement all baselines to begin — 
-# just enough to validate that the evaluation pipeline works 
-# and provide a reference point. You can decide to expand more baselines later.
-# Each baseline must be actually run and scored through evaluate.sh
-# so the numbers are verified, not self-reported.
-# You can decide what this baseline script should do yourself.
+# Baselines (the small-label-only test "direct_ht" and the known-judge
+# reference "oracle_noisy_ht") are computed by the evaluators themselves on
+# the same instances every certifier sees, so they cannot be altered by a
+# method. This script prints them from the public train-slice evaluation.
 #
 # Usage:
-#   bash scripts/baseline.sh <name>
+#   bash scripts/baseline.sh
 
 set -euo pipefail
 
-cd /home/user
-
-TRIALS="${1:-1000}"
-SEED="${2:-42}"
-
-echo "Running Direct HT baseline as part of the shared method artifact."
-echo "The resulting scoring/scores.json includes the direct_ht baseline rows."
-bash scripts/method.sh "$TRIALS" "$SEED" /home/user/outputs/synthetic_results.json
-bash scripts/evaluate.sh /home/user/outputs/synthetic_results.json /home/user/scoring/scores.json
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "${ROOT}"
+bash "${ROOT}/scripts/evaluate_train.sh"
+"${PYTHON:-python3}" - << 'PYEOF'
+import json
+s = json.load(open("scoring/scores_train.json"))
+for exp, rows in s.items():
+    if exp.startswith("_"):
+        continue
+    for row in ("direct_ht", "oracle_noisy_ht"):
+        print(f"{exp:<30} {row:<18} {rows.get(row)}")
+PYEOF

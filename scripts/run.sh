@@ -1,43 +1,34 @@
 #!/bin/bash
-# CPU job to regenerate canonical/train/test artifacts, aggregate scores, and validate.
+# CPU job: reproduce the reference end to end from the final code (canonical,
+# train-slice and hidden-test scores), run the hardening audit (reference,
+# better/weaker variants and shortcuts through the hidden test), check that the
+# hidden test is byte-for-byte reproducible, and validate the workspace.
 
-set -e
+set -uo pipefail
 
-cd /home/user
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "${ROOT}"
+status=0
 
-echo "=== Running canonical artifact ==="
-/usr/bin/python3 /home/user/method/run_synthetic.py \
-  --n-trials 1000 \
-  --seed 42 \
-  --output /home/user/outputs/synthetic_results.json
-bash /home/user/scripts/evaluate.sh \
-  /home/user/outputs/synthetic_results.json \
-  /home/user/scoring/scores.json
+run() {
+  local label="$1"
+  shift
+  echo ""
+  echo "=== ${label} ==="
+  "$@" || { echo "!!! step failed (rc=$?): ${label}"; status=1; }
+}
 
-echo ""
-echo "=== Running train slice ==="
-/usr/bin/python3 /home/user/method/run_synthetic.py \
-  --n-trials 1000 \
-  --seed 42 \
-  --output /home/user/outputs/synthetic_train_results.json
-bash /home/user/scripts/evaluate_train.sh \
-  /home/user/outputs/synthetic_train_results.json \
-  /home/user/scoring/scores_train.json
-
-echo ""
-echo "=== Running held-out test slice ==="
-/usr/bin/python3 /home/user/method/run_synthetic.py \
-  --n-trials 1000 \
-  --seed 42 \
-  --seed-offset 1000003 \
-  --output /home/user/outputs/synthetic_test_results.json
-bash /home/user/scripts/evaluate_test.sh \
-  /home/user/outputs/synthetic_test_results.json \
-  /home/user/scoring/scores_test.json
+run "reproduce: canonical, train-slice and hidden-test scores of the reference" \
+  bash scripts/reproduce.sh
+run "hardening audit (variants and shortcuts through the hidden test)" \
+  python3 redteam/hardening/audit.py
+run "audit summary" \
+  python3 redteam/hardening/summarize.py
+run "hidden test re-run reproduces the saved reference scores byte for byte" \
+  bash -c 'cp scoring/scores_test.json /tmp/scores_test.saved.json && bash scripts/evaluate_test.sh > /tmp/rerun.log 2>&1 && cmp scoring/scores_test.json /tmp/scores_test.saved.json && echo identical'
+run "validate" \
+  python3 validate.py --post-design
 
 echo ""
-echo "=== Final validation ==="
-/usr/bin/python3 /home/user/validate.py --post-design
-
-echo ""
-echo "=== Job complete ==="
+echo "=== job finished (status ${status}) ==="
+exit "${status}"

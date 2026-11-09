@@ -35,3 +35,9 @@ The variance term includes contributions from both the large dataset (sampling v
 2. **Superiority condition**: Noisy HT outperforms Direct HT when judge quality satisfies (TPR - FPR)² > [α²×TPR(1-TPR)/R_M + (1-α)²×FPR(1-FPR)/(1-R_M)] / [R_M(1-R_M)]
 3. **Oracle Gap**: Noisy HT always has higher Type-II error than Oracle Noisy HT (gap quantifies cost of estimation)
 4. **Interpretability**: TPR and FPR are explicit parameters — practitioners can diagnose judge quality and plan data collection
+
+## Implementation in this workspace
+
+- `method/hypothesis_tests.py`: Algorithms 1–4 (Noisy HT, Direct HT, PPI family, Oracle Noisy HT).
+- `method/certifiers/noisy_ht.py`: the reference certifier — runs Algorithm 1 on every instance of a batch through the certifier interface in `briefing/evaluation.md`. The evaluators score it as the `noisy_ht` row.
+- Known weaknesses visible in the scores: rare failures (with `R_M = 0.01` the calibration set often has no failures, `TPR̂ = 0`, and the test cannot certify), and less reliable judges (Theorem 5.4: the noisy test then loses to Direct HT).

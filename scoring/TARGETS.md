@@ -1,27 +1,29 @@
 # Evaluation Targets
 
-## Primary: synthetic_power_comparison
-Tests whether a certification procedure can reduce false rejections of reliable models in the high-quality judge regime.
+All scored metrics are lower-is-better error rates computed by the evaluator from a certifier's raw decisions. Run `bash scripts/evaluate_train.sh` (public train slice) or `bash scripts/evaluate.sh` (same slice, canonical `scoring/scores.json`); the held-out test is `bash scripts/evaluate_test.sh`.
+
+## Primary: synthetic_power_comparison (weight 0.40)
+Reduce false rejections of a reliable model (`R_M = 0.20`) with an informative judge.
 
 - **Metric**: `type2_error` (lower is better)
-- **Constraint metric**: the paired Type-I control experiment must remain near the configured significance level.
-- **How to run**: `bash scripts/evaluate.sh`
+- **Comparison rows**: `direct_ht` (human labels only, should be clearly worse) and `oracle_noisy_ht` (knows the judge, unattainable bound)
 
-## Constraint: synthetic_type1_control
-Tests whether certification remains statistically valid under the null boundary.
+## Secondary: synthetic_type2_curve (weight 0.20)
+Power across failure rates {0.01, 0.15, 0.175, 0.225} with an informative judge, including the rare-failure regime.
 
-- **Metric**: `type1_error` (lower is better, with the configured significance level as the maximum acceptable validity target)
-- **How to run**: `bash scripts/evaluate.sh`
+- **Metric**: `type2_error`, mean over the four cells (lower is better)
 
-## Constraint: oracle_gap
-Tests the cost of estimating judge reliability from a finite calibration set rather than knowing it exactly.
+## Secondary: judge_quality_sweep (weight 0.15)
+Power with less reliable judges (many misses or many false alarms) at failure rates {0.05, 0.15, 0.20}.
 
-- **Metric**: `oracle_gap` (lower is better)
-- **How to run**: `bash scripts/evaluate.sh`
+- **Metric**: `type2_error`, mean over the six cells (lower is better)
 
-## Diagnostic: synthetic_type2_curve
-Tests how certification power changes as the true model failure rate varies around the deployment threshold.
+## Secondary: oracle_gap (weight 0.20)
+Average power lost relative to a test that knows each instance's judge reliability, over all eleven alternative cells.
 
-- **Primary metric**: `decision_error` (lower is better)
-- **Diagnostic metric**: `type2_error` (reported to show raw non-certification rates, but not scored)
-- **How to run**: `bash scripts/evaluate.sh`
+- **Metric**: `oracle_gap` (lower is better); `mean_type2_error` is reported only
+
+## Constraint: synthetic_type1_control (weight 0.05, coefficient 0)
+Validity in every judge regime. Enforced as a gate: false certification at the null boundary and for clearly unreliable models must be at most `zeta + 0.015 = 0.065` in each regime, otherwise the run is scored as failed.
+
+- **Metrics**: `type1_error` (informative judge), `type1_error_worst_regime`, `false_cert_interior` — reported, not rewarded

@@ -1,22 +1,26 @@
 #!/bin/bash
-# Visible train-slice evaluation entry point.
+# Visible train-slice evaluation. Same measurement and certifier interface as
+# the held-out test, on a public batch of instances generated in eval/train/.
 #
-# Mirrors scripts/evaluate.sh:
-#   ./scripts/evaluate_train.sh
-#   ./scripts/evaluate_train.sh outputs/synthetic_train_results.json scoring/scores_train.json
+# Runs every certifier found under method/certifiers/ and writes
+# scoring/scores_train.json. Exits non-zero if any certifier fails.
+#
+# Usage:
+#   bash scripts/evaluate_train.sh            # public train seed
+#   bash scripts/evaluate_train.sh 12345      # another public draw (dev only)
 
-set -e
+set -euo pipefail
 
-cd /home/user
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "${ROOT}"
+PY="${PYTHON:-python3}"
+SEED_ARGS=()
+if [ "$#" -ge 1 ]; then
+  SEED_ARGS=(--seed "$1")
+fi
 
-ARTIFACT="${1:-/home/user/outputs/synthetic_train_results.json}"
-OUTPUT="${2:-/home/user/scoring/scores_train.json}"
-
-echo "Running train-slice evaluation for artifact: ${ARTIFACT}"
-/usr/bin/python3 /home/user/eval/train/evaluate.py \
-  --artifact "${ARTIFACT}" \
-  --output "${OUTPUT}"
+"${PY}" "${ROOT}/eval/train/evaluate.py" ${SEED_ARGS[@]+"${SEED_ARGS[@]}"} --output "${ROOT}/scoring/scores_train.json"
 
 echo ""
 echo "=== Reference schema validation ==="
-/usr/bin/python3 /home/user/validate.py --reference-only
+"${PY}" "${ROOT}/validate.py" --reference-only

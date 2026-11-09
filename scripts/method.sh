@@ -1,26 +1,13 @@
 #!/bin/bash
-# Run the Noisy HT method (synthetic + classification experiments).
-#
-# This script runs the paper's statistical hypothesis testing methods
-# on synthetic data and (if available) real datasets.
+# The method is a statistical certification procedure; it needs no training.
+# Certifiers live in method/certifiers/<name>.py and are executed by the
+# evaluators on instances the evaluators generate. This script runs every
+# certifier on the public train-slice instances.
 #
 # Usage:
 #   bash scripts/method.sh
 
-set -e
+set -euo pipefail
 
-cd /home/user
-
-N_TRIALS="${1:-1000}"
-SEED="${2:-42}"
-OUTPUT="${3:-/home/user/outputs/synthetic_results.json}"
-
-echo "=== Running Noisy HT Method ==="
-echo "Writing method artifact to ${OUTPUT}"
-
-/usr/bin/python3 /home/user/method/run_synthetic.py \
-  --n-trials "${N_TRIALS}" \
-  --seed "${SEED}" \
-  --output "${OUTPUT}"
-
-echo "=== Method run complete ==="
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+bash "${ROOT}/scripts/evaluate_train.sh"
