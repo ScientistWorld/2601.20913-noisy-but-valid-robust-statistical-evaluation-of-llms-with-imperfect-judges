@@ -76,10 +76,12 @@ After: every listed run goes through the new hidden test. "FAILED" means every s
 | `point_estimate` (+1.09, Type-I 0.46) | validity gate | `sc_point_estimate`: **FAILED** (Type-I 0.47–0.51) |
 | `constant_always` (−0.32 B21, +2.82 pairwise) | validity gate | **FAILED** (Type-I 1.0) |
 | `constant_never` (−3.79 B21, +0.09 A23) | bounded metrics, failed runs fixed at worst | valid, Type-II 1.0 everywhere: rank −5.54, below every honest method and the human-label baseline |
-| `direct_score` (rejected) | evaluator writes `scores_test.json` last and never reads it | `sc_score_forgery` writes a forged `scores_test.json` mid-run; the evaluator's final write replaces it (no-argument run, see job) |
+| `direct_score` (rejected) | evaluator writes `scores_test.json` last and never reads it | `sc_score_forgery` writes a forged `scores_test.json` (Type-II 0.0) mid-run; in the no-argument `scripts/evaluate_test.sh` run the evaluator's final write replaced it, and the row shows the real 0.3545 |
 | `train_copy` (rejected) | decisions must be produced on hidden test instances | structurally closed |
 | *new:* hard-coded public judge parameters (would have matched the oracle, Type-II 0) | per-instance jitter + hidden shifted centres | `sc_hardcoded_judge`: **FAILED** on train (Type-I 0.33 in hq, 1.0 weak) and on test |
 | *new:* train-range prior (assume the most conservative corner of the train judge box) | hidden shift of the regime centres | `sc_train_box_prior`: **FAILED** on train (0.106) and on test (0.082) |
+
+**Exactly `bash scripts/evaluate_test.sh`, no arguments, each shortcut alone on disk** (`redteam/hardening/results/runs.json`): `sc_point_estimate` exit 1 (failed), `sc_hardcoded_judge` exit 1 (failed), `sc_constant_never` exit 0 at Type-II 1.0, `sc_score_forgery` exit 0 with its forged file overwritten. After the audit, the reference certifier and `scoring/scores_test.json` were restored byte-identical. A fresh no-argument rerun of the reference reproduced `scoring/scores_test.json` byte for byte. `python validate.py --post-design` passes inside the container (final job `f0935537-8e6`).
 
 `redteam/hardening/certifiers/` holds every audit certifier. `redteam/hardening/results/` holds the evaluator outputs (`test_hidden.json`, `test_seed101.json`, `test_seed202.json`, `train.json`), the no-argument `scripts/evaluate_test.sh` runs (`noarg_*.json`, `runs.json`) and `summary.md`.
 

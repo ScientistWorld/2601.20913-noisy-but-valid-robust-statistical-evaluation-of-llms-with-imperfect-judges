@@ -1,8 +1,6 @@
 # Once you set action to 'submit' or 'done', STOP immediately.
 # Do NOT sleep, poll, or wait for jobs. The system reads this file
 # only after your turn ends.
-action: submit
-gpus: 0
-test: false
+action: done
 milestone: core_claim_plus
-notes: "CPU final verification: reproduce reference end to end (scripts fixed so validator cross-checks do not abort), hardening audit incl. no-arg evaluate_test.sh shortcut runs, byte-reproducibility, validate --post-design"
+notes: "Hardened: hidden test generates its own instances (hidden, shifted judge regimes), runs certifiers via a fixed interface, owns comparison rows and truth, gates validity; better variants +0.29..+0.62 vs reference spread 0.11, weaker -0.7..-1.3, all shortcuts fail or rank bottom. See HARDENING.md."
