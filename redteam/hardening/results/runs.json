@@ -2,7 +2,7 @@
   "evaluator_exit_codes": {
     "test_hidden": 1,
     "test_seed101": 1,
-    "test_seed202": 1,
+    "test_seed202": 0,
     "train": 1
   },
   "noarg_evaluate_test": {

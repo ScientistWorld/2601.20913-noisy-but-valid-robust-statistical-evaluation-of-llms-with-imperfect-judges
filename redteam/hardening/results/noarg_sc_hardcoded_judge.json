@@ -1,66 +1,209 @@
 {
   "_metadata": {
-    "schema": "noisy_ht_slice_scores_v1",
+    "schema": "certifier_scores_v2",
     "slice": "test",
-    "artifact": "/home/user/outputs/synthetic_test_results.json"
+    "n_instances": 24000,
+    "certifiers": [
+      "sc_hardcoded_judge"
+    ],
+    "failed_certifiers": [
+      "sc_hardcoded_judge"
+    ],
+    "validity_limits": {
+      "null_boundary": 0.065,
+      "null_interior": 0.065
+    }
   },
   "synthetic_power_comparison": {
     "direct_ht": {
-      "type2_error": 0.732
-    },
-    "noisy_ht": {
-      "type2_error": 0.31
+      "type2_error": 0.733
     },
     "oracle_noisy_ht": {
       "type2_error": 0.0
-    }
-  },
-  "oracle_gap": {
-    "oracle_noisy_ht": {
-      "type2_error_noisy": 0.0,
-      "oracle_gap": 0.0
     },
-    "noisy_ht": {
-      "type2_error_noisy": 0.31,
-      "oracle_gap": 0.31
+    "sc_hardcoded_judge": {
+      "type2_error": 1.0
     }
   },
   "synthetic_type2_curve": {
-    "rm_0.01": {
-      "type2_error": 0.411,
-      "decision_error": 0.411
+    "direct_ht": {
+      "type2_error": 0.4075
     },
-    "rm_0.10": {
-      "type2_error": 0.014,
-      "decision_error": 0.014
+    "oracle_noisy_ht": {
+      "type2_error": 0.0003
     },
-    "rm_0.20": {
-      "type2_error": 0.328,
-      "decision_error": 0.328
+    "sc_hardcoded_judge": {
+      "type2_error": 1.0
+    }
+  },
+  "judge_quality_sweep": {
+    "direct_ht": {
+      "type2_error": 0.322
     },
-    "rm_0.30": {
-      "type2_error": 1.0,
-      "decision_error": 0.0
+    "oracle_noisy_ht": {
+      "type2_error": 0.0
+    },
+    "sc_hardcoded_judge": {
+      "type2_error": 1.0
+    }
+  },
+  "oracle_gap": {
+    "direct_ht": {
+      "oracle_gap": 0.3904,
+      "mean_type2_error": 0.3905
+    },
+    "oracle_noisy_ht": {
+      "oracle_gap": 0.0,
+      "mean_type2_error": 0.0001
+    },
+    "sc_hardcoded_judge": {
+      "oracle_gap": 0.9999,
+      "mean_type2_error": 1.0
     }
   },
   "synthetic_type1_control": {
     "direct_ht": {
-      "type1_error": 0.042
-    },
-    "noisy_ht": {
-      "type1_error": 0.029
+      "type1_error": 0.043,
+      "type1_error_worst_regime": 0.043,
+      "false_cert_interior": 0.003
     },
     "oracle_noisy_ht": {
-      "type1_error": 0.045
+      "type1_error": 0.052,
+      "type1_error_worst_regime": 0.052,
+      "false_cert_interior": 0.0
+    },
+    "sc_hardcoded_judge": {
+      "type1_error": 1.0,
+      "type1_error_worst_regime": 1.0,
+      "false_cert_interior": 1.0
+    }
+  },
+  "_validity": {
+    "sc_hardcoded_judge": {
+      "consistency_mismatches": 0,
+      "cell_error_rates": {
+        "hq__rm_0.20": 0.1375,
+        "hq__rm_0.01": 0.0,
+        "hq__rm_0.15": 0.0,
+        "hq__rm_0.175": 0.0,
+        "hq__rm_0.225": 0.598,
+        "weak_tpr__rm_0.05": 0.0,
+        "weak_tpr__rm_0.15": 0.0,
+        "weak_tpr__rm_0.20": 0.0,
+        "high_fpr__rm_0.05": 1.0,
+        "high_fpr__rm_0.15": 1.0,
+        "high_fpr__rm_0.20": 1.0,
+        "hq__null": 0.0177,
+        "hq__interior": 0.0,
+        "weak_tpr__null": 0.9423,
+        "weak_tpr__interior": 0.176,
+        "high_fpr__null": 0.0,
+        "high_fpr__interior": 0.0
+      },
+      "passed": false,
+      "reasons": [
+        "Type-I error 0.9423 at the null boundary in regime 'weak_tpr' exceeds the limit 0.0650",
+        "false-certification rate 0.1760 inside the null in regime 'weak_tpr' exceeds the limit 0.0650"
+      ]
+    }
+  },
+  "_cells": {
+    "direct_ht": {
+      "hq__rm_0.20": 0.733,
+      "hq__rm_0.01": 0.0,
+      "hq__rm_0.15": 0.251,
+      "hq__rm_0.175": 0.496,
+      "hq__rm_0.225": 0.883,
+      "weak_tpr__rm_0.05": 0.0,
+      "weak_tpr__rm_0.15": 0.236,
+      "weak_tpr__rm_0.20": 0.733,
+      "high_fpr__rm_0.05": 0.0,
+      "high_fpr__rm_0.15": 0.238,
+      "high_fpr__rm_0.20": 0.725,
+      "hq__null": 0.043,
+      "hq__interior": 0.003,
+      "weak_tpr__null": 0.0367,
+      "weak_tpr__interior": 0.003,
+      "high_fpr__null": 0.037,
+      "high_fpr__interior": 0.002
+    },
+    "oracle_noisy_ht": {
+      "hq__rm_0.20": 0.0,
+      "hq__rm_0.01": 0.0,
+      "hq__rm_0.15": 0.0,
+      "hq__rm_0.175": 0.0,
+      "hq__rm_0.225": 0.001,
+      "weak_tpr__rm_0.05": 0.0,
+      "weak_tpr__rm_0.15": 0.0,
+      "weak_tpr__rm_0.20": 0.0,
+      "high_fpr__rm_0.05": 0.0,
+      "high_fpr__rm_0.15": 0.0,
+      "high_fpr__rm_0.20": 0.0,
+      "hq__null": 0.052,
+      "hq__interior": 0.0,
+      "weak_tpr__null": 0.052,
+      "weak_tpr__interior": 0.0,
+      "high_fpr__null": 0.0467,
+      "high_fpr__interior": 0.0
+    },
+    "sc_hardcoded_judge": {
+      "hq__rm_0.20": 0.1375,
+      "hq__rm_0.01": 0.0,
+      "hq__rm_0.15": 0.0,
+      "hq__rm_0.175": 0.0,
+      "hq__rm_0.225": 0.598,
+      "weak_tpr__rm_0.05": 0.0,
+      "weak_tpr__rm_0.15": 0.0,
+      "weak_tpr__rm_0.20": 0.0,
+      "high_fpr__rm_0.05": 1.0,
+      "high_fpr__rm_0.15": 1.0,
+      "high_fpr__rm_0.20": 1.0,
+      "hq__null": 0.0177,
+      "hq__interior": 0.0,
+      "weak_tpr__null": 0.9423,
+      "weak_tpr__interior": 0.176,
+      "high_fpr__null": 0.0,
+      "high_fpr__interior": 0.0
     }
   },
   "_diagnostics": {
-    "ppi_oracle_ordering_type2": {
-      "noisy_ht": 0.359,
-      "oracle_noisy_ht": 0.0,
-      "ppi": 0.234,
-      "ppi_pp": 0.195,
-      "ridge_ppi": 0.192
+    "ppi": {
+      "hq__rm_0.20": 0.2965,
+      "hq__rm_0.01": 0.0,
+      "hq__rm_0.15": 0.003,
+      "hq__rm_0.175": 0.044,
+      "hq__rm_0.225": 0.765,
+      "weak_tpr__rm_0.05": 0.0,
+      "weak_tpr__rm_0.15": 0.042,
+      "weak_tpr__rm_0.20": 0.51,
+      "high_fpr__rm_0.05": 0.0,
+      "high_fpr__rm_0.15": 0.247,
+      "high_fpr__rm_0.20": 0.687,
+      "hq__null": 0.031,
+      "hq__interior": 0.0,
+      "weak_tpr__null": 0.0533,
+      "weak_tpr__interior": 0.001,
+      "high_fpr__null": 0.0377,
+      "high_fpr__interior": 0.003
+    },
+    "ppi_pp": {
+      "hq__rm_0.20": 0.2285,
+      "hq__rm_0.01": 0.0,
+      "hq__rm_0.15": 0.003,
+      "hq__rm_0.175": 0.028,
+      "hq__rm_0.225": 0.7,
+      "weak_tpr__rm_0.05": 0.0,
+      "weak_tpr__rm_0.15": 0.024,
+      "weak_tpr__rm_0.20": 0.452,
+      "high_fpr__rm_0.05": 0.0,
+      "high_fpr__rm_0.15": 0.057,
+      "high_fpr__rm_0.20": 0.544,
+      "hq__null": 0.048,
+      "hq__interior": 0.002,
+      "weak_tpr__null": 0.066,
+      "weak_tpr__interior": 0.001,
+      "high_fpr__null": 0.0573,
+      "high_fpr__interior": 0.004
     }
   }
 }

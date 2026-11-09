@@ -1,0 +1,1238 @@
+{
+  "_metadata": {
+    "schema": "certifier_scores_v2",
+    "slice": "test",
+    "n_instances": 24000,
+    "certifiers": [
+      "alt_ppi_pp",
+      "better_fallback",
+      "better_union",
+      "noisy_ht",
+      "sc_constant_always",
+      "sc_constant_never",
+      "sc_crash",
+      "sc_empty_output",
+      "sc_extra_fields",
+      "sc_hardcoded_judge",
+      "sc_naive_judge",
+      "sc_nan_output",
+      "sc_negative_output",
+      "sc_null_output",
+      "sc_point_estimate",
+      "sc_pooled_calibration",
+      "sc_train_box_prior",
+      "weaker_conservative",
+      "weaker_direct",
+      "weaker_half_calibration"
+    ],
+    "failed_certifiers": [
+      "alt_ppi_pp",
+      "sc_constant_always",
+      "sc_crash",
+      "sc_empty_output",
+      "sc_hardcoded_judge",
+      "sc_naive_judge",
+      "sc_nan_output",
+      "sc_negative_output",
+      "sc_null_output",
+      "sc_point_estimate",
+      "sc_pooled_calibration",
+      "sc_train_box_prior"
+    ],
+    "validity_limits": {
+      "null_boundary": 0.065,
+      "null_interior": 0.065
+    }
+  },
+  "synthetic_power_comparison": {
+    "direct_ht": {
+      "type2_error": 0.733
+    },
+    "oracle_noisy_ht": {
+      "type2_error": 0.0
+    },
+    "alt_ppi_pp": {
+      "type2_error": 1.0
+    },
+    "better_fallback": {
+      "type2_error": 0.3545
+    },
+    "better_union": {
+      "type2_error": 0.364
+    },
+    "noisy_ht": {
+      "type2_error": 0.3545
+    },
+    "sc_constant_always": {
+      "type2_error": 1.0
+    },
+    "sc_constant_never": {
+      "type2_error": 1.0
+    },
+    "sc_extra_fields": {
+      "type2_error": 0.3545
+    },
+    "sc_hardcoded_judge": {
+      "type2_error": 1.0
+    },
+    "sc_naive_judge": {
+      "type2_error": 1.0
+    },
+    "sc_point_estimate": {
+      "type2_error": 1.0
+    },
+    "sc_pooled_calibration": {
+      "type2_error": 1.0
+    },
+    "sc_train_box_prior": {
+      "type2_error": 1.0
+    },
+    "weaker_conservative": {
+      "type2_error": 0.473
+    },
+    "weaker_direct": {
+      "type2_error": 0.733
+    },
+    "weaker_half_calibration": {
+      "type2_error": 0.5075
+    },
+    "sc_crash": {
+      "type2_error": 1.0
+    },
+    "sc_empty_output": {
+      "type2_error": 1.0
+    },
+    "sc_nan_output": {
+      "type2_error": 1.0
+    },
+    "sc_negative_output": {
+      "type2_error": 1.0
+    },
+    "sc_null_output": {
+      "type2_error": 1.0
+    }
+  },
+  "synthetic_type2_curve": {
+    "direct_ht": {
+      "type2_error": 0.4075
+    },
+    "oracle_noisy_ht": {
+      "type2_error": 0.0003
+    },
+    "alt_ppi_pp": {
+      "type2_error": 1.0
+    },
+    "better_fallback": {
+      "type2_error": 0.2383
+    },
+    "better_union": {
+      "type2_error": 0.227
+    },
+    "noisy_ht": {
+      "type2_error": 0.337
+    },
+    "sc_constant_always": {
+      "type2_error": 1.0
+    },
+    "sc_constant_never": {
+      "type2_error": 1.0
+    },
+    "sc_extra_fields": {
+      "type2_error": 0.337
+    },
+    "sc_hardcoded_judge": {
+      "type2_error": 1.0
+    },
+    "sc_naive_judge": {
+      "type2_error": 1.0
+    },
+    "sc_point_estimate": {
+      "type2_error": 1.0
+    },
+    "sc_pooled_calibration": {
+      "type2_error": 1.0
+    },
+    "sc_train_box_prior": {
+      "type2_error": 1.0
+    },
+    "weaker_conservative": {
+      "type2_error": 0.3763
+    },
+    "weaker_direct": {
+      "type2_error": 0.4075
+    },
+    "weaker_half_calibration": {
+      "type2_error": 0.47
+    },
+    "sc_crash": {
+      "type2_error": 1.0
+    },
+    "sc_empty_output": {
+      "type2_error": 1.0
+    },
+    "sc_nan_output": {
+      "type2_error": 1.0
+    },
+    "sc_negative_output": {
+      "type2_error": 1.0
+    },
+    "sc_null_output": {
+      "type2_error": 1.0
+    }
+  },
+  "judge_quality_sweep": {
+    "direct_ht": {
+      "type2_error": 0.322
+    },
+    "oracle_noisy_ht": {
+      "type2_error": 0.0
+    },
+    "alt_ppi_pp": {
+      "type2_error": 1.0
+    },
+    "better_fallback": {
+      "type2_error": 0.4203
+    },
+    "better_union": {
+      "type2_error": 0.3067
+    },
+    "noisy_ht": {
+      "type2_error": 0.4217
+    },
+    "sc_constant_always": {
+      "type2_error": 1.0
+    },
+    "sc_constant_never": {
+      "type2_error": 1.0
+    },
+    "sc_extra_fields": {
+      "type2_error": 0.4217
+    },
+    "sc_hardcoded_judge": {
+      "type2_error": 1.0
+    },
+    "sc_naive_judge": {
+      "type2_error": 1.0
+    },
+    "sc_point_estimate": {
+      "type2_error": 1.0
+    },
+    "sc_pooled_calibration": {
+      "type2_error": 1.0
+    },
+    "sc_train_box_prior": {
+      "type2_error": 1.0
+    },
+    "weaker_conservative": {
+      "type2_error": 0.5047
+    },
+    "weaker_direct": {
+      "type2_error": 0.322
+    },
+    "weaker_half_calibration": {
+      "type2_error": 0.5572
+    },
+    "sc_crash": {
+      "type2_error": 1.0
+    },
+    "sc_empty_output": {
+      "type2_error": 1.0
+    },
+    "sc_nan_output": {
+      "type2_error": 1.0
+    },
+    "sc_negative_output": {
+      "type2_error": 1.0
+    },
+    "sc_null_output": {
+      "type2_error": 1.0
+    }
+  },
+  "oracle_gap": {
+    "direct_ht": {
+      "oracle_gap": 0.3904,
+      "mean_type2_error": 0.3905
+    },
+    "oracle_noisy_ht": {
+      "oracle_gap": 0.0,
+      "mean_type2_error": 0.0001
+    },
+    "alt_ppi_pp": {
+      "oracle_gap": 0.9999,
+      "mean_type2_error": 1.0
+    },
+    "better_fallback": {
+      "oracle_gap": 0.348,
+      "mean_type2_error": 0.3481
+    },
+    "better_union": {
+      "oracle_gap": 0.2828,
+      "mean_type2_error": 0.2829
+    },
+    "noisy_ht": {
+      "oracle_gap": 0.3847,
+      "mean_type2_error": 0.3848
+    },
+    "sc_constant_always": {
+      "oracle_gap": 0.9999,
+      "mean_type2_error": 1.0
+    },
+    "sc_constant_never": {
+      "oracle_gap": 0.9999,
+      "mean_type2_error": 1.0
+    },
+    "sc_extra_fields": {
+      "oracle_gap": 0.3847,
+      "mean_type2_error": 0.3848
+    },
+    "sc_hardcoded_judge": {
+      "oracle_gap": 0.9999,
+      "mean_type2_error": 1.0
+    },
+    "sc_naive_judge": {
+      "oracle_gap": 0.9999,
+      "mean_type2_error": 1.0
+    },
+    "sc_point_estimate": {
+      "oracle_gap": 0.9999,
+      "mean_type2_error": 1.0
+    },
+    "sc_pooled_calibration": {
+      "oracle_gap": 0.9999,
+      "mean_type2_error": 1.0
+    },
+    "sc_train_box_prior": {
+      "oracle_gap": 0.9999,
+      "mean_type2_error": 1.0
+    },
+    "weaker_conservative": {
+      "oracle_gap": 0.455,
+      "mean_type2_error": 0.4551
+    },
+    "weaker_direct": {
+      "oracle_gap": 0.3904,
+      "mean_type2_error": 0.3905
+    },
+    "weaker_half_calibration": {
+      "oracle_gap": 0.5209,
+      "mean_type2_error": 0.521
+    },
+    "sc_crash": {
+      "oracle_gap": 0.9999,
+      "mean_type2_error": 1.0
+    },
+    "sc_empty_output": {
+      "oracle_gap": 0.9999,
+      "mean_type2_error": 1.0
+    },
+    "sc_nan_output": {
+      "oracle_gap": 0.9999,
+      "mean_type2_error": 1.0
+    },
+    "sc_negative_output": {
+      "oracle_gap": 0.9999,
+      "mean_type2_error": 1.0
+    },
+    "sc_null_output": {
+      "oracle_gap": 0.9999,
+      "mean_type2_error": 1.0
+    }
+  },
+  "synthetic_type1_control": {
+    "direct_ht": {
+      "type1_error": 0.043,
+      "type1_error_worst_regime": 0.043,
+      "false_cert_interior": 0.003
+    },
+    "oracle_noisy_ht": {
+      "type1_error": 0.052,
+      "type1_error_worst_regime": 0.052,
+      "false_cert_interior": 0.0
+    },
+    "alt_ppi_pp": {
+      "type1_error": 1.0,
+      "type1_error_worst_regime": 1.0,
+      "false_cert_interior": 1.0
+    },
+    "better_fallback": {
+      "type1_error": 0.0293,
+      "type1_error_worst_regime": 0.047,
+      "false_cert_interior": 0.004
+    },
+    "better_union": {
+      "type1_error": 0.025,
+      "type1_error_worst_regime": 0.0443,
+      "false_cert_interior": 0.002
+    },
+    "noisy_ht": {
+      "type1_error": 0.0293,
+      "type1_error_worst_regime": 0.047,
+      "false_cert_interior": 0.004
+    },
+    "sc_constant_always": {
+      "type1_error": 1.0,
+      "type1_error_worst_regime": 1.0,
+      "false_cert_interior": 1.0
+    },
+    "sc_constant_never": {
+      "type1_error": 0.0,
+      "type1_error_worst_regime": 0.0,
+      "false_cert_interior": 0.0
+    },
+    "sc_extra_fields": {
+      "type1_error": 0.0293,
+      "type1_error_worst_regime": 0.047,
+      "false_cert_interior": 0.004
+    },
+    "sc_hardcoded_judge": {
+      "type1_error": 1.0,
+      "type1_error_worst_regime": 1.0,
+      "false_cert_interior": 1.0
+    },
+    "sc_naive_judge": {
+      "type1_error": 1.0,
+      "type1_error_worst_regime": 1.0,
+      "false_cert_interior": 1.0
+    },
+    "sc_point_estimate": {
+      "type1_error": 1.0,
+      "type1_error_worst_regime": 1.0,
+      "false_cert_interior": 1.0
+    },
+    "sc_pooled_calibration": {
+      "type1_error": 1.0,
+      "type1_error_worst_regime": 1.0,
+      "false_cert_interior": 1.0
+    },
+    "sc_train_box_prior": {
+      "type1_error": 1.0,
+      "type1_error_worst_regime": 1.0,
+      "false_cert_interior": 1.0
+    },
+    "weaker_conservative": {
+      "type1_error": 0.0083,
+      "type1_error_worst_regime": 0.0253,
+      "false_cert_interior": 0.001
+    },
+    "weaker_direct": {
+      "type1_error": 0.043,
+      "type1_error_worst_regime": 0.043,
+      "false_cert_interior": 0.003
+    },
+    "weaker_half_calibration": {
+      "type1_error": 0.026,
+      "type1_error_worst_regime": 0.062,
+      "false_cert_interior": 0.007
+    },
+    "sc_crash": {
+      "type1_error": 1.0,
+      "type1_error_worst_regime": 1.0,
+      "false_cert_interior": 1.0
+    },
+    "sc_empty_output": {
+      "type1_error": 1.0,
+      "type1_error_worst_regime": 1.0,
+      "false_cert_interior": 1.0
+    },
+    "sc_nan_output": {
+      "type1_error": 1.0,
+      "type1_error_worst_regime": 1.0,
+      "false_cert_interior": 1.0
+    },
+    "sc_negative_output": {
+      "type1_error": 1.0,
+      "type1_error_worst_regime": 1.0,
+      "false_cert_interior": 1.0
+    },
+    "sc_null_output": {
+      "type1_error": 1.0,
+      "type1_error_worst_regime": 1.0,
+      "false_cert_interior": 1.0
+    }
+  },
+  "_validity": {
+    "alt_ppi_pp": {
+      "consistency_mismatches": 0,
+      "cell_error_rates": {
+        "hq__rm_0.20": 0.2285,
+        "hq__rm_0.01": 0.0,
+        "hq__rm_0.15": 0.003,
+        "hq__rm_0.175": 0.028,
+        "hq__rm_0.225": 0.7,
+        "weak_tpr__rm_0.05": 0.0,
+        "weak_tpr__rm_0.15": 0.024,
+        "weak_tpr__rm_0.20": 0.452,
+        "high_fpr__rm_0.05": 0.0,
+        "high_fpr__rm_0.15": 0.057,
+        "high_fpr__rm_0.20": 0.544,
+        "hq__null": 0.048,
+        "hq__interior": 0.002,
+        "weak_tpr__null": 0.066,
+        "weak_tpr__interior": 0.001,
+        "high_fpr__null": 0.0573,
+        "high_fpr__interior": 0.004
+      },
+      "passed": false,
+      "reasons": [
+        "Type-I error 0.0660 at the null boundary in regime 'weak_tpr' exceeds the limit 0.0650"
+      ]
+    },
+    "better_fallback": {
+      "consistency_mismatches": 0,
+      "cell_error_rates": {
+        "hq__rm_0.20": 0.3545,
+        "hq__rm_0.01": 0.03,
+        "hq__rm_0.15": 0.039,
+        "hq__rm_0.175": 0.096,
+        "hq__rm_0.225": 0.788,
+        "weak_tpr__rm_0.05": 0.24,
+        "weak_tpr__rm_0.15": 0.349,
+        "weak_tpr__rm_0.20": 0.677,
+        "high_fpr__rm_0.05": 0.053,
+        "high_fpr__rm_0.15": 0.432,
+        "high_fpr__rm_0.20": 0.771,
+        "hq__null": 0.0293,
+        "hq__interior": 0.0,
+        "weak_tpr__null": 0.047,
+        "weak_tpr__interior": 0.003,
+        "high_fpr__null": 0.039,
+        "high_fpr__interior": 0.004
+      },
+      "passed": true,
+      "reasons": []
+    },
+    "better_union": {
+      "consistency_mismatches": 0,
+      "cell_error_rates": {
+        "hq__rm_0.20": 0.364,
+        "hq__rm_0.01": 0.0,
+        "hq__rm_0.15": 0.016,
+        "hq__rm_0.175": 0.088,
+        "hq__rm_0.225": 0.804,
+        "weak_tpr__rm_0.05": 0.0,
+        "weak_tpr__rm_0.15": 0.174,
+        "weak_tpr__rm_0.20": 0.651,
+        "high_fpr__rm_0.05": 0.0,
+        "high_fpr__rm_0.15": 0.272,
+        "high_fpr__rm_0.20": 0.743,
+        "hq__null": 0.025,
+        "hq__interior": 0.0,
+        "weak_tpr__null": 0.0443,
+        "weak_tpr__interior": 0.001,
+        "high_fpr__null": 0.0357,
+        "high_fpr__interior": 0.002
+      },
+      "passed": true,
+      "reasons": []
+    },
+    "noisy_ht": {
+      "consistency_mismatches": 0,
+      "cell_error_rates": {
+        "hq__rm_0.20": 0.3545,
+        "hq__rm_0.01": 0.425,
+        "hq__rm_0.15": 0.039,
+        "hq__rm_0.175": 0.096,
+        "hq__rm_0.225": 0.788,
+        "weak_tpr__rm_0.05": 0.243,
+        "weak_tpr__rm_0.15": 0.349,
+        "weak_tpr__rm_0.20": 0.677,
+        "high_fpr__rm_0.05": 0.058,
+        "high_fpr__rm_0.15": 0.432,
+        "high_fpr__rm_0.20": 0.771,
+        "hq__null": 0.0293,
+        "hq__interior": 0.0,
+        "weak_tpr__null": 0.047,
+        "weak_tpr__interior": 0.003,
+        "high_fpr__null": 0.039,
+        "high_fpr__interior": 0.004
+      },
+      "passed": true,
+      "reasons": []
+    },
+    "sc_constant_always": {
+      "consistency_mismatches": 0,
+      "cell_error_rates": {
+        "hq__rm_0.20": 0.0,
+        "hq__rm_0.01": 0.0,
+        "hq__rm_0.15": 0.0,
+        "hq__rm_0.175": 0.0,
+        "hq__rm_0.225": 0.0,
+        "weak_tpr__rm_0.05": 0.0,
+        "weak_tpr__rm_0.15": 0.0,
+        "weak_tpr__rm_0.20": 0.0,
+        "high_fpr__rm_0.05": 0.0,
+        "high_fpr__rm_0.15": 0.0,
+        "high_fpr__rm_0.20": 0.0,
+        "hq__null": 1.0,
+        "hq__interior": 1.0,
+        "weak_tpr__null": 1.0,
+        "weak_tpr__interior": 1.0,
+        "high_fpr__null": 1.0,
+        "high_fpr__interior": 1.0
+      },
+      "passed": false,
+      "reasons": [
+        "Type-I error 1.0000 at the null boundary in regime 'hq' exceeds the limit 0.0650",
+        "false-certification rate 1.0000 inside the null in regime 'hq' exceeds the limit 0.0650",
+        "Type-I error 1.0000 at the null boundary in regime 'weak_tpr' exceeds the limit 0.0650",
+        "false-certification rate 1.0000 inside the null in regime 'weak_tpr' exceeds the limit 0.0650",
+        "Type-I error 1.0000 at the null boundary in regime 'high_fpr' exceeds the limit 0.0650",
+        "false-certification rate 1.0000 inside the null in regime 'high_fpr' exceeds the limit 0.0650"
+      ]
+    },
+    "sc_constant_never": {
+      "consistency_mismatches": 0,
+      "cell_error_rates": {
+        "hq__rm_0.20": 1.0,
+        "hq__rm_0.01": 1.0,
+        "hq__rm_0.15": 1.0,
+        "hq__rm_0.175": 1.0,
+        "hq__rm_0.225": 1.0,
+        "weak_tpr__rm_0.05": 1.0,
+        "weak_tpr__rm_0.15": 1.0,
+        "weak_tpr__rm_0.20": 1.0,
+        "high_fpr__rm_0.05": 1.0,
+        "high_fpr__rm_0.15": 1.0,
+        "high_fpr__rm_0.20": 1.0,
+        "hq__null": 0.0,
+        "hq__interior": 0.0,
+        "weak_tpr__null": 0.0,
+        "weak_tpr__interior": 0.0,
+        "high_fpr__null": 0.0,
+        "high_fpr__interior": 0.0
+      },
+      "passed": true,
+      "reasons": []
+    },
+    "sc_crash": {
+      "passed": false,
+      "reasons": [
+        "main run: exit code 1: Traceback (most recent call last):\n  File \"/home/user/redteam/hardening/_runs/hidden_all/sc_crash.py\", line 2, in <module>\n    raise RuntimeError(\"deliberate crash\")\nRuntimeError: deliberate crash\n"
+      ]
+    },
+    "sc_empty_output": {
+      "passed": false,
+      "reasons": [
+        "main run: expected a list of 24000 decisions, got 0"
+      ]
+    },
+    "sc_extra_fields": {
+      "consistency_mismatches": 0,
+      "cell_error_rates": {
+        "hq__rm_0.20": 0.3545,
+        "hq__rm_0.01": 0.425,
+        "hq__rm_0.15": 0.039,
+        "hq__rm_0.175": 0.096,
+        "hq__rm_0.225": 0.788,
+        "weak_tpr__rm_0.05": 0.243,
+        "weak_tpr__rm_0.15": 0.349,
+        "weak_tpr__rm_0.20": 0.677,
+        "high_fpr__rm_0.05": 0.058,
+        "high_fpr__rm_0.15": 0.432,
+        "high_fpr__rm_0.20": 0.771,
+        "hq__null": 0.0293,
+        "hq__interior": 0.0,
+        "weak_tpr__null": 0.047,
+        "weak_tpr__interior": 0.003,
+        "high_fpr__null": 0.039,
+        "high_fpr__interior": 0.004
+      },
+      "passed": true,
+      "reasons": []
+    },
+    "sc_hardcoded_judge": {
+      "consistency_mismatches": 0,
+      "cell_error_rates": {
+        "hq__rm_0.20": 0.1375,
+        "hq__rm_0.01": 0.0,
+        "hq__rm_0.15": 0.0,
+        "hq__rm_0.175": 0.0,
+        "hq__rm_0.225": 0.598,
+        "weak_tpr__rm_0.05": 0.0,
+        "weak_tpr__rm_0.15": 0.0,
+        "weak_tpr__rm_0.20": 0.0,
+        "high_fpr__rm_0.05": 1.0,
+        "high_fpr__rm_0.15": 1.0,
+        "high_fpr__rm_0.20": 1.0,
+        "hq__null": 0.0177,
+        "hq__interior": 0.0,
+        "weak_tpr__null": 0.9423,
+        "weak_tpr__interior": 0.176,
+        "high_fpr__null": 0.0,
+        "high_fpr__interior": 0.0
+      },
+      "passed": false,
+      "reasons": [
+        "Type-I error 0.9423 at the null boundary in regime 'weak_tpr' exceeds the limit 0.0650",
+        "false-certification rate 0.1760 inside the null in regime 'weak_tpr' exceeds the limit 0.0650"
+      ]
+    },
+    "sc_naive_judge": {
+      "consistency_mismatches": 0,
+      "cell_error_rates": {
+        "hq__rm_0.20": 0.6495,
+        "hq__rm_0.01": 0.0,
+        "hq__rm_0.15": 0.002,
+        "hq__rm_0.175": 0.212,
+        "hq__rm_0.225": 0.984,
+        "weak_tpr__rm_0.05": 0.0,
+        "weak_tpr__rm_0.15": 0.0,
+        "weak_tpr__rm_0.20": 0.001,
+        "high_fpr__rm_0.05": 1.0,
+        "high_fpr__rm_0.15": 1.0,
+        "high_fpr__rm_0.20": 1.0,
+        "hq__null": 0.0,
+        "hq__interior": 0.0,
+        "weak_tpr__null": 0.4553,
+        "weak_tpr__interior": 0.025,
+        "high_fpr__null": 0.0,
+        "high_fpr__interior": 0.0
+      },
+      "passed": false,
+      "reasons": [
+        "Type-I error 0.4553 at the null boundary in regime 'weak_tpr' exceeds the limit 0.0650"
+      ]
+    },
+    "sc_nan_output": {
+      "passed": false,
+      "reasons": [
+        "main run: decision 0 is nan; every decision must be 0/1 or true/false"
+      ]
+    },
+    "sc_negative_output": {
+      "passed": false,
+      "reasons": [
+        "main run: decision 0 is -1000; every decision must be 0/1 or true/false"
+      ]
+    },
+    "sc_null_output": {
+      "passed": false,
+      "reasons": [
+        "main run: decision 0 is None; every decision must be 0/1 or true/false"
+      ]
+    },
+    "sc_point_estimate": {
+      "consistency_mismatches": 0,
+      "cell_error_rates": {
+        "hq__rm_0.20": 0.029,
+        "hq__rm_0.01": 0.016,
+        "hq__rm_0.15": 0.0,
+        "hq__rm_0.175": 0.006,
+        "hq__rm_0.225": 0.181,
+        "weak_tpr__rm_0.05": 0.021,
+        "weak_tpr__rm_0.15": 0.028,
+        "weak_tpr__rm_0.20": 0.148,
+        "high_fpr__rm_0.05": 0.005,
+        "high_fpr__rm_0.15": 0.042,
+        "high_fpr__rm_0.20": 0.211,
+        "hq__null": 0.474,
+        "hq__interior": 0.031,
+        "weak_tpr__null": 0.506,
+        "weak_tpr__interior": 0.099,
+        "high_fpr__null": 0.4857,
+        "high_fpr__interior": 0.147
+      },
+      "passed": false,
+      "reasons": [
+        "Type-I error 0.4740 at the null boundary in regime 'hq' exceeds the limit 0.0650",
+        "Type-I error 0.5060 at the null boundary in regime 'weak_tpr' exceeds the limit 0.0650",
+        "false-certification rate 0.0990 inside the null in regime 'weak_tpr' exceeds the limit 0.0650",
+        "Type-I error 0.4857 at the null boundary in regime 'high_fpr' exceeds the limit 0.0650",
+        "false-certification rate 0.1470 inside the null in regime 'high_fpr' exceeds the limit 0.0650"
+      ]
+    },
+    "sc_pooled_calibration": {
+      "consistency_mismatches": 26,
+      "cell_error_rates": {
+        "hq__rm_0.20": 0.016,
+        "hq__rm_0.01": 0.0,
+        "hq__rm_0.15": 0.0,
+        "hq__rm_0.175": 0.008,
+        "hq__rm_0.225": 0.249,
+        "weak_tpr__rm_0.05": 0.0,
+        "weak_tpr__rm_0.15": 0.0,
+        "weak_tpr__rm_0.20": 0.057,
+        "high_fpr__rm_0.05": 0.003,
+        "high_fpr__rm_0.15": 0.007,
+        "high_fpr__rm_0.20": 0.061,
+        "hq__null": 0.2817,
+        "hq__interior": 0.025,
+        "weak_tpr__null": 0.354,
+        "weak_tpr__interior": 0.073,
+        "high_fpr__null": 0.249,
+        "high_fpr__interior": 0.005
+      },
+      "passed": false,
+      "reasons": [
+        "26 of 6000 decisions changed when the same instances were re-submitted in a different batch; decisions must depend only on each instance's own data",
+        "Type-I error 0.2817 at the null boundary in regime 'hq' exceeds the limit 0.0650",
+        "Type-I error 0.3540 at the null boundary in regime 'weak_tpr' exceeds the limit 0.0650",
+        "false-certification rate 0.0730 inside the null in regime 'weak_tpr' exceeds the limit 0.0650",
+        "Type-I error 0.2490 at the null boundary in regime 'high_fpr' exceeds the limit 0.0650"
+      ]
+    },
+    "sc_train_box_prior": {
+      "consistency_mismatches": 0,
+      "cell_error_rates": {
+        "hq__rm_0.20": 0.73,
+        "hq__rm_0.01": 0.0,
+        "hq__rm_0.15": 0.033,
+        "hq__rm_0.175": 0.314,
+        "hq__rm_0.225": 0.978,
+        "weak_tpr__rm_0.05": 0.0,
+        "weak_tpr__rm_0.15": 0.167,
+        "weak_tpr__rm_0.20": 0.711,
+        "high_fpr__rm_0.05": 0.003,
+        "high_fpr__rm_0.15": 0.25,
+        "high_fpr__rm_0.20": 0.943,
+        "hq__null": 0.016,
+        "hq__interior": 0.006,
+        "weak_tpr__null": 0.0817,
+        "weak_tpr__interior": 0.02,
+        "high_fpr__null": 0.0,
+        "high_fpr__interior": 0.0
+      },
+      "passed": false,
+      "reasons": [
+        "Type-I error 0.0817 at the null boundary in regime 'weak_tpr' exceeds the limit 0.0650"
+      ]
+    },
+    "weaker_conservative": {
+      "consistency_mismatches": 0,
+      "cell_error_rates": {
+        "hq__rm_0.20": 0.473,
+        "hq__rm_0.01": 0.427,
+        "hq__rm_0.15": 0.053,
+        "hq__rm_0.175": 0.151,
+        "hq__rm_0.225": 0.874,
+        "weak_tpr__rm_0.05": 0.302,
+        "weak_tpr__rm_0.15": 0.459,
+        "weak_tpr__rm_0.20": 0.782,
+        "high_fpr__rm_0.05": 0.076,
+        "high_fpr__rm_0.15": 0.557,
+        "high_fpr__rm_0.20": 0.852,
+        "hq__null": 0.0083,
+        "hq__interior": 0.0,
+        "weak_tpr__null": 0.0253,
+        "weak_tpr__interior": 0.0,
+        "high_fpr__null": 0.0197,
+        "high_fpr__interior": 0.001
+      },
+      "passed": true,
+      "reasons": []
+    },
+    "weaker_direct": {
+      "consistency_mismatches": 0,
+      "cell_error_rates": {
+        "hq__rm_0.20": 0.733,
+        "hq__rm_0.01": 0.0,
+        "hq__rm_0.15": 0.251,
+        "hq__rm_0.175": 0.496,
+        "hq__rm_0.225": 0.883,
+        "weak_tpr__rm_0.05": 0.0,
+        "weak_tpr__rm_0.15": 0.236,
+        "weak_tpr__rm_0.20": 0.733,
+        "high_fpr__rm_0.05": 0.0,
+        "high_fpr__rm_0.15": 0.238,
+        "high_fpr__rm_0.20": 0.725,
+        "hq__null": 0.043,
+        "hq__interior": 0.003,
+        "weak_tpr__null": 0.0367,
+        "weak_tpr__interior": 0.003,
+        "high_fpr__null": 0.037,
+        "high_fpr__interior": 0.002
+      },
+      "passed": true,
+      "reasons": []
+    },
+    "weaker_half_calibration": {
+      "consistency_mismatches": 0,
+      "cell_error_rates": {
+        "hq__rm_0.20": 0.5075,
+        "hq__rm_0.01": 0.66,
+        "hq__rm_0.15": 0.126,
+        "hq__rm_0.175": 0.211,
+        "hq__rm_0.225": 0.883,
+        "weak_tpr__rm_0.05": 0.374,
+        "weak_tpr__rm_0.15": 0.537,
+        "weak_tpr__rm_0.20": 0.76,
+        "high_fpr__rm_0.05": 0.182,
+        "high_fpr__rm_0.15": 0.641,
+        "high_fpr__rm_0.20": 0.849,
+        "hq__null": 0.026,
+        "hq__interior": 0.001,
+        "weak_tpr__null": 0.062,
+        "weak_tpr__interior": 0.007,
+        "high_fpr__null": 0.0387,
+        "high_fpr__interior": 0.004
+      },
+      "passed": true,
+      "reasons": []
+    }
+  },
+  "_cells": {
+    "direct_ht": {
+      "hq__rm_0.20": 0.733,
+      "hq__rm_0.01": 0.0,
+      "hq__rm_0.15": 0.251,
+      "hq__rm_0.175": 0.496,
+      "hq__rm_0.225": 0.883,
+      "weak_tpr__rm_0.05": 0.0,
+      "weak_tpr__rm_0.15": 0.236,
+      "weak_tpr__rm_0.20": 0.733,
+      "high_fpr__rm_0.05": 0.0,
+      "high_fpr__rm_0.15": 0.238,
+      "high_fpr__rm_0.20": 0.725,
+      "hq__null": 0.043,
+      "hq__interior": 0.003,
+      "weak_tpr__null": 0.0367,
+      "weak_tpr__interior": 0.003,
+      "high_fpr__null": 0.037,
+      "high_fpr__interior": 0.002
+    },
+    "oracle_noisy_ht": {
+      "hq__rm_0.20": 0.0,
+      "hq__rm_0.01": 0.0,
+      "hq__rm_0.15": 0.0,
+      "hq__rm_0.175": 0.0,
+      "hq__rm_0.225": 0.001,
+      "weak_tpr__rm_0.05": 0.0,
+      "weak_tpr__rm_0.15": 0.0,
+      "weak_tpr__rm_0.20": 0.0,
+      "high_fpr__rm_0.05": 0.0,
+      "high_fpr__rm_0.15": 0.0,
+      "high_fpr__rm_0.20": 0.0,
+      "hq__null": 0.052,
+      "hq__interior": 0.0,
+      "weak_tpr__null": 0.052,
+      "weak_tpr__interior": 0.0,
+      "high_fpr__null": 0.0467,
+      "high_fpr__interior": 0.0
+    },
+    "alt_ppi_pp": {
+      "hq__rm_0.20": 0.2285,
+      "hq__rm_0.01": 0.0,
+      "hq__rm_0.15": 0.003,
+      "hq__rm_0.175": 0.028,
+      "hq__rm_0.225": 0.7,
+      "weak_tpr__rm_0.05": 0.0,
+      "weak_tpr__rm_0.15": 0.024,
+      "weak_tpr__rm_0.20": 0.452,
+      "high_fpr__rm_0.05": 0.0,
+      "high_fpr__rm_0.15": 0.057,
+      "high_fpr__rm_0.20": 0.544,
+      "hq__null": 0.048,
+      "hq__interior": 0.002,
+      "weak_tpr__null": 0.066,
+      "weak_tpr__interior": 0.001,
+      "high_fpr__null": 0.0573,
+      "high_fpr__interior": 0.004
+    },
+    "better_fallback": {
+      "hq__rm_0.20": 0.3545,
+      "hq__rm_0.01": 0.03,
+      "hq__rm_0.15": 0.039,
+      "hq__rm_0.175": 0.096,
+      "hq__rm_0.225": 0.788,
+      "weak_tpr__rm_0.05": 0.24,
+      "weak_tpr__rm_0.15": 0.349,
+      "weak_tpr__rm_0.20": 0.677,
+      "high_fpr__rm_0.05": 0.053,
+      "high_fpr__rm_0.15": 0.432,
+      "high_fpr__rm_0.20": 0.771,
+      "hq__null": 0.0293,
+      "hq__interior": 0.0,
+      "weak_tpr__null": 0.047,
+      "weak_tpr__interior": 0.003,
+      "high_fpr__null": 0.039,
+      "high_fpr__interior": 0.004
+    },
+    "better_union": {
+      "hq__rm_0.20": 0.364,
+      "hq__rm_0.01": 0.0,
+      "hq__rm_0.15": 0.016,
+      "hq__rm_0.175": 0.088,
+      "hq__rm_0.225": 0.804,
+      "weak_tpr__rm_0.05": 0.0,
+      "weak_tpr__rm_0.15": 0.174,
+      "weak_tpr__rm_0.20": 0.651,
+      "high_fpr__rm_0.05": 0.0,
+      "high_fpr__rm_0.15": 0.272,
+      "high_fpr__rm_0.20": 0.743,
+      "hq__null": 0.025,
+      "hq__interior": 0.0,
+      "weak_tpr__null": 0.0443,
+      "weak_tpr__interior": 0.001,
+      "high_fpr__null": 0.0357,
+      "high_fpr__interior": 0.002
+    },
+    "noisy_ht": {
+      "hq__rm_0.20": 0.3545,
+      "hq__rm_0.01": 0.425,
+      "hq__rm_0.15": 0.039,
+      "hq__rm_0.175": 0.096,
+      "hq__rm_0.225": 0.788,
+      "weak_tpr__rm_0.05": 0.243,
+      "weak_tpr__rm_0.15": 0.349,
+      "weak_tpr__rm_0.20": 0.677,
+      "high_fpr__rm_0.05": 0.058,
+      "high_fpr__rm_0.15": 0.432,
+      "high_fpr__rm_0.20": 0.771,
+      "hq__null": 0.0293,
+      "hq__interior": 0.0,
+      "weak_tpr__null": 0.047,
+      "weak_tpr__interior": 0.003,
+      "high_fpr__null": 0.039,
+      "high_fpr__interior": 0.004
+    },
+    "sc_constant_always": {
+      "hq__rm_0.20": 0.0,
+      "hq__rm_0.01": 0.0,
+      "hq__rm_0.15": 0.0,
+      "hq__rm_0.175": 0.0,
+      "hq__rm_0.225": 0.0,
+      "weak_tpr__rm_0.05": 0.0,
+      "weak_tpr__rm_0.15": 0.0,
+      "weak_tpr__rm_0.20": 0.0,
+      "high_fpr__rm_0.05": 0.0,
+      "high_fpr__rm_0.15": 0.0,
+      "high_fpr__rm_0.20": 0.0,
+      "hq__null": 1.0,
+      "hq__interior": 1.0,
+      "weak_tpr__null": 1.0,
+      "weak_tpr__interior": 1.0,
+      "high_fpr__null": 1.0,
+      "high_fpr__interior": 1.0
+    },
+    "sc_constant_never": {
+      "hq__rm_0.20": 1.0,
+      "hq__rm_0.01": 1.0,
+      "hq__rm_0.15": 1.0,
+      "hq__rm_0.175": 1.0,
+      "hq__rm_0.225": 1.0,
+      "weak_tpr__rm_0.05": 1.0,
+      "weak_tpr__rm_0.15": 1.0,
+      "weak_tpr__rm_0.20": 1.0,
+      "high_fpr__rm_0.05": 1.0,
+      "high_fpr__rm_0.15": 1.0,
+      "high_fpr__rm_0.20": 1.0,
+      "hq__null": 0.0,
+      "hq__interior": 0.0,
+      "weak_tpr__null": 0.0,
+      "weak_tpr__interior": 0.0,
+      "high_fpr__null": 0.0,
+      "high_fpr__interior": 0.0
+    },
+    "sc_extra_fields": {
+      "hq__rm_0.20": 0.3545,
+      "hq__rm_0.01": 0.425,
+      "hq__rm_0.15": 0.039,
+      "hq__rm_0.175": 0.096,
+      "hq__rm_0.225": 0.788,
+      "weak_tpr__rm_0.05": 0.243,
+      "weak_tpr__rm_0.15": 0.349,
+      "weak_tpr__rm_0.20": 0.677,
+      "high_fpr__rm_0.05": 0.058,
+      "high_fpr__rm_0.15": 0.432,
+      "high_fpr__rm_0.20": 0.771,
+      "hq__null": 0.0293,
+      "hq__interior": 0.0,
+      "weak_tpr__null": 0.047,
+      "weak_tpr__interior": 0.003,
+      "high_fpr__null": 0.039,
+      "high_fpr__interior": 0.004
+    },
+    "sc_hardcoded_judge": {
+      "hq__rm_0.20": 0.1375,
+      "hq__rm_0.01": 0.0,
+      "hq__rm_0.15": 0.0,
+      "hq__rm_0.175": 0.0,
+      "hq__rm_0.225": 0.598,
+      "weak_tpr__rm_0.05": 0.0,
+      "weak_tpr__rm_0.15": 0.0,
+      "weak_tpr__rm_0.20": 0.0,
+      "high_fpr__rm_0.05": 1.0,
+      "high_fpr__rm_0.15": 1.0,
+      "high_fpr__rm_0.20": 1.0,
+      "hq__null": 0.0177,
+      "hq__interior": 0.0,
+      "weak_tpr__null": 0.9423,
+      "weak_tpr__interior": 0.176,
+      "high_fpr__null": 0.0,
+      "high_fpr__interior": 0.0
+    },
+    "sc_naive_judge": {
+      "hq__rm_0.20": 0.6495,
+      "hq__rm_0.01": 0.0,
+      "hq__rm_0.15": 0.002,
+      "hq__rm_0.175": 0.212,
+      "hq__rm_0.225": 0.984,
+      "weak_tpr__rm_0.05": 0.0,
+      "weak_tpr__rm_0.15": 0.0,
+      "weak_tpr__rm_0.20": 0.001,
+      "high_fpr__rm_0.05": 1.0,
+      "high_fpr__rm_0.15": 1.0,
+      "high_fpr__rm_0.20": 1.0,
+      "hq__null": 0.0,
+      "hq__interior": 0.0,
+      "weak_tpr__null": 0.4553,
+      "weak_tpr__interior": 0.025,
+      "high_fpr__null": 0.0,
+      "high_fpr__interior": 0.0
+    },
+    "sc_point_estimate": {
+      "hq__rm_0.20": 0.029,
+      "hq__rm_0.01": 0.016,
+      "hq__rm_0.15": 0.0,
+      "hq__rm_0.175": 0.006,
+      "hq__rm_0.225": 0.181,
+      "weak_tpr__rm_0.05": 0.021,
+      "weak_tpr__rm_0.15": 0.028,
+      "weak_tpr__rm_0.20": 0.148,
+      "high_fpr__rm_0.05": 0.005,
+      "high_fpr__rm_0.15": 0.042,
+      "high_fpr__rm_0.20": 0.211,
+      "hq__null": 0.474,
+      "hq__interior": 0.031,
+      "weak_tpr__null": 0.506,
+      "weak_tpr__interior": 0.099,
+      "high_fpr__null": 0.4857,
+      "high_fpr__interior": 0.147
+    },
+    "sc_pooled_calibration": {
+      "hq__rm_0.20": 0.016,
+      "hq__rm_0.01": 0.0,
+      "hq__rm_0.15": 0.0,
+      "hq__rm_0.175": 0.008,
+      "hq__rm_0.225": 0.249,
+      "weak_tpr__rm_0.05": 0.0,
+      "weak_tpr__rm_0.15": 0.0,
+      "weak_tpr__rm_0.20": 0.057,
+      "high_fpr__rm_0.05": 0.003,
+      "high_fpr__rm_0.15": 0.007,
+      "high_fpr__rm_0.20": 0.061,
+      "hq__null": 0.2817,
+      "hq__interior": 0.025,
+      "weak_tpr__null": 0.354,
+      "weak_tpr__interior": 0.073,
+      "high_fpr__null": 0.249,
+      "high_fpr__interior": 0.005
+    },
+    "sc_train_box_prior": {
+      "hq__rm_0.20": 0.73,
+      "hq__rm_0.01": 0.0,
+      "hq__rm_0.15": 0.033,
+      "hq__rm_0.175": 0.314,
+      "hq__rm_0.225": 0.978,
+      "weak_tpr__rm_0.05": 0.0,
+      "weak_tpr__rm_0.15": 0.167,
+      "weak_tpr__rm_0.20": 0.711,
+      "high_fpr__rm_0.05": 0.003,
+      "high_fpr__rm_0.15": 0.25,
+      "high_fpr__rm_0.20": 0.943,
+      "hq__null": 0.016,
+      "hq__interior": 0.006,
+      "weak_tpr__null": 0.0817,
+      "weak_tpr__interior": 0.02,
+      "high_fpr__null": 0.0,
+      "high_fpr__interior": 0.0
+    },
+    "weaker_conservative": {
+      "hq__rm_0.20": 0.473,
+      "hq__rm_0.01": 0.427,
+      "hq__rm_0.15": 0.053,
+      "hq__rm_0.175": 0.151,
+      "hq__rm_0.225": 0.874,
+      "weak_tpr__rm_0.05": 0.302,
+      "weak_tpr__rm_0.15": 0.459,
+      "weak_tpr__rm_0.20": 0.782,
+      "high_fpr__rm_0.05": 0.076,
+      "high_fpr__rm_0.15": 0.557,
+      "high_fpr__rm_0.20": 0.852,
+      "hq__null": 0.0083,
+      "hq__interior": 0.0,
+      "weak_tpr__null": 0.0253,
+      "weak_tpr__interior": 0.0,
+      "high_fpr__null": 0.0197,
+      "high_fpr__interior": 0.001
+    },
+    "weaker_direct": {
+      "hq__rm_0.20": 0.733,
+      "hq__rm_0.01": 0.0,
+      "hq__rm_0.15": 0.251,
+      "hq__rm_0.175": 0.496,
+      "hq__rm_0.225": 0.883,
+      "weak_tpr__rm_0.05": 0.0,
+      "weak_tpr__rm_0.15": 0.236,
+      "weak_tpr__rm_0.20": 0.733,
+      "high_fpr__rm_0.05": 0.0,
+      "high_fpr__rm_0.15": 0.238,
+      "high_fpr__rm_0.20": 0.725,
+      "hq__null": 0.043,
+      "hq__interior": 0.003,
+      "weak_tpr__null": 0.0367,
+      "weak_tpr__interior": 0.003,
+      "high_fpr__null": 0.037,
+      "high_fpr__interior": 0.002
+    },
+    "weaker_half_calibration": {
+      "hq__rm_0.20": 0.5075,
+      "hq__rm_0.01": 0.66,
+      "hq__rm_0.15": 0.126,
+      "hq__rm_0.175": 0.211,
+      "hq__rm_0.225": 0.883,
+      "weak_tpr__rm_0.05": 0.374,
+      "weak_tpr__rm_0.15": 0.537,
+      "weak_tpr__rm_0.20": 0.76,
+      "high_fpr__rm_0.05": 0.182,
+      "high_fpr__rm_0.15": 0.641,
+      "high_fpr__rm_0.20": 0.849,
+      "hq__null": 0.026,
+      "hq__interior": 0.001,
+      "weak_tpr__null": 0.062,
+      "weak_tpr__interior": 0.007,
+      "high_fpr__null": 0.0387,
+      "high_fpr__interior": 0.004
+    }
+  },
+  "_diagnostics": {
+    "ppi": {
+      "hq__rm_0.20": 0.2965,
+      "hq__rm_0.01": 0.0,
+      "hq__rm_0.15": 0.003,
+      "hq__rm_0.175": 0.044,
+      "hq__rm_0.225": 0.765,
+      "weak_tpr__rm_0.05": 0.0,
+      "weak_tpr__rm_0.15": 0.042,
+      "weak_tpr__rm_0.20": 0.51,
+      "high_fpr__rm_0.05": 0.0,
+      "high_fpr__rm_0.15": 0.247,
+      "high_fpr__rm_0.20": 0.687,
+      "hq__null": 0.031,
+      "hq__interior": 0.0,
+      "weak_tpr__null": 0.0533,
+      "weak_tpr__interior": 0.001,
+      "high_fpr__null": 0.0377,
+      "high_fpr__interior": 0.003
+    },
+    "ppi_pp": {
+      "hq__rm_0.20": 0.2285,
+      "hq__rm_0.01": 0.0,
+      "hq__rm_0.15": 0.003,
+      "hq__rm_0.175": 0.028,
+      "hq__rm_0.225": 0.7,
+      "weak_tpr__rm_0.05": 0.0,
+      "weak_tpr__rm_0.15": 0.024,
+      "weak_tpr__rm_0.20": 0.452,
+      "high_fpr__rm_0.05": 0.0,
+      "high_fpr__rm_0.15": 0.057,
+      "high_fpr__rm_0.20": 0.544,
+      "hq__null": 0.048,
+      "hq__interior": 0.002,
+      "weak_tpr__null": 0.066,
+      "weak_tpr__interior": 0.001,
+      "high_fpr__null": 0.0573,
+      "high_fpr__interior": 0.004
+    }
+  }
+}
