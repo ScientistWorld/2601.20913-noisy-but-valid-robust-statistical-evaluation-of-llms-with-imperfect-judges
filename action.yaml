@@ -1,4 +1,2 @@
-action: submit
-gpus: 0
-test: false
-notes: "Finish audit: public-seed-43 control and two comparison-row shortcuts; recompute ranks excluding rejected attempts."
+action: done
+notes: "Completed scoring audit: genuine variants and three seeds, 18 executed shortcut kinds, scores and findings in REDTEAM.md; gym files restored."
