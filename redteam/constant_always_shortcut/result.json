@@ -1,0 +1,11 @@
+{
+  "case": "constant_always_shortcut",
+  "command": [
+    "bash",
+    "scripts/evaluate_test.sh"
+  ],
+  "no_arguments": true,
+  "method_entrypoint_replaced": true,
+  "artifact_sha256": "861411e4223407009e68b0a43ac5b9bcb34ee8f7ed56235260e53ea19f1ffb0d",
+  "test_returncode": 0
+}

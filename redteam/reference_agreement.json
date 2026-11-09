@@ -1,0 +1,14 @@
+{
+  "main": {
+    "saved_rows": 2000,
+    "reconstructed_rows": 2000,
+    "mismatch_count": 0,
+    "examples": []
+  },
+  "curve": {
+    "saved_rows": 4000,
+    "reconstructed_rows": 4000,
+    "mismatch_count": 0,
+    "examples": []
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "case": "null_flags_shortcut",
+  "command": [
+    "bash",
+    "scripts/evaluate_test.sh"
+  ],
+  "no_arguments": true,
+  "method_entrypoint_replaced": true,
+  "artifact_sha256": "d694d546ff41f1f578043910951fc3971d3ff720274048331b10617fa8f94f59",
+  "test_returncode": 1,
+  "scores_missing": true,
+  "test_error": "Traceback (most recent call last):\n  File \"/home/user/eval/test/evaluate.py\", line 188, in <module>\n    main()\n  File \"/home/user/eval/test/evaluate.py\", line 181, in main\n    scores = build_scores(load_artifact(args.artifact), args.artifact)\n  File \"/home/user/eval/test/evaluate.py\", line 148, in build_scores\n    power_scores = summarize_rows(power_rows, \"_type2_failure\", \"type2_error\")\n  File \"/home/user/eval/test/evaluate.py\", line 60, in summarize_rows\n    scores[method_name(field, suffix)] = {output_metric: rounded(mean(values))}\n  File \"/home/user/eval/test/evaluate.py\", line 30, in mean\n    return float(sum(values) / len(values))\nTypeError: unsupported operand type(s) for +: 'int' and 'NoneType'\n"
+}

@@ -1,0 +1,13 @@
+{
+  "case": "config_budget_shortcut",
+  "command": [
+    "bash",
+    "scripts/evaluate_test.sh"
+  ],
+  "no_arguments": true,
+  "method_entrypoint_replaced": true,
+  "artifact_sha256": "4f47121e5bc8e4b6a30ea2938c2fb68d9d1e6dd3d600e4c8ab5a6c2db66d25aa",
+  "test_returncode": 1,
+  "scores_missing": true,
+  "test_error": "Traceback (most recent call last):\n  File \"/home/user/eval/test/evaluate.py\", line 188, in <module>\n    main()\n  File \"/home/user/eval/test/evaluate.py\", line 181, in main\n    scores = build_scores(load_artifact(args.artifact), args.artifact)\n  File \"/home/user/eval/test/evaluate.py\", line 39, in load_artifact\n    validate_synthetic_artifact(artifact)\n  File \"/home/user/eval/artifact_validation.py\", line 70, in validate_synthetic_artifact\n    _require_config(main.get(\"config\", {}), EXPECTED_MAIN_CONFIG, \"main\")\n  File \"/home/user/eval/artifact_validation.py\", line 47, in _require_config\n    raise ValueError(\nValueError: main config 'n_m'=1000, expected 100\n"
+}

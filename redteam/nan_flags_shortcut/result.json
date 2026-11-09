@@ -1,0 +1,11 @@
+{
+  "case": "nan_flags_shortcut",
+  "command": [
+    "bash",
+    "scripts/evaluate_test.sh"
+  ],
+  "no_arguments": true,
+  "method_entrypoint_replaced": true,
+  "artifact_sha256": "7a96772cc9f2c09d97810c3d5a59f115c5473e961cb2f3190d0f7ef95dcee73e",
+  "test_returncode": 0
+}

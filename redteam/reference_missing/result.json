@@ -1,0 +1,11 @@
+{
+  "case": "reference_missing",
+  "command": [
+    "bash",
+    "scripts/evaluate_test.sh"
+  ],
+  "no_arguments": true,
+  "method_returncode": 1,
+  "method_error": "Traceback (most recent call last):\n  File \"/home/user/method/run_synthetic.py\", line 16, in <module>\n    from method.core import (\nModuleNotFoundError: No module named 'method.core'\n",
+  "test_not_run": "Reference failed before producing an artifact; stale outputs are not scored."
+}

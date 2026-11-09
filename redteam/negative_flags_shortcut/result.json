@@ -1,0 +1,11 @@
+{
+  "case": "negative_flags_shortcut",
+  "command": [
+    "bash",
+    "scripts/evaluate_test.sh"
+  ],
+  "no_arguments": true,
+  "method_entrypoint_replaced": true,
+  "artifact_sha256": "0aaa6c6f39f6f4d6eed5480b91e8e588fbe1ab4462798ba1eabeca9364c9166d",
+  "test_returncode": 0
+}

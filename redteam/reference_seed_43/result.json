@@ -1,0 +1,11 @@
+{
+  "case": "reference_seed_43",
+  "command": [
+    "bash",
+    "scripts/evaluate_test.sh"
+  ],
+  "no_arguments": true,
+  "method_entrypoint_replaced": true,
+  "artifact_sha256": "967b9bdc0062f09c9b715e04e0f543bbb3c3f49fd2f1c0ef25b5f7bac9f6f825",
+  "test_returncode": 0
+}

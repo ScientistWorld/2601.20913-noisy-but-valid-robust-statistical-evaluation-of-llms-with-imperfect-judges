@@ -1,0 +1,11 @@
+{
+  "case": "reference_saved",
+  "command": [
+    "bash",
+    "scripts/evaluate_test.sh"
+  ],
+  "no_arguments": true,
+  "method_entrypoint_replaced": true,
+  "artifact_sha256": "86d0676d3e16d100422d4e536ff98f8ee7d88428f1fca378f3d105182c803d73",
+  "test_returncode": 0
+}

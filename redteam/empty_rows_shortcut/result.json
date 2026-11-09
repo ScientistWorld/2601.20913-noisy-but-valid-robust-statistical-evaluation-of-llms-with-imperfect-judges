@@ -1,0 +1,13 @@
+{
+  "case": "empty_rows_shortcut",
+  "command": [
+    "bash",
+    "scripts/evaluate_test.sh"
+  ],
+  "no_arguments": true,
+  "method_entrypoint_replaced": true,
+  "artifact_sha256": "b9a518735d16b2ca611fdc4c821a93ab07b6a191328f697adf21738cac86877e",
+  "test_returncode": 1,
+  "scores_missing": true,
+  "test_error": "Traceback (most recent call last):\n  File \"/home/user/eval/test/evaluate.py\", line 188, in <module>\n    main()\n  File \"/home/user/eval/test/evaluate.py\", line 181, in main\n    scores = build_scores(load_artifact(args.artifact), args.artifact)\n  File \"/home/user/eval/test/evaluate.py\", line 39, in load_artifact\n    validate_synthetic_artifact(artifact)\n  File \"/home/user/eval/artifact_validation.py\", line 81, in validate_synthetic_artifact\n    raise ValueError(f\"main has {len(main_rows)} rows, expected {expected_main_rows}\")\nValueError: main has 0 rows, expected 2000\n"
+}

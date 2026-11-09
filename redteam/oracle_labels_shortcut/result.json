@@ -1,0 +1,11 @@
+{
+  "case": "oracle_labels_shortcut",
+  "command": [
+    "bash",
+    "scripts/evaluate_test.sh"
+  ],
+  "no_arguments": true,
+  "method_entrypoint_replaced": true,
+  "artifact_sha256": "35a4197f0e222fef178930f96f901666ca7c735ecef6b453eb1eb236970e55a5",
+  "test_returncode": 0
+}

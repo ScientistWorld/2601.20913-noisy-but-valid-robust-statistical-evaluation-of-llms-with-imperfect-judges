@@ -1,0 +1,12 @@
+{
+  "case": "baseline_fields_shortcut",
+  "command": [
+    "bash",
+    "scripts/evaluate_test.sh"
+  ],
+  "no_arguments": true,
+  "method_entrypoint_replaced": true,
+  "artifact_sha256": "b4f4042631a94efad99b43be40ebece1629908c774db8de6ef877cca8667e20a",
+  "test_returncode": 1,
+  "test_error": ""
+}

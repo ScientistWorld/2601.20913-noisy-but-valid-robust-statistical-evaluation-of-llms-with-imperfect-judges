@@ -1,0 +1,11 @@
+{
+  "case": "better_seed_43",
+  "command": [
+    "bash",
+    "scripts/evaluate_test.sh"
+  ],
+  "no_arguments": true,
+  "method_entrypoint_replaced": true,
+  "artifact_sha256": "63a9d16c24b43fe99ac0815248a40f5ae8ad5672ce9c8f59a8bc4350a2a04b74",
+  "test_returncode": 0
+}

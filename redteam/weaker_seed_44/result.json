@@ -1,0 +1,11 @@
+{
+  "case": "weaker_seed_44",
+  "command": [
+    "bash",
+    "scripts/evaluate_test.sh"
+  ],
+  "no_arguments": true,
+  "method_entrypoint_replaced": true,
+  "artifact_sha256": "a73dcfdd033c4d282b73079cd6169cbe57b2414ae2e17ecce89d758049ded74d",
+  "test_returncode": 0
+}

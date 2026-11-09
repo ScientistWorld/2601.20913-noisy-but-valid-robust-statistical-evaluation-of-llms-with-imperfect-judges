@@ -1,0 +1,11 @@
+{
+  "case": "missing_flags_shortcut",
+  "command": [
+    "bash",
+    "scripts/evaluate_test.sh"
+  ],
+  "no_arguments": true,
+  "method_entrypoint_replaced": true,
+  "artifact_sha256": "f398a44d7e961642c715c910f0ebb2672acd849ff1c2ce768e6d27408adc43e4",
+  "test_returncode": 0
+}

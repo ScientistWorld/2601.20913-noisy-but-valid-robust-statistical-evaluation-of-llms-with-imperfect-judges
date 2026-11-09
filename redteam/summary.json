@@ -1,0 +1,570 @@
+{
+  "formula": "sum(weight * abs(coefficient) * direction * (attempt-reference_saved) / population_std_over_declared_cohort)",
+  "reference": "reference_saved: frozen scoring/scores_test.json, recomputed by the unmodified hidden scorer",
+  "normalization_note": "Absolute final rank depends on future attempts; these are explicit reproducible example cohorts. Constant cells contribute zero.",
+  "cohorts": {
+    "scientific": [
+      "reference_seed_42",
+      "better_seed_42",
+      "weaker_seed_42",
+      "reference_seed_43",
+      "better_seed_43",
+      "weaker_seed_43",
+      "reference_seed_44",
+      "better_seed_44",
+      "weaker_seed_44"
+    ],
+    "bounded": [
+      "reference_seed_42",
+      "point_estimate_shortcut",
+      "direct_score_shortcut",
+      "missing_flags_shortcut",
+      "train_copy_shortcut",
+      "weaker_seed_43",
+      "weaker_seed_44",
+      "better_seed_44",
+      "scenario_answers_shortcut",
+      "fabricated_flags_shortcut",
+      "better_seed_43",
+      "baseline_fields_shortcut",
+      "better_seed_42",
+      "constant_always_shortcut",
+      "weaker_seed_42",
+      "reference_seed_44",
+      "reference_seed_43",
+      "reference_saved",
+      "constant_never_shortcut",
+      "budget_laundering_shortcut",
+      "visible_seed_reference",
+      "oracle_labels_shortcut",
+      "fixed_generator_shortcut"
+    ]
+  },
+  "scientific_rank": {
+    "reference_seed_42": 0.0,
+    "better_seed_42": 0.5151766904922709,
+    "weaker_seed_42": -1.2698290025485193,
+    "reference_seed_43": 1.2750498893087416,
+    "better_seed_43": 1.760711248574893,
+    "weaker_seed_43": -0.6245515023605337,
+    "reference_seed_44": 0.3994626623255316,
+    "better_seed_44": 0.920005776677097,
+    "weaker_seed_44": -1.9369361106370353
+  },
+  "bounded_cohort_rank": {
+    "reference_seed_42": 0.0,
+    "point_estimate_shortcut": 1.1292508708429494,
+    "direct_score_shortcut": 0.13965041492599065,
+    "missing_flags_shortcut": 1.587042838382516,
+    "train_copy_shortcut": 0.13965041492599065,
+    "weaker_seed_43": -0.6842585450491361,
+    "weaker_seed_44": -0.9869036932226205,
+    "better_seed_44": 0.3926689065780476,
+    "scenario_answers_shortcut": 1.587042838382516,
+    "fabricated_flags_shortcut": 1.587042838382516,
+    "better_seed_43": 0.6469056035830133,
+    "baseline_fields_shortcut": 2.2027570583914784,
+    "better_seed_42": 0.38347040235941576,
+    "constant_always_shortcut": -0.33892012417719175,
+    "weaker_seed_42": -0.9720713840582209,
+    "reference_seed_44": 0.005204020860721269,
+    "reference_seed_43": 0.28540485969210566,
+    "reference_saved": 0.0,
+    "constant_never_shortcut": -3.9487110057454697,
+    "budget_laundering_shortcut": 2.677562647929747,
+    "visible_seed_reference": 0.13965041492599065,
+    "oracle_labels_shortcut": 1.5542220879331323,
+    "fixed_generator_shortcut": 0.4853648477494119
+  },
+  "bounded_cohort_proposed_only_rank": {
+    "reference_seed_42": 0.0,
+    "point_estimate_shortcut": 1.0303259298194072,
+    "direct_score_shortcut": 0.04072547390244805,
+    "missing_flags_shortcut": 1.4881178973589733,
+    "train_copy_shortcut": 0.04072547390244805,
+    "weaker_seed_43": -0.9112861726980634,
+    "weaker_seed_44": -0.9849171492948532,
+    "better_seed_44": 0.3946554505058149,
+    "scenario_answers_shortcut": 1.4881178973589733,
+    "fabricated_flags_shortcut": 1.4881178973589733,
+    "better_seed_43": 0.4198779759340859,
+    "baseline_fields_shortcut": 0.04072547390244805,
+    "better_seed_42": 0.38347040235941576,
+    "constant_always_shortcut": -0.4378450652007342,
+    "weaker_seed_42": -0.9720713840582209,
+    "reference_seed_44": 0.0071905647884886,
+    "reference_seed_43": 0.058377232043178254,
+    "reference_saved": 0.0,
+    "constant_never_shortcut": -4.047635946769012,
+    "budget_laundering_shortcut": 1.4664701683391672,
+    "visible_seed_reference": 0.04072547390244805,
+    "oracle_labels_shortcut": 1.45529714690959,
+    "fixed_generator_shortcut": 1.1180636101662749
+  },
+  "pairwise_rank": {
+    "reference_seed_42": 0,
+    "point_estimate_shortcut": 2.82,
+    "direct_score_shortcut": 0.7799999999999998,
+    "missing_flags_shortcut": 3.92,
+    "train_copy_shortcut": 0.7799999999999998,
+    "oracle_comparator_shortcut": 0.6599999999999999,
+    "negative_flags_shortcut": 4.42,
+    "weaker_seed_43": -0.8200000000000003,
+    "weaker_seed_44": -2.42,
+    "better_seed_44": 2.02,
+    "scenario_answers_shortcut": 3.92,
+    "fabricated_flags_shortcut": 3.92,
+    "better_seed_43": 3.92,
+    "baseline_fields_shortcut": 1.3800000000000001,
+    "better_seed_42": 0.5,
+    "constant_always_shortcut": 2.8200000000000003,
+    "weaker_seed_42": -1.6200000000000003,
+    "reference_seed_44": 1.02,
+    "reference_seed_43": 3.92,
+    "reference_saved": 0,
+    "constant_never_shortcut": -1.7199999999999995,
+    "budget_laundering_shortcut": 3.3200000000000003,
+    "visible_seed_reference": 0.7799999999999998,
+    "oracle_labels_shortcut": 3.3200000000000003,
+    "fixed_generator_shortcut": 3.3200000000000003
+  },
+  "cases": {
+    "reference_seed_42": {
+      "test_returncode": 0,
+      "power": 0.31,
+      "oracle_gap": 0.31,
+      "type1": 0.029,
+      "curve": {
+        "rm_0.01": 0.411,
+        "rm_0.10": 0.014,
+        "rm_0.20": 0.328,
+        "rm_0.30": 0.0
+      },
+      "finite": true,
+      "bounded_cohort_rank": 0.0,
+      "pairwise_rank": 0
+    },
+    "point_estimate_shortcut": {
+      "test_returncode": 0,
+      "power": 0.022,
+      "oracle_gap": 0.022,
+      "type1": 0.462,
+      "curve": {
+        "rm_0.01": 0.023,
+        "rm_0.10": 0.0,
+        "rm_0.20": 0.025,
+        "rm_0.30": 0.03
+      },
+      "finite": true,
+      "bounded_cohort_rank": 1.1292508708429494,
+      "pairwise_rank": 2.82
+    },
+    "direct_score_shortcut": {
+      "test_returncode": 1,
+      "power": 0.313,
+      "oracle_gap": 0.313,
+      "type1": 0.022,
+      "curve": {
+        "rm_0.01": 0.38,
+        "rm_0.10": 0.012,
+        "rm_0.20": 0.316,
+        "rm_0.30": 0.001
+      },
+      "finite": true,
+      "bounded_cohort_rank": 0.13965041492599065,
+      "pairwise_rank": 0.7799999999999998
+    },
+    "missing_flags_shortcut": {
+      "test_returncode": 0,
+      "power": 0.0,
+      "oracle_gap": 0.0,
+      "type1": 0.0,
+      "curve": {
+        "rm_0.01": 0.0,
+        "rm_0.10": 0.0,
+        "rm_0.20": 0.0,
+        "rm_0.30": 0.0
+      },
+      "finite": true,
+      "bounded_cohort_rank": 1.587042838382516,
+      "pairwise_rank": 3.92
+    },
+    "train_copy_shortcut": {
+      "test_returncode": 1,
+      "power": 0.313,
+      "oracle_gap": 0.313,
+      "type1": 0.022,
+      "curve": {
+        "rm_0.01": 0.38,
+        "rm_0.10": 0.012,
+        "rm_0.20": 0.316,
+        "rm_0.30": 0.001
+      },
+      "finite": true,
+      "bounded_cohort_rank": 0.13965041492599065,
+      "pairwise_rank": 0.7799999999999998
+    },
+    "oracle_comparator_shortcut": {
+      "test_returncode": 1,
+      "power": 0.313,
+      "oracle_gap": -0.687,
+      "type1": 0.022,
+      "curve": {
+        "rm_0.01": 0.38,
+        "rm_0.10": 0.012,
+        "rm_0.20": 0.316,
+        "rm_0.30": 0.001
+      },
+      "finite": true,
+      "bounded_cohort_rank": null,
+      "pairwise_rank": 0.6599999999999999
+    },
+    "negative_flags_shortcut": {
+      "test_returncode": 0,
+      "power": -1000.0,
+      "oracle_gap": -1000.0,
+      "type1": -1000.0,
+      "curve": {
+        "rm_0.01": -1000.0,
+        "rm_0.10": -1000.0,
+        "rm_0.20": -1000.0,
+        "rm_0.30": -1000.0
+      },
+      "finite": true,
+      "bounded_cohort_rank": null,
+      "pairwise_rank": 4.42
+    },
+    "weaker_seed_43": {
+      "test_returncode": 0,
+      "power": 0.713,
+      "oracle_gap": 0.713,
+      "type1": 0.03,
+      "curve": {
+        "rm_0.01": 0.0,
+        "rm_0.10": 0.008,
+        "rm_0.20": 0.724,
+        "rm_0.30": 0.003
+      },
+      "finite": true,
+      "bounded_cohort_rank": -0.6842585450491361,
+      "pairwise_rank": -0.8200000000000003
+    },
+    "weaker_seed_44": {
+      "test_returncode": 0,
+      "power": 0.733,
+      "oracle_gap": 0.733,
+      "type1": 0.042,
+      "curve": {
+        "rm_0.01": 0.0,
+        "rm_0.10": 0.012,
+        "rm_0.20": 0.739,
+        "rm_0.30": 0.002
+      },
+      "finite": true,
+      "bounded_cohort_rank": -0.9869036932226205,
+      "pairwise_rank": -2.42
+    },
+    "better_seed_44": {
+      "test_returncode": 0,
+      "power": 0.309,
+      "oracle_gap": 0.309,
+      "type1": 0.029,
+      "curve": {
+        "rm_0.01": 0.028,
+        "rm_0.10": 0.009,
+        "rm_0.20": 0.324,
+        "rm_0.30": 0.0
+      },
+      "finite": true,
+      "bounded_cohort_rank": 0.3926689065780476,
+      "pairwise_rank": 2.02
+    },
+    "scenario_answers_shortcut": {
+      "test_returncode": 0,
+      "power": 0.0,
+      "oracle_gap": 0.0,
+      "type1": 0.0,
+      "curve": {
+        "rm_0.01": 0.0,
+        "rm_0.10": 0.0,
+        "rm_0.20": 0.0,
+        "rm_0.30": 0.0
+      },
+      "finite": true,
+      "bounded_cohort_rank": 1.587042838382516,
+      "pairwise_rank": 3.92
+    },
+    "fabricated_flags_shortcut": {
+      "test_returncode": 0,
+      "power": 0.0,
+      "oracle_gap": 0.0,
+      "type1": 0.0,
+      "curve": {
+        "rm_0.01": 0.0,
+        "rm_0.10": 0.0,
+        "rm_0.20": 0.0,
+        "rm_0.30": 0.0
+      },
+      "finite": true,
+      "bounded_cohort_rank": 1.587042838382516,
+      "pairwise_rank": 3.92
+    },
+    "better_seed_43": {
+      "test_returncode": 0,
+      "power": 0.309,
+      "oracle_gap": 0.309,
+      "type1": 0.018,
+      "curve": {
+        "rm_0.01": 0.042,
+        "rm_0.10": 0.012,
+        "rm_0.20": 0.285,
+        "rm_0.30": 0.0
+      },
+      "finite": true,
+      "bounded_cohort_rank": 0.6469056035830133,
+      "pairwise_rank": 3.92
+    },
+    "baseline_fields_shortcut": {
+      "test_returncode": 1,
+      "power": 0.313,
+      "oracle_gap": 0.313,
+      "type1": 0.022,
+      "curve": {
+        "rm_0.01": 0.38,
+        "rm_0.10": 0.012,
+        "rm_0.20": 0.316,
+        "rm_0.30": 0.001
+      },
+      "finite": true,
+      "bounded_cohort_rank": 2.2027570583914784,
+      "pairwise_rank": 1.3800000000000001
+    },
+    "better_seed_42": {
+      "test_returncode": 0,
+      "power": 0.31,
+      "oracle_gap": 0.31,
+      "type1": 0.029,
+      "curve": {
+        "rm_0.01": 0.027,
+        "rm_0.10": 0.014,
+        "rm_0.20": 0.328,
+        "rm_0.30": 0.0
+      },
+      "finite": true,
+      "bounded_cohort_rank": 0.38347040235941576,
+      "pairwise_rank": 0.5
+    },
+    "nan_flags_shortcut": {
+      "test_returncode": 0,
+      "power": null,
+      "oracle_gap": null,
+      "type1": null,
+      "curve": {
+        "rm_0.01": null,
+        "rm_0.10": null,
+        "rm_0.20": null,
+        "rm_0.30": null
+      },
+      "finite": false,
+      "bounded_cohort_rank": null,
+      "pairwise_rank": null
+    },
+    "constant_always_shortcut": {
+      "test_returncode": 0,
+      "power": 0.0,
+      "oracle_gap": 0.0,
+      "type1": 1.0,
+      "curve": {
+        "rm_0.01": 0.0,
+        "rm_0.10": 0.0,
+        "rm_0.20": 0.0,
+        "rm_0.30": 1.0
+      },
+      "finite": true,
+      "bounded_cohort_rank": -0.33892012417719175,
+      "pairwise_rank": 2.8200000000000003
+    },
+    "weaker_seed_42": {
+      "test_returncode": 0,
+      "power": 0.732,
+      "oracle_gap": 0.732,
+      "type1": 0.042,
+      "curve": {
+        "rm_0.01": 0.0,
+        "rm_0.10": 0.005,
+        "rm_0.20": 0.737,
+        "rm_0.30": 0.002
+      },
+      "finite": true,
+      "bounded_cohort_rank": -0.9720713840582209,
+      "pairwise_rank": -1.6200000000000003
+    },
+    "reference_seed_44": {
+      "test_returncode": 0,
+      "power": 0.309,
+      "oracle_gap": 0.309,
+      "type1": 0.029,
+      "curve": {
+        "rm_0.01": 0.416,
+        "rm_0.10": 0.009,
+        "rm_0.20": 0.324,
+        "rm_0.30": 0.0
+      },
+      "finite": true,
+      "bounded_cohort_rank": 0.005204020860721269,
+      "pairwise_rank": 1.02
+    },
+    "reference_seed_43": {
+      "test_returncode": 0,
+      "power": 0.309,
+      "oracle_gap": 0.309,
+      "type1": 0.018,
+      "curve": {
+        "rm_0.01": 0.404,
+        "rm_0.10": 0.012,
+        "rm_0.20": 0.285,
+        "rm_0.30": 0.0
+      },
+      "finite": true,
+      "bounded_cohort_rank": 0.28540485969210566,
+      "pairwise_rank": 3.92
+    },
+    "reference_saved": {
+      "test_returncode": 0,
+      "power": 0.31,
+      "oracle_gap": 0.31,
+      "type1": 0.029,
+      "curve": {
+        "rm_0.01": 0.411,
+        "rm_0.10": 0.014,
+        "rm_0.20": 0.328,
+        "rm_0.30": 0.0
+      },
+      "finite": true,
+      "bounded_cohort_rank": 0.0,
+      "pairwise_rank": 0
+    },
+    "constant_never_shortcut": {
+      "test_returncode": 0,
+      "power": 1.0,
+      "oracle_gap": 1.0,
+      "type1": 0.0,
+      "curve": {
+        "rm_0.01": 1.0,
+        "rm_0.10": 1.0,
+        "rm_0.20": 1.0,
+        "rm_0.30": 0.0
+      },
+      "finite": true,
+      "bounded_cohort_rank": -3.9487110057454697,
+      "pairwise_rank": -1.7199999999999995
+    },
+    "budget_laundering_shortcut": {
+      "test_returncode": 0,
+      "power": 0.0,
+      "oracle_gap": 0.0,
+      "type1": 0.031,
+      "curve": {
+        "rm_0.01": 0.0,
+        "rm_0.10": 0.0,
+        "rm_0.20": 0.0,
+        "rm_0.30": 0.0
+      },
+      "finite": true,
+      "bounded_cohort_rank": 2.677562647929747,
+      "pairwise_rank": 3.3200000000000003
+    },
+    "visible_seed_reference": {
+      "test_returncode": 1,
+      "power": 0.313,
+      "oracle_gap": 0.313,
+      "type1": 0.022,
+      "curve": {
+        "rm_0.01": 0.38,
+        "rm_0.10": 0.012,
+        "rm_0.20": 0.316,
+        "rm_0.30": 0.001
+      },
+      "finite": true,
+      "bounded_cohort_rank": 0.13965041492599065,
+      "pairwise_rank": 0.7799999999999998
+    },
+    "oracle_labels_shortcut": {
+      "test_returncode": 0,
+      "power": 0.0,
+      "oracle_gap": 0.0,
+      "type1": 0.047,
+      "curve": {
+        "rm_0.01": 0.0,
+        "rm_0.10": 0.0,
+        "rm_0.20": 0.0,
+        "rm_0.30": 0.0
+      },
+      "finite": true,
+      "bounded_cohort_rank": 1.5542220879331323,
+      "pairwise_rank": 3.3200000000000003
+    },
+    "fixed_generator_shortcut": {
+      "test_returncode": 0,
+      "power": 0.0,
+      "oracle_gap": 0.0,
+      "type1": 0.048,
+      "curve": {
+        "rm_0.01": 0.337,
+        "rm_0.10": 0.0,
+        "rm_0.20": 0.0,
+        "rm_0.30": 0.0
+      },
+      "finite": true,
+      "bounded_cohort_rank": 0.4853648477494119,
+      "pairwise_rank": 3.3200000000000003
+    }
+  },
+  "seed_spread": {
+    "reference": {
+      "rank_min": 0.0,
+      "rank_max": 1.2750498893087416,
+      "rank_range": 1.2750498893087416,
+      "power_values": [
+        0.31,
+        0.309,
+        0.309
+      ],
+      "type1_values": [
+        0.029,
+        0.018,
+        0.029
+      ]
+    },
+    "better": {
+      "rank_min": 0.5151766904922709,
+      "rank_max": 1.760711248574893,
+      "rank_range": 1.245534558082622,
+      "power_values": [
+        0.31,
+        0.309,
+        0.309
+      ],
+      "type1_values": [
+        0.029,
+        0.018,
+        0.029
+      ]
+    },
+    "weaker": {
+      "rank_min": -1.9369361106370353,
+      "rank_max": -0.6245515023605337,
+      "rank_range": 1.3123846082765016,
+      "power_values": [
+        0.732,
+        0.713,
+        0.733
+      ],
+      "type1_values": [
+        0.042,
+        0.03,
+        0.042
+      ]
+    }
+  }
+}

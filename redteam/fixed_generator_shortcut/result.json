@@ -1,0 +1,11 @@
+{
+  "case": "fixed_generator_shortcut",
+  "command": [
+    "bash",
+    "scripts/evaluate_test.sh"
+  ],
+  "no_arguments": true,
+  "method_entrypoint_replaced": true,
+  "artifact_sha256": "aa46cb6708344af5e057dbcc88afe68733fc4ace86c823e6a594261988eb23e3",
+  "test_returncode": 0
+}

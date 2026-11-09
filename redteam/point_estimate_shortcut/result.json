@@ -1,0 +1,11 @@
+{
+  "case": "point_estimate_shortcut",
+  "command": [
+    "bash",
+    "scripts/evaluate_test.sh"
+  ],
+  "no_arguments": true,
+  "method_entrypoint_replaced": true,
+  "artifact_sha256": "c796d4f8565596731f798b256993c9e596a2ae974968e6f8851e2a8876b2958c",
+  "test_returncode": 0
+}

@@ -1,0 +1,11 @@
+{
+  "case": "budget_laundering_shortcut",
+  "command": [
+    "bash",
+    "scripts/evaluate_test.sh"
+  ],
+  "no_arguments": true,
+  "method_entrypoint_replaced": true,
+  "artifact_sha256": "126edc3a2727702cfa33de0f791541ff33202cc5c66ef23e5e52eadba947b24b",
+  "test_returncode": 0
+}

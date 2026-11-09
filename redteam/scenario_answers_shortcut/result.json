@@ -1,0 +1,11 @@
+{
+  "case": "scenario_answers_shortcut",
+  "command": [
+    "bash",
+    "scripts/evaluate_test.sh"
+  ],
+  "no_arguments": true,
+  "method_entrypoint_replaced": true,
+  "artifact_sha256": "33fd099ffa4973b099f4ea2b50aed8c62f2bc8c7a60d7a1a162937ead572fcf2",
+  "test_returncode": 0
+}
