@@ -68,11 +68,11 @@ Reference spread across draws (rank units): 0.109; reference rank by draw: hidde
       "scores_file_forged_after_run": false
     },
     "sc_score_forgery": {
-      "exit_code": 1,
+      "exit_code": 0,
       "scores_file_forged_after_run": false
     },
     "sc_constant_never": {
-      "exit_code": 1,
+      "exit_code": 0,
       "scores_file_forged_after_run": false
     },
     "sc_hardcoded_judge": {
