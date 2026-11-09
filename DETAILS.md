@@ -13,8 +13,12 @@ This paper addresses the challenge of statistically certifying that an LLM's fai
 
 - **Type-I error control**: All procedures (Direct HT, Noisy HT, Oracle Noisy HT, PPI) control Type-I error at ζ=0.05 across all settings
 - **Power improvement**: Noisy HT significantly outperforms Direct HT in the high-TPR/low-FPR regime (green region in the paper's Figure 1D), but is bounded above by Oracle Noisy HT (the "Oracle Gap")
-- **Synthetic experiments**: With α=0.25, ζ=0.05, n_M=100, n_J=10,000, Noisy HT achieves substantially lower Type-II error than Direct HT in the high-quality judge setting used here (TPR=0.95, FPR=0.05) across a range of model failure rates
+- **Synthetic experiments**: With α=0.25, ζ=0.05, n_M=100, n_J=10,000, Noisy HT achieves substantially lower Type-II error than Direct HT with a high-quality judge (TPR=0.95, FPR=0.05) near the threshold, but not for very rare failures or with less reliable judges (TPR=0.75 or FPR=0.25), where Direct HT can do better (Theorem 5.4)
 - **Real-data experiments**: Results on Jigsaw, Hate Speech, and SafeRLHF confirm theoretical predictions — Noisy HT works well with capable judges (LLaMA-3.1-8B, LLaMA-3.3-70B) as judges for smaller classifier models
+
+## This gym
+
+Synthetic setting only. Methods are certifiers (`method/certifiers/<name>.py`) that the evaluators run on instances they generate; see `briefing/evaluation.md`.
 
 ---
 
@@ -43,6 +47,8 @@ A successful solution must:
 ## Benchmark Setting
 
 The benchmark is synthetic: ground-truth labels are Bernoulli(R_M) and judge labels flip them with the judge's TPR/FPR. Each instance has `n_M = 100`, `n_J = 10,000`, `alpha = 0.25`, `zeta = 0.05`, and its own judge TPR/FPR drawn around one of three judge-quality regimes. See `briefing/evaluation.md` for the instance format, the certifier interface, and how scores are computed.
+
+---
 
 # Paper's Method
 
@@ -81,6 +87,12 @@ The variance term includes contributions from both the large dataset (sampling v
 2. **Superiority condition**: Noisy HT outperforms Direct HT when judge quality satisfies (TPR - FPR)² > [α²×TPR(1-TPR)/R_M + (1-α)²×FPR(1-FPR)/(1-R_M)] / [R_M(1-R_M)]
 3. **Oracle Gap**: Noisy HT always has higher Type-II error than Oracle Noisy HT (gap quantifies cost of estimation)
 4. **Interpretability**: TPR and FPR are explicit parameters — practitioners can diagnose judge quality and plan data collection
+
+## Implementation in this workspace
+
+- `method/hypothesis_tests.py`: Algorithms 1–4 (Noisy HT, Direct HT, PPI family, Oracle Noisy HT).
+- `method/certifiers/noisy_ht.py`: the reference certifier — runs Algorithm 1 on every instance of a batch through the certifier interface in `briefing/evaluation.md`. The evaluators score it as the `noisy_ht` row.
+- Known weaknesses visible in the scores: rare failures (with `R_M = 0.01` the calibration set often has no failures, `TPR̂ = 0`, and the test cannot certify), and less reliable judges (Theorem 5.4: the noisy test then loses to Direct HT).
 
 ---
 
@@ -885,6 +897,60 @@ scored as its own row, named after its file.
 
 <details>
 <summary>Progress Log</summary>
+
+### [2026-05-22 07:15] - core_claim_plus
+- Completed final verification of the `core_claim_plus` workspace.
+- Confirmed `python3 validate.py --compare` passes and that scoring uses artifact outputs rather than regenerating the method.
+- Reviewed scoring weights, coefficients, train/test evaluators, method-agnostic documentation, and download portability.
+- Recorded the remaining unrelated root metadata/read-only filesystem issue in `VERIFICATION.md`; it does not affect the gym artifacts or execution path.
+
+### [2026-05-22 07:12] - core_claim_plus
+- Re-audited the workspace with two read-only subagents focused on paper-method fidelity and implementation readiness.
+- Confirmed the implementation is the paper's actual Noisy HT algorithm: calibration-set TPR/FPR estimation, transformed noisy threshold, and variance-corrected critical threshold applied to separate judge-labeled evaluation data.
+- Ran `python3 validate.py --compare` locally; all scoring, evaluator/method separation, artifact-reading, train/test independence, and shared-path checks passed.
+- Verified current artifact scores: Direct/Noisy/Oracle Type-II `0.721`/`0.313`/`0.000`; Type-I `0.037`/`0.022`/`0.049`.
+- Found unrelated infrastructure corruption in tracked root metadata (`README.md`, `manifest.json`) and missing tracked trajectory logs; attempted restore was blocked by device/read-only filesystem errors, so no reproduction files were changed for that issue.
+
+### [2026-05-22 07:09] - core_claim_plus
+- Reviewed CPU job `5505211f-c67`: it regenerated canonical, train, and held-out artifacts successfully, then failed only because `reference.json` treated the Type-I significance target as an exact reproduced value.
+- Updated the Type-I reference values to fixed-setting figure/Monte Carlo approximations and documented that the scored validity target is conservative Type-I control under `zeta=0.05`.
+- Removed a duplicate method-side synthetic-data helper so the reusable data generator lives only under `data/`.
+- Completed final verification after lightweight validation.
+
+### [2026-05-22 07:01] - core_claim_plus
+- Audited the existing `core_claim_plus` reproduction after reactivation.
+- Fixed the canonical evaluator to include the `synthetic_type2_curve` primary `decision_error` metric in `scoring/scores.json`, matching `reference.json` and the existing train/test evaluators.
+- Local `bash scripts/evaluate.sh /home/user/outputs/synthetic_results.json /home/user/scoring/scores.json` passed `validate.py --compare`.
+- Aligned the core synthetic setting with the paper's high-quality judge panel (`TPR=0.95`, `FPR=0.05`) and added artifact-config validation so the evaluator rejects changed sample budgets or incomplete trial grids.
+- Submitted a CPU test job to rerun canonical, train, and held-out scoring inside the packaged container after these evaluator and setting cleanups.
+
+### [2026-05-22 06:40] - core_claim_plus
+- CPU test job `9ace5902-843` completed successfully after the continuation audit cleanup.
+- The job regenerated canonical, train, and held-out artifacts, scored them through `eval/evaluate.py`, and passed `validate.py --compare` inside the packaged container.
+- Canonical Direct/Noisy/Oracle Type-II error remained `0.721`/`0.627`/`0.000`; Type-I error remained `0.037`/`0.028`/`0.038`.
+- Held-out test Direct/Noisy/Oracle Type-II error was `0.732`/`0.628`/`0.000`; Type-I error was `0.042`/`0.039`/`0.049`.
+
+### [2026-05-22 06:36] - core_claim_plus
+- Confirmed the packaged CPU compute job `137b2a6c-ca0` completed successfully with `validate.py --compare`.
+- The implementation runs the paper's actual Noisy HT procedure: calibration-set TPR/FPR estimation, transformed noisy threshold, and variance-corrected critical cutoff.
+- Reproduced the core synthetic power claim: Direct/Noisy/Oracle Type-II error `0.721`/`0.627`/`0.000`, with Type-I errors `0.037`/`0.028`/`0.038`.
+- Added additional coverage beyond the minimum through train/test slices and a synthetic Type-II curve over multiple true failure rates.
+
+</details>
+
+### Iteration 11: claude-opus-5-5 (hardener)
+- **Milestone**: `core_claim_plus` | **Status**: done
+- **Working time**: 33m | **GPU**: 0.0h
+- **Jobs**: 3 total (1 completed, 2 failed)
+
+<details>
+<summary>Progress Log</summary>
+
+### [2026-11-09] - core_claim_plus (hardening)
+- Hidden test rebuilt: evaluator-generated instances with hidden judge regimes, certifier interface (`method/certifiers/`), evaluator-owned comparison rows, Type-I validity gate, batch-consistency check; failed runs score worst and exit non-zero.
+- Reference repaired (`method/core.py` had been dropped by the `core.*` ignore rule; restored as `method/hypothesis_tests.py`).
+- New scored experiment `judge_quality_sweep` (where the paper's method falls short) and a rare-failure curve cell.
+- Audit: better variants +0.29..+0.62 paired gain vs reference spread 0.11; weaker variants -0.7..-1.3; every shortcut fails or ranks at the bottom. See `HARDENING.md`.
 
 ### [2026-05-22 07:15] - core_claim_plus
 - Completed final verification of the `core_claim_plus` workspace.
