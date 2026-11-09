@@ -1,7 +1,8 @@
 """Install one method artifact and run the restored hidden test with no args.
 
 Only the audit controller can read _original/. Every shortcut starts from
-independently generated visible seed-42 trials and public train-side schema.
+independently generated public-seed trials and the public train-side schema.
+Comparison-field shortcuts use seed 43; the other shortcuts use seed 42.
 All test invocations run as new shell/Python processes, with no surviving
 method process, altered evaluator, environment, or Python module state.
 """
@@ -115,7 +116,8 @@ def run_case(name):
         ARTIFACT.parent.mkdir(exist_ok=True)
         ARTIFACT.write_text(json.dumps(a) + '\n')
         if name == 'train_copy_shortcut':
-            # The identical train-produced artifact is accepted as held-out.
+            # SHORTCUT attempt: submit the identical train-produced artifact.
+            # The scorer writes metrics, but final train/test checks reject it.
             train_path = ROOT/'outputs/synthetic_train_results.json'
             train_saved = train_path.read_bytes() if train_path.exists() else None
             train_path.write_bytes(ARTIFACT.read_bytes())

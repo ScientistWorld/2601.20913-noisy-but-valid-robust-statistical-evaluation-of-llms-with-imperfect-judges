@@ -9,7 +9,8 @@ ROOT = Path('/home/user')
 sys.path.insert(0, str(ROOT))
 from redteam.generate import generate, path
 
-CASES = ['reference_missing', 'reference_saved', 'visible_seed_reference']
+CASES = ['reference_missing', 'reference_saved', 'visible_seed_reference',
+         'visible_seed_43_reference']
 CASES += [f'{kind}_seed_{seed}' for seed in [42, 43, 44]
           for kind in ['reference', 'better', 'weaker']]
 CASES += ['scenario_answers_shortcut', 'fabricated_flags_shortcut',

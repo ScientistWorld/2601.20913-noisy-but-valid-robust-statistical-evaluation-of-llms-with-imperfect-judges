@@ -1,0 +1,28 @@
+{
+  "start_of_iteration_commit": "5717913",
+  "checks": {
+    "eval/artifact_validation.py": true,
+    "eval/__init__.py": true,
+    "eval/evaluate.py": true,
+    "eval/train/evaluate.py": true,
+    "eval/test/evaluate.py": true,
+    "scripts/evaluate_test.sh": true,
+    "scripts/evaluate_train.sh": true,
+    "validate.py": true,
+    "data/synthetic.py": true,
+    "method/run_synthetic.py": true,
+    "scripts/run.sh": true,
+    "scoring/scores_train.json": true,
+    "scoring/scores_test.json": true,
+    "scoring/reference.json": true,
+    "original_test_artifact_restored": true
+  },
+  "all_checks_passed": true,
+  "other_tracked_changes_except_required_action_and_preexisting_state": [],
+  "preexisting_state": [
+    "README.md and manifest.json mounted as null devices",
+    "trajectory entries absent at start"
+  ],
+  "required_protocol_exception": "action.yaml will be set to done after the audit commit",
+  "generated_job_records_restored_to_start": true
+}
